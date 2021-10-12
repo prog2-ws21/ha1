@@ -41,5 +41,28 @@ class CalculatorTest {
     }
 
     //TODO hier weitere Tests erstellen
+
+    @Test
+    @DisplayName("Test für Teilaufgabe 1: checks the correct deletion of input numbers after pressing the C button")
+    void testy() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(1);
+
+        calc.pressClearKey();
+        String expected = "0";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+
+//    @Test
+//    @DisplayName("Test für Teilaufgabe 2")
+//    void testNegativeNumbers() {
+//
+//    }
+
+
 }
 
