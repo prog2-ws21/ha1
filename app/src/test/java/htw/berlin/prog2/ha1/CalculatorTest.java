@@ -56,7 +56,6 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
 
-
 //    @Test
 //    @DisplayName("Test für Teilaufgabe 2")
 //    void testNegativeNumbers() {
