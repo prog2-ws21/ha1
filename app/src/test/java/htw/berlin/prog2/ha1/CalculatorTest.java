@@ -41,5 +41,21 @@ class CalculatorTest {
     }
 
     //TODO hier weitere Tests erstellen
+
+    @Test
+    @DisplayName("clears screen after pressing buttons")
+
+    void testClearScreen(){
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(2);
+        calc.pressDigitKey(9);
+        calc.pressClearKey();
+
+        String expected = "0";
+        String actual = calc.readScreen();
+
+        assertEquals(expected,actual);
+    }
 }
 
