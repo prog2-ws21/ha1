@@ -57,5 +57,34 @@ class CalculatorTest {
 
         assertEquals(expected,actual);
     }
+
+    @Test
+    @DisplayName("make the number negativ")
+    void testNegativKey(){
+        Calculator calc = new Calculator();
+
+        calc.pressNegativeKey();
+        calc.pressDigitKey(4);
+        calc.pressBinaryOperationKey("+");
+
+        String expected = "-4";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("test √, % and 1/x")
+    void testUnbinaryOperationKey(){
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(9);
+        calc.pressBinaryOperationKey("√");
+
+        String expected = "3";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
 }
 
