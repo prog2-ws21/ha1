@@ -49,6 +49,7 @@ public class Calculator {
         latestOperation = "";
         latestValue = 0.0;
     }
+    //commit test
 
     /**
      * Empfängt den Wert einer gedrückten binären Operationstaste, also eine der vier Operationen
