@@ -58,4 +58,21 @@ class CalculatorTest {
 
     }
 
+    // 2. neuer grüner Test
+    @Test
+    @DisplayName("should display cleared screen")
+    void testClearedScreen() {
+
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(8);
+        calc.pressClearKey();
+
+
+        String expected = "0";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+
+    }
 }
