@@ -43,7 +43,7 @@ class CalculatorTest {
     //TODO hier weitere Tests erstellen
     @Test
     @DisplayName("should display result after adding two positive single-digit numbers")
-     void testSubtraction() {
+     void testAddition() {
         Calculator calc = new Calculator();
 
         calc.pressDigitKey(1);
@@ -52,6 +52,38 @@ class CalculatorTest {
         calc.pressEqualsKey();
 
         String expected = "2";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("should didsplay result after subtract one single-digit number from the other")
+    void testSubtraction() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(2);
+        calc.pressBinaryOperationKey("-");
+        calc.pressDigitKey(1);
+        calc.pressEqualsKey();
+
+        String expected = "1";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+    @Test
+    @DisplayName("should didsplay a result with only one decimal separator, although an attempt was made to add\n" +
+            "another one after a decimaldigit")
+    void testDecimalSeparation() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(2);
+        calc.pressDotKey();
+        calc.pressDigitKey(2);
+        calc.pressDotKey();
+
+        String expected = "2.2";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
