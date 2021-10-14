@@ -93,11 +93,10 @@ class CalculatorTest {
     void testDecimalNumbersSmallerThenOne() {
         Calculator calc = new Calculator();
 
-        calc.pressDigitKey(0);
         calc.pressDotKey();
         calc.pressDigitKey(1);
 
-        String expected = "2.2";
+        String expected = "0.1";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);

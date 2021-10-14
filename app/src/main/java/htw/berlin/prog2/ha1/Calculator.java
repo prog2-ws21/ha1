@@ -29,7 +29,7 @@ public class Calculator {
      * @param digit Die Ziffer, deren Taste gedrückt wurde
      */
     public void pressDigitKey(int digit) {
-        if(digit > 9 || digit <= 0) throw new IllegalArgumentException();
+        if(digit > 9 || digit < 0) throw new IllegalArgumentException();
 
         if(screen.equals("0") || latestValue == Double.parseDouble(screen)) screen = "";
 
@@ -93,8 +93,9 @@ public class Calculator {
      * Beim zweimaligem Drücken, oder wenn bereits ein Trennzeichen angezeigt wird, passiert nichts.
      */
     public void pressDotKey() {
-       // if(!screen.endsWith(".")) screen = screen + ".";
+       // if (screen == 0) screen = screen +
         if(!screen.contains(".")) screen = screen + ".";
+
     }
 
     /**
