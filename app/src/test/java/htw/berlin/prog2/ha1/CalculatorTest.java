@@ -43,7 +43,7 @@ class CalculatorTest {
     //TODO hier weitere Tests erstellen
 
     @Test
-    @DisplayName("should display result after adding two positive multi-digit numbers")
+    @DisplayName("should display result after subtracting two positive multi-digit numbers")
     void testPositiveSubtraction() {
         Calculator calc = new Calculator();
 
@@ -55,6 +55,23 @@ class CalculatorTest {
         calc.pressEqualsKey();
 
         String expected = "10";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("should display error after dividing with 0")
+    void testZeroDivision() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(2);
+        calc.pressBinaryOperationKey("/");
+        calc.pressDigitKey(0);
+        calc.pressEqualsKey();
+
+
+        String expected = "Error";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
