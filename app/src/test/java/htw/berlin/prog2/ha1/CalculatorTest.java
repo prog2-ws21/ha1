@@ -73,7 +73,7 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
     @Test
-    @DisplayName("should didsplay a result with only one decimal separator, although an attempt was made to add\n" +
+    @DisplayName("should didsplay a number with only one decimal separator, although an attempt was made to add\n" +
             "another one after a decimaldigit")
     void testDecimalSeparation() {
         Calculator calc = new Calculator();
@@ -89,7 +89,7 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
     @Test
-    @DisplayName("should didsplay a result with a 0 followed by a decimal digit, so a number bigger then 0 but smaller then 1")
+    @DisplayName("should didsplay a number with a 0 followed by a decimal digit, so a number bigger then 0 but smaller then 1")
     void testDecimalNumbersSmallerThenOne() {
         Calculator calc = new Calculator();
 
