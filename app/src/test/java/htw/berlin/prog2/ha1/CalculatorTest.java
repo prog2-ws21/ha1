@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 @DisplayName("Retro calculator")
 class CalculatorTest {
@@ -41,5 +42,30 @@ class CalculatorTest {
     }
 
     //TODO hier weitere Tests erstellen
+    @Test
+    @DisplayName("should reset all 3 instance fields of Calculator")
+    void testPressClearKey() {
+        Calculator calculator = new Calculator();
+        calculator.pressDigitKey(1);
+        calculator.pressDotKey(".");
+        calculator.pressDigitKey(2);
+        calculator.pressDigitKey(3);
+        assertEquals("1.23", calculator.readScreen());
+        calculator.pressBinaryOperationKey("x");
+        calculator.pressDigitKey(4);
+        calculator.pressDigitKey(5);
+        calculator.pressEqualsKey();
+        assertEquals("55.35", calculator.readScreen());
+        calculator.pressClearKey();
+        assertNotEquals("55.35", calculator.readScreen());
+        assertNotEquals(1.23, calculator.getLatestValue());
+        assertNotEquals(45, calculator.getLatestValue());
+        assertNotEquals(1, calculator.getLatestOperation().length());
+
+
+
+    }
+
+
 }
 
