@@ -66,6 +66,21 @@ class CalculatorTest {
 
     }
 
+    @Test
+    @DisplayName("should display the intermediate result of a binary operation upon pressing an operation key instead of '='")
+    void testIntermediateResult(){
+        Calculator calculator = new Calculator();
+      //  System.out.println("hi");
+        calculator.pressDigitKey(1);
+        calculator.pressDigitKey(1);
+        calculator.pressBinaryOperationKey("/");
+        calculator.pressDigitKey(1);
+        calculator.pressDigitKey(1);
+        calculator.pressBinaryOperationKey("/");
+       // calculator.pressEqualsKey();
+        assertEquals("1", calculator.readScreen());
+    }
+
 
 }
 
