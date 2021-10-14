@@ -71,28 +71,9 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
-    /*
+
     @Test
-    @DisplayName("should result after adding two breaks")
-    void testMultiplikationBruch() {
-        Calculator calc = new Calculator();
-
-        calc.pressDigitKey(2);
-        calc.pressUnaryOperationKey("1/x");
-
-        calc.pressBinaryOperationKey("x");
-        calc.pressDigitKey(2);
-        calc.pressUnaryOperationKey("1/x");
-
-        calc.pressEqualsKey();
-
-        String expected = "1/4";
-        String actual = calc.readScreen();
-
-        assertEquals(expected, actual);
-    } */
-    @Test
-    @DisplayName("should result after adding two breaks")
+    @DisplayName("should give you one after break with one")
     void testBruchEingebenBeiEins() {
         Calculator calc = new Calculator();
 
