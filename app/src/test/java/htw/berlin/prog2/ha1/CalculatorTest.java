@@ -77,7 +77,7 @@ class CalculatorTest {
         calculator.pressDigitKey(1);
         calculator.pressDigitKey(1);
         calculator.pressBinaryOperationKey("/");
-
+       // System.out.println(calculator.readScreen());
         assertEquals("22", calculator.readScreen());
     }
 

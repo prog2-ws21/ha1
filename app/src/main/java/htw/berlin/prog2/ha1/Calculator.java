@@ -20,9 +20,11 @@ public class Calculator {
      * @return den aktuellen Bildschirminhalt als String
      */
     public String readScreen() {
-
+        if (screen.endsWith(".0")) screen = screen.substring(0, screen.length() - 2);
+        if (screen.contains(".") && screen.length() > 11) screen = screen.substring(0, 10);
         return screen;
     }
+
 
     /**
      * Empfängt den Wert einer gedrückten Zifferntaste. Da man nur eine Taste auf einmal
@@ -67,9 +69,16 @@ public class Calculator {
      * @param operation "+" für Addition, "-" für Substraktion, "x" für Multiplikation, "/" für Division
      */
     public void pressBinaryOperationKey(String operation) {
+
         if(latestOperation.length()>0) {
             pressEqualsKey();
+            screen=Double.toString(tempResult);
+
+
+
         }
+//        System.out.println("latestVal " + latestValue);
+//        System.out.println(screen);
         latestValue = Double.parseDouble(screen);
         latestOperation = operation;
     }
@@ -92,9 +101,12 @@ public class Calculator {
             default -> throw new IllegalArgumentException();
         };
         screen = Double.toString(result);
-        tempResult=result;
-        if (screen.endsWith(".0")) screen = screen.substring(0, screen.length() - 2);
-        if (screen.contains(".") && screen.length() > 11) screen = screen.substring(0, 10);
+        tempResult=Double.parseDouble(screen);
+        latestValue=0;
+
+//        if (screen.endsWith(".0")) screen = screen.substring(0, screen.length() - 2);
+//        if (screen.contains(".") && screen.length() > 11) screen = screen.substring(0, 10);
+
     }
 
     /**
