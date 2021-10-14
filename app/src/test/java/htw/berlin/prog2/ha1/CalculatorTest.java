@@ -57,7 +57,7 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
     @Test
-    @DisplayName("should display result after division with null")
+    @DisplayName("should display ERROR after division with null")
     void testDivisionNull() {
         Calculator calc = new Calculator();
 
@@ -71,6 +71,38 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
+    /*
+    @Test
+    @DisplayName("should result after adding two breaks")
+    void testMultiplikationBruch() {
+        Calculator calc = new Calculator();
 
+        calc.pressDigitKey(2);
+        calc.pressUnaryOperationKey("1/x");
+
+        calc.pressBinaryOperationKey("x");
+        calc.pressDigitKey(2);
+        calc.pressUnaryOperationKey("1/x");
+
+        calc.pressEqualsKey();
+
+        String expected = "1/4";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    } */
+    @Test
+    @DisplayName("should result after adding two breaks")
+    void testBruchEingebenBeiEins() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(1);
+        calc.pressUnaryOperationKey("1/x");
+
+        String expected = "1";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
 }
 
