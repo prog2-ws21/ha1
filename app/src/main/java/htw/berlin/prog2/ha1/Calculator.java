@@ -14,10 +14,13 @@ public class Calculator {
 
     private String latestOperation = "";
 
+    private double tempResult;
+
     /**
      * @return den aktuellen Bildschirminhalt als String
      */
     public String readScreen() {
+
         return screen;
     }
 
@@ -64,8 +67,34 @@ public class Calculator {
      * @param operation "+" für Addition, "-" für Substraktion, "x" für Multiplikation, "/" für Division
      */
     public void pressBinaryOperationKey(String operation) {
+        if(latestOperation.length()>0) {
+            pressEqualsKey();
+        }
         latestValue = Double.parseDouble(screen);
         latestOperation = operation;
+    }
+
+    /**
+     * Empfängt den Befehl der gedrückten "="-Taste.
+     * Wurde zuvor keine Operationstaste gedrückt, passiert nichts.
+     * Wurde zuvor eine binäre Operationstaste gedrückt und zwei Operanden eingegeben, wird das
+     * Ergebnis der Operation angezeigt. Falls hierbei eine Division durch Null auftritt, wird "Error" angezeigt.
+     * Wird die Taste weitere Male gedrückt (ohne andere Tasten dazwischen), so wird die letzte
+     * Operation (ggf. inklusive letztem Operand) erneut auf den aktuellen Bildschirminhalt angewandt
+     * und das Ergebnis direkt angezeigt.
+     */
+    public void pressEqualsKey() {
+        var result = switch (latestOperation) {
+            case "+" -> latestValue + Double.parseDouble(screen);
+            case "-" -> latestValue - Double.parseDouble(screen);
+            case "x" -> latestValue * Double.parseDouble(screen);
+            case "/" -> latestValue / Double.parseDouble(screen);
+            default -> throw new IllegalArgumentException();
+        };
+        screen = Double.toString(result);
+        tempResult=result;
+        if (screen.endsWith(".0")) screen = screen.substring(0, screen.length() - 2);
+        if (screen.contains(".") && screen.length() > 11) screen = screen.substring(0, 10);
     }
 
     /**
@@ -114,27 +143,7 @@ public class Calculator {
         screen = screen.startsWith("-") ? screen.substring(1) : "-" + screen;
     }
 
-    /**
-     * Empfängt den Befehl der gedrückten "="-Taste.
-     * Wurde zuvor keine Operationstaste gedrückt, passiert nichts.
-     * Wurde zuvor eine binäre Operationstaste gedrückt und zwei Operanden eingegeben, wird das
-     * Ergebnis der Operation angezeigt. Falls hierbei eine Division durch Null auftritt, wird "Error" angezeigt.
-     * Wird die Taste weitere Male gedrückt (ohne andere Tasten dazwischen), so wird die letzte
-     * Operation (ggf. inklusive letztem Operand) erneut auf den aktuellen Bildschirminhalt angewandt
-     * und das Ergebnis direkt angezeigt.
-     */
-    public void pressEqualsKey() {
-        var result = switch (latestOperation) {
-            case "+" -> latestValue + Double.parseDouble(screen);
-            case "-" -> latestValue - Double.parseDouble(screen);
-            case "x" -> latestValue * Double.parseDouble(screen);
-            case "/" -> latestValue / Double.parseDouble(screen);
-            default -> throw new IllegalArgumentException();
-        };
-        screen = Double.toString(result);
-        if (screen.endsWith(".0")) screen = screen.substring(0, screen.length() - 2);
-        if (screen.contains(".") && screen.length() > 11) screen = screen.substring(0, 10);
-    }
+
 
     public double getLatestValue() {
         return latestValue;

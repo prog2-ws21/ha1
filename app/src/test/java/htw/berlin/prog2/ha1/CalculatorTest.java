@@ -73,12 +73,12 @@ class CalculatorTest {
       //  System.out.println("hi");
         calculator.pressDigitKey(1);
         calculator.pressDigitKey(1);
-        calculator.pressBinaryOperationKey("/");
+        calculator.pressBinaryOperationKey("+");
         calculator.pressDigitKey(1);
         calculator.pressDigitKey(1);
         calculator.pressBinaryOperationKey("/");
-       // calculator.pressEqualsKey();
-        assertEquals("1", calculator.readScreen());
+
+        assertEquals("22", calculator.readScreen());
     }
 
 
