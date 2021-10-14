@@ -41,5 +41,27 @@ class CalculatorTest {
     }
 
     //TODO hier weitere Tests erstellen
+
+    @Test
+    @DisplayName("should diaply result after subtracting two decimal numbers")
+    void testDecimalSubtraction() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(2);
+        calc.pressDotKey();
+        calc.pressDigitKey(5);
+        calc.pressBinaryOperationKey("-");
+        calc.pressDigitKey(0);
+        calc.pressDotKey();
+        calc.pressDigitKey(8);
+        calc.pressEqualsKey();
+
+        String expected = "1.7";
+        String actual = calc.readScreen();
+
+        assertEquals(expected,actual);
+
+    }
+
 }
 
