@@ -48,6 +48,7 @@ class CalculatorTest {
     void testClearEntry(){
         Calculator calc = new Calculator();
 
+
         calc.pressDigitKey(2);
         calc.pressClearKey();
 
