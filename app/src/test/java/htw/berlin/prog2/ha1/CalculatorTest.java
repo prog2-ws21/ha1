@@ -41,5 +41,18 @@ class CalculatorTest {
     }
 
     //TODO hier weitere Tests erstellen
+    //Schreiben Sie einen neuen zusätzlichen Test, der eine bisher nicht getestete Funktionalität abdeckt, die bereits funktioniert und der daher direkt grün wird.
+    @Test
+    @DisplayName("should display result after division by 100")
+    void testDivisionBy100() {
+        Calculator calc = new Calculator();
+        calc.pressDigitKey(2);
+        calc.pressUnaryOperationKey("%");
+
+        String expected = "0.02";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
 }
 
