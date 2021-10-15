@@ -61,7 +61,7 @@ class CalculatorTest {
     void testDivisionBy0() {
         Calculator calc = new Calculator();
         calc.pressDigitKey(2);
-        calc.pressUnaryOperationKey("/");
+        calc.pressBinaryOperationKey("/");
         calc.pressDigitKey(0);
         calc.pressEqualsKey();
 
