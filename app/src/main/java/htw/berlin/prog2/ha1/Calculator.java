@@ -14,6 +14,8 @@ public class Calculator {
 
     private String latestOperation = "";
 
+//    private int countPressClearKey = 0;
+
     /**
      * @return den aktuellen Bildschirminhalt als String
      */
@@ -45,9 +47,14 @@ public class Calculator {
      * im Ursprungszustand ist.
      */
     public void pressClearKey() {
-        screen = "0";
-        latestOperation = "";
-        latestValue = 0.0;
+//        screen = "0";
+//        countPressClearKey++;
+//        if (countPressClearKey == 2) {
+            screen = "0";
+            latestOperation = "";
+            latestValue = 0.0;
+//            countPressClearKey = 0;
+//        }
     }
 
     /**
@@ -117,15 +124,38 @@ public class Calculator {
      * und das Ergebnis direkt angezeigt.
      */
     public void pressEqualsKey() {
-        var result = switch(latestOperation) {
-            case "+" -> latestValue + Double.parseDouble(screen);
-            case "-" -> latestValue - Double.parseDouble(screen);
-            case "x" -> latestValue * Double.parseDouble(screen);
-            case "/" -> latestValue / Double.parseDouble(screen);
-            default -> throw new IllegalArgumentException();
-        };
-        screen = Double.toString(result);
-        if(screen.endsWith(".0")) screen = screen.substring(0,screen.length()-2);
-        if(screen.contains(".") && screen.length() > 11) screen = screen.substring(0, 10);
+        double result = 0;
+        switch(latestOperation) {
+            case "+":
+                result = latestValue + Double.parseDouble(screen);
+                screen = Double.toString(result);
+                if (screen.endsWith(".0")) screen = screen.substring(0, screen.length() - 2);
+                if (screen.contains(".") && screen.length() > 11) screen = screen.substring(0, 10);
+                break;
+            case "-":
+                result = latestValue - Double.parseDouble(screen);
+                screen = Double.toString(result);
+                if (screen.endsWith(".0")) screen = screen.substring(0, screen.length() - 2);
+                if (screen.contains(".") && screen.length() > 11) screen = screen.substring(0, 10);
+                break;
+            case "x":
+                result = latestValue * Double.parseDouble(screen);
+                screen = Double.toString(result);
+                if (screen.endsWith(".0")) screen = screen.substring(0, screen.length() - 2);
+                if (screen.contains(".") && screen.length() > 11) screen = screen.substring(0, 10);
+                break;
+            case "/":
+                if (Double.parseDouble(screen) == 0) {
+                    screen = "Error";
+                } else {
+                    result = latestValue / Double.parseDouble(screen);
+                    screen = Double.toString(result);
+                    if (screen.endsWith(".0")) screen = screen.substring(0, screen.length() - 2);
+                    if (screen.contains(".") && screen.length() > 11) screen = screen.substring(0, 10);
+                }
+                break;
+            default:
+                throw new IllegalArgumentException();
+        }
     }
 }
