@@ -55,7 +55,26 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
-//test
+
+
+    //TODO hier weitere Tests erstellen
+    @Test
+    @DisplayName("should display result after dividing two negative solo-digit numbers")
+    void testMultiplyTwoTimes() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(2);
+        calc.pressBinaryOperationKey("x");
+        calc.pressDigitKey(2);
+        calc.pressBinaryOperationKey("x");
+        calc.pressDigitKey(2);
+        calc.pressEqualsKey();
+
+        String expected = "8";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
 }
 
 
