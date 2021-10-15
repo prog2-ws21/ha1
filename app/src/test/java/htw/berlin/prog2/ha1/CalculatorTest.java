@@ -54,7 +54,7 @@ class CalculatorTest {
     }
 
     @Test
-    @DisplayName("should display the decimal with one . after pressing . two times in a row")
+    @DisplayName("should display a 0. decimal when pressing dot key right away")
     void testPressDotKey(){
         Calculator calc = new Calculator();
         calc.pressDotKey();
