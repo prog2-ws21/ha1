@@ -60,6 +60,24 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
 
+    @Test
+    @DisplayName("should display result with two operation and a negative number")
+    void testTwoOperation() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(-2);
+        calc.pressBinaryOperationKey("x");
+        calc.pressDigitKey(3);
+        calc.pressBinaryOperationKey("-");
+        calc.pressDigitKey(2);
+
+
+        String expected = "-8";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
 
 
 }
