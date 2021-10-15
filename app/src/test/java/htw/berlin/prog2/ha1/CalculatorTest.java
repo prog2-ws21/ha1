@@ -65,8 +65,9 @@ class CalculatorTest {
         void testdivionbyzero () {
         Calculator calc = new Calculator();
 
+        calc.pressDigitKey(3);
+        calc.pressBinaryOperationKey("/");
         calc.pressDigitKey(0);
-        calc.pressUnaryOperationKey("1/x");
         calc.pressEqualsKey();
 
         String expected = "ERROR";
@@ -76,24 +77,25 @@ class CalculatorTest {
 
         }
 
-        @Test
-        @DisplayName("should display result after adding  two negativ-numbers ")
-        void testTwoNegativNumber(){
+    @Test
+    @DisplayName("should display result after adding  two negativ-numbers ")
+    void TestDotOperation(){
         Calculator calc = new Calculator();
 
-        calc.pressNegativeKey();
-        calc.pressDigitKey(9);
-        calc.pressUnaryOperationKey("+");
-        calc.pressNegativeKey();
-        calc.pressDigitKey(9);
-        calc.pressEqualsKey();
+        calc.pressDigitKey(5);
+        calc.pressDotKey();
+        calc.pressDigitKey(5);
+        calc.pressDotKey();
+        calc.pressDigitKey(5);
 
-        String expected = "-18";
+
+        String expected = "5.55";
         String actual = calc.readScreen();
 
         assertEquals(expected,actual);
 
-        }
+    }
+
     }
 
 
