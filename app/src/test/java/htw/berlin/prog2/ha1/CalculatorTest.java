@@ -41,5 +41,21 @@ class CalculatorTest {
     }
 
     //TODO hier weitere Tests erstellen
+
+
+
+    @Test
+    void testClearEntry(){
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(2);
+        calc.pressClearKey();
+
+        String expected ="0";
+        String actual = calc.readScreen();
+        assertEquals(expected, actual);
+    }
+
+
 }
 
