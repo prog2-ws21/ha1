@@ -53,5 +53,20 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
 
+    @Test
+    @DisplayName("should display the decimal with one . after pressing . two times in a row")
+    void testPressDotKey(){
+        Calculator calc = new Calculator();
+        calc.pressDotKey();
+        calc.pressDigitKey(3);
+        calc.pressDigitKey(6);
+        String expected = "0.36";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+
+
 }
 
