@@ -75,6 +75,53 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
+//    @Test
+//    @DisplayName("should display result after dividing two negative solo-digit numbers")
+//    void testNegativeDivision() {
+//        Calculator calc = new Calculator();
+//
+//        calc.pressDigitKey(-6);
+//        calc.pressBinaryOperationKey("/");
+//        calc.pressDigitKey(-2);
+//        calc.pressEqualsKey();
+//
+//        String expected = "-4";
+//        String actual = calc.readScreen();
+//
+//        assertEquals(expected, actual);
+//    }
+    @Test
+    @DisplayName("should display result after dividing two negative solo-digit numbers")
+    void testZeroDivision() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(4);
+        calc.pressBinaryOperationKey("/");
+        calc.pressDigitKey(0);
+        calc.pressEqualsKey();
+
+        String expected = "Error";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+//    @Test
+//    @DisplayName("should display result after dividing two negative solo-digit numbers")
+//    void testMultiplyBeforeDividing() {
+//        Calculator calc = new Calculator();
+//
+//        calc.pressDigitKey(2);
+//        calc.pressBinaryOperationKey("x");
+//        calc.pressDigitKey(2);
+//        calc.pressBinaryOperationKey("x");
+//        calc.pressDigitKey(4);
+//        calc.pressEqualsKey();
+//
+//        String expected = "16";
+//        String actual = calc.readScreen();
+//
+//        assertEquals(expected, actual);
+//    }
 }
 
 
