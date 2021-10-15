@@ -41,5 +41,19 @@ class CalculatorTest {
     }
 
     //TODO hier weitere Tests erstellen
+
+    @Test
+    @DisplayName ("should display '0' after clicking the C button")
+    void testClearKey () {
+        Calculator calc = new Calculator();
+
+        calc.pressClearKey();
+
+        String expected = "0";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
 }
 
