@@ -75,20 +75,20 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
 
-//    @Test
-//    @DisplayName("should reset screen to 0 and save the previous Number on the screen")
-//    void testClearButton() {
-//        Calculator calc = new Calculator();
-//        calc.pressDigitKey(8);
-//        calc.pressBinaryOperationKey("x");
-//        calc.pressClearKey();
-//        calc.pressDigitKey(2);
-//        calc.pressEqualsKey();
-//
-//        String expected = "16";
-//        String actual = calc.readScreen();
-//
-//        assertEquals(expected,actual);
-//    }
+    @Test
+    @DisplayName("should reset screen to 0 and save the previous Number on the screen")
+    void testClearButton() {
+        Calculator calc = new Calculator();
+        calc.pressDigitKey(8);
+        calc.pressBinaryOperationKey("x");
+        calc.pressClearKey();
+        calc.pressDigitKey(2);
+        calc.pressEqualsKey();
+
+        String expected = "16";
+        String actual = calc.readScreen();
+
+        assertEquals(expected,actual);
+    }
 }
 
