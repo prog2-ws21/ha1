@@ -54,5 +54,39 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
+
+    //Schreiben Sie zwei weitere zusätzliche Tests, die zwei unterschiedliche Fehlerkategorien aufdecken (d.h. deren Fehlerursachen in unterschiedlichen Methoden liegen) und somit fehlschlagen.
+    @Test
+    @DisplayName("should display 'Error' after division by 0")
+    void testDivisionBy0() {
+        Calculator calc = new Calculator();
+        calc.pressDigitKey(2);
+        calc.pressUnaryOperationKey("/");
+        calc.pressDigitKey(0);
+        calc.pressEqualsKey();
+
+
+        String expected = "Error";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+    // 3. Test
+    @Test
+    @DisplayName("should display result after subtraction")
+    void testSubtraction() {
+        Calculator calc = new Calculator();
+        calc.pressDigitKey(4);
+        calc.pressUnaryOperationKey("-");
+        calc.pressDigitKey(2);
+        calc.pressEqualsKey();
+
+
+        String expected = "2";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
 }
 
