@@ -132,7 +132,10 @@ public class Calculator {
 
         };
 
-
+        if (screen.equals("0") && latestOperation.equals("/")) {
+            screen = "Error";
+            return;
+        }
         screen = Double.toString(result);
 
         if (screen.endsWith(".0")) screen = screen.substring(0, screen.length() - 2);
