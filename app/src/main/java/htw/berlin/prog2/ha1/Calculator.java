@@ -14,7 +14,7 @@ public class Calculator {
 
     private String latestOperation = "";
 
-//    private int countPressClearKey = 0;
+    private int countPressClearKey = 0;
 
     /**
      * @return den aktuellen Bildschirminhalt als String
@@ -47,14 +47,14 @@ public class Calculator {
      * im Ursprungszustand ist.
      */
     public void pressClearKey() {
-//        screen = "0";
-//        countPressClearKey++;
-//        if (countPressClearKey == 2) {
+        screen = "0";
+        countPressClearKey++;
+        if (countPressClearKey == 2) {
             screen = "0";
             latestOperation = "";
             latestValue = 0.0;
-//            countPressClearKey = 0;
-//        }
+            countPressClearKey = 0;
+        }
     }
 
     /**
