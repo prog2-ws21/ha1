@@ -60,10 +60,14 @@ public class Calculator {
      * auf dem Bildschirm angezeigt. Falls hierbei eine Division durch Null auftritt, wird "Error" angezeigt.
      *
      * @param operation "+" für Addition, "-" für Substraktion, "x" für Multiplikation, "/" für Division
+     * Wenn die +/- Taste gedrückt wird, ändert sich das Vorzeichen
      */
     public void pressBinaryOperationKey(String operation) {
         latestValue = Double.parseDouble(screen);
         latestOperation = operation;
+
+        if (operation.equals("+/-")) screen = Double.toString((-1) * Double.parseDouble(screen));
+
     }
 
     /**
@@ -85,7 +89,7 @@ public class Calculator {
         };
         screen = Double.toString(result);
         if (screen.contains(".") && screen.length() > 11) screen = screen.substring(0, 10);
-
+        if (screen.equals("NaN")) screen = "Error";
 
     }
 
@@ -131,6 +135,6 @@ public class Calculator {
         screen = Double.toString(result);
         if (screen.endsWith(".0")) screen = screen.substring(0, screen.length() - 2);
         if (screen.contains(".") && screen.length() > 11) screen = screen.substring(0, 10);
-        }
+        if (screen.equals("Infinity")) screen = "Error";}
 
 }
