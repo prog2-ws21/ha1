@@ -74,15 +74,11 @@ class CalculatorTest {
 
     // 3. Test
     @Test
-    @DisplayName("should display result after subtraction")
-    void testSubtraction() {
+    @DisplayName("should display result after following single digit number input with equals key input")
+    void testSecondBinaryOperation() {
         Calculator calc = new Calculator();
-        calc.pressDigitKey(4);
-        calc.pressUnaryOperationKey("-");
         calc.pressDigitKey(2);
         calc.pressEqualsKey();
-
-
         String expected = "2";
         String actual = calc.readScreen();
 
