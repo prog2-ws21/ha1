@@ -1,9 +1,11 @@
 package htw.berlin.prog2.ha1;
 
+import org.checkerframework.checker.units.qual.C;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @DisplayName("Retro calculator")
 class CalculatorTest {
@@ -43,7 +45,7 @@ class CalculatorTest {
     //TODO hier weitere Tests erstellen
 
     @Test
-    @DisplayName("should diaply result after subtracting two decimal numbers")
+    @DisplayName("should display result after subtracting two decimal numbers")
     void testDecimalSubtraction() {
         Calculator calc = new Calculator();
 
@@ -62,6 +64,25 @@ class CalculatorTest {
         assertEquals(expected,actual);
 
     }
+
+    @Test
+    @DisplayName("should display 'Error' if the number divided by is 0")
+    void testErrorDividingZero(){
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(8);
+        calc.pressBinaryOperationKey("/");
+        calc.pressDigitKey(0);
+        calc.pressEqualsKey();
+
+
+
+        String expected = "Error";
+        String actual = calc.readScreen();
+
+        assertEquals(expected,actual);
+    }
+
 
 }
 
