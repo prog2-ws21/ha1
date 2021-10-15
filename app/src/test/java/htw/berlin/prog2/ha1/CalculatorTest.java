@@ -66,7 +66,20 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
 
+    @Test
+    @DisplayName("should display result after pressing equalsKey two times in a row")
+    void testPressNegativeKey() {
+        Calculator calc = new Calculator();
+        calc.pressDigitKey(2);
+        calc.pressBinaryOperationKey("-");
+        calc.pressDigitKey(4);
+        calc.pressEqualsKey();
+        calc.pressEqualsKey();
+        calc.pressEqualsKey();
+        String expected = "-6";
+        String actual = calc.readScreen();
 
-
+        assertEquals(expected, actual);
+    }
 }
 
