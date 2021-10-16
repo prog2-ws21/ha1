@@ -67,7 +67,7 @@ class CalculatorTest {
 
     @Test
     @DisplayName("should display 'Error' if the number divided by is 0")
-    void testErrorDividingZero(){
+    void testErrorDividingZero() {
         Calculator calc = new Calculator();
 
         calc.pressDigitKey(8);
@@ -75,14 +75,11 @@ class CalculatorTest {
         calc.pressDigitKey(0);
         calc.pressEqualsKey();
 
-
-
         String expected = "Error";
         String actual = calc.readScreen();
 
         assertEquals(expected,actual);
+
     }
-
-
 }
 
