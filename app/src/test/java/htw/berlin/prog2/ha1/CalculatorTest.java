@@ -1,5 +1,6 @@
 package htw.berlin.prog2.ha1;
 
+import org.checkerframework.framework.qual.IgnoreInWholeProgramInference;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -41,5 +42,26 @@ class CalculatorTest {
     }
 
     //TODO hier weitere Tests erstellen
+
+    @Test
+    @DisplayName("should display zero after pressing the clear button")
+    void testClearFunction() {
+        Calculator calculator = new Calculator();
+
+        calculator.pressDigitKey(2);
+        calculator.pressBinaryOperationKey("+");
+        calculator.pressDigitKey(2);
+        calculator.pressEqualsKey();
+        calculator.pressClearKey();
+
+        var expected = "0";
+        var actual = calculator.readScreen();
+        assertEquals(expected , actual);
+    }
+
+    
+
+
+
 }
 
