@@ -48,8 +48,8 @@ class CalculatorTest {
         Calculator calc = new Calculator();
 
         calc.pressDigitKey(1);
-
         calc.pressClearKey();
+
         String expected = "0";
         String actual = calc.readScreen();
 
@@ -57,11 +57,34 @@ class CalculatorTest {
     }
 
 //    @Test
-//    @DisplayName("Test für Teilaufgabe 2")
+//    @DisplayName("Test für Teilaufgabe 2: checks behavior for negative numbers")
 //    void testNegativeNumbers() {
+//        Calculator calc = new Calculator();
 //
+//        calc.setScreen("-2");
+////        calc.pressDigitKey(screen);
+//        calc.pressNegativeKey();
+//
+//        String expected = "2";
+//        String actual = calc.readScreen();
+//
+//        assertEquals(expected, actual);
 //    }
 
+    @Test
+    @DisplayName("Test für Teilaufgabe 3: der klassiker")
+    void testDivideByZero() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(1);
+        calc.pressBinaryOperationKey("/");
+        calc.pressDigitKey(0);
+
+        String expected = "Error";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
 
 }
 

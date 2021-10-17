@@ -8,6 +8,10 @@ package htw.berlin.prog2.ha1;
  */
 public class Calculator {
 
+    public void setScreen(String screen) {
+        this.screen = screen;
+    }
+
     private String screen = "0";
 
     private double latestValue;
