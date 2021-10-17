@@ -77,11 +77,22 @@ class CalculatorTest {
     void testRepeatEqualKey() {
         Calculator calc = new Calculator();
 
-        calc.pressDigitKey(100);
+//        calc.pressDigitKey(1);
+//        calc.pressDigitKey(0);
+//        calc.pressDigitKey(0);
+//        calc.pressDigitKey(0);
+//        calc.pressDigitKey(0);
+//        calc.pressDigitKey(0);
+
+        calc.setScreen("10000");
         calc.pressBinaryOperationKey("/");
-        calc.pressDigitKey(10);
-        calc.pressEqualsKey();
-        calc.pressEqualsKey();
+//        calc.pressDigitKey(1);
+//        calc.pressDigitKey(0);
+        calc.setScreen("10");
+        calc.pressEqualsKey(); //should be 10000
+        calc.pressEqualsKey(); //should be 1000
+        calc.pressEqualsKey(); //should be 100
+        calc.pressEqualsKey(); //should be 10
 
         String expected = "1";
         String actual = calc.readScreen();

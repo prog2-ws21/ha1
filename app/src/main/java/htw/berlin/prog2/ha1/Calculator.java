@@ -8,15 +8,30 @@ package htw.berlin.prog2.ha1;
  */
 public class Calculator {
 
-    public void setScreen(String screen) {
-        this.screen = screen;
-    }
+
 
     private String screen = "0";
 
     private double latestValue;
 
     private String latestOperation = "";
+
+
+    private String previousScreen = "0";
+
+    double result = 0;
+    double newResult = 0;
+    double previousResult = 0;
+
+    private int countEquals = 0;
+    public void setCountEquals(int countEquals) {
+        this.countEquals = countEquals;
+    }
+
+    String previousOperator = "";
+    public void setScreen(String screen) {
+        this.screen = screen;
+    }
 
     /**
      * @return den aktuellen Bildschirminhalt als String
@@ -52,6 +67,8 @@ public class Calculator {
         screen = "0";
         latestOperation = "";
         latestValue = 0.0;
+
+        setCountEquals(0);
     }
 
     /**
@@ -66,6 +83,8 @@ public class Calculator {
     public void pressBinaryOperationKey(String operation)  {
         latestValue = Double.parseDouble(screen);
         latestOperation = operation;
+
+        setCountEquals(0);
     }
 
     /**
@@ -87,6 +106,7 @@ public class Calculator {
         screen = Double.toString(result);
         if(screen.contains(".") && screen.length() > 11) screen = screen.substring(0, 10);
 
+        setCountEquals(0);
     }
 
     /**
@@ -121,14 +141,39 @@ public class Calculator {
      * und das Ergebnis direkt angezeigt.
      */
     public void pressEqualsKey() {
-        var result = switch(latestOperation) {
-            case "+" -> latestValue + Double.parseDouble(screen);
-            case "-" -> latestValue - Double.parseDouble(screen);
-            case "x" -> latestValue * Double.parseDouble(screen);
-            case "/" -> latestValue / Double.parseDouble(screen);
-            default -> throw new IllegalArgumentException();
-        };
-        screen = Double.toString(result);
+
+        countEquals ++;
+
+        if(countEquals>1){
+            newResult = switch (previousOperator) {
+                case "+" -> previousResult + Double.parseDouble(previousScreen);
+                case "-" -> previousResult - Double.parseDouble(previousScreen);
+                case "x" -> previousResult * Double.parseDouble(previousScreen);
+                case "/" -> previousResult / Double.parseDouble(previousScreen);
+                default -> throw new IllegalArgumentException();
+            };
+
+            screen = Double.toString(newResult);
+            previousResult = newResult;
+
+        }
+        else {
+            result = switch (latestOperation) {
+                case "+" -> latestValue + Double.parseDouble(screen);
+                case "-" -> latestValue - Double.parseDouble(screen);
+                case "x" -> latestValue * Double.parseDouble(screen);
+                case "/" -> latestValue / Double.parseDouble(screen);
+                default -> throw new IllegalArgumentException();
+            };
+            if(countEquals<2) {
+                previousOperator = latestOperation;
+                previousScreen = screen;
+                previousResult = result;
+                screen = Double.toString(result);
+            }
+        }
+
+//        screen = Double.toString(result);
         if(screen.endsWith(".0")) screen = screen.substring(0,screen.length()-2);
         if(screen.contains(".") && screen.length() > 11) screen = screen.substring(0, 10);
     }
