@@ -80,6 +80,20 @@ class CalculatorTest {
 
     }
 
+    @Test
+    @DisplayName("second bug - operation 1/x with x = 0 -> \"Error\" must be written ")
+    void testInversion(){
+
+        Calculator calculator = new Calculator();
+        calculator.pressDigitKey(0);
+        calculator.pressUnaryOperationKey("1/x");
+
+        String expected = "Error";
+        String actual = calculator.readScreen();
+
+        assertEquals(expected,actual);
+    }
+
 
 }
 
