@@ -51,9 +51,13 @@ public class Calculator {
     // In der Methode wird direkt alles gelöscht und nicht nur der letzter Wert, wie es der einmalige Druck
     // auf die C-Taste erwarten lassen würde
     public void pressClearKey() {
+        if (Double.parseDouble(screen) == 0.0) {
+            screen = "0";
+            latestOperation = "";
+            latestValue = 0.0;
+            return;
+        }
         screen = "0";
-        latestOperation = "";
-        latestValue = 0.0;
     }
 
     /**
@@ -136,6 +140,7 @@ public class Calculator {
             case "-" -> latestValue - Double.parseDouble(screen);
             case "x" -> latestValue * Double.parseDouble(screen);
             case "/" -> latestValue / Double.parseDouble(screen);
+            case "" -> latestValue;
             default -> throw new IllegalArgumentException();
         };
         screen = Double.toString(result);
