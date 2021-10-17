@@ -60,5 +60,22 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
+
+    @Test
+    @DisplayName("should display the correct decimal number even though pressed twice")
+    void displayCorrectDecimal() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(1);
+        calc.pressDotKey();
+        calc.pressDigitKey(2);
+        calc.pressDigitKey(2);
+        calc.pressDotKey();
+
+        String expected = "1.22";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
 }
 
