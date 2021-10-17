@@ -30,10 +30,14 @@ public class Calculator {
      */
     public void pressDigitKey(int digit) {
         if(digit > 9 || digit < 0) throw new IllegalArgumentException();
+        // Wenn digit größer 9 oder kleiner 0 ist, wird Fehler geworfen
 
         if(screen.equals("0") || latestValue == Double.parseDouble(screen)) screen = "";
+        // Wenn der Screen "0" ist oder der letzte Wert des Rechners dem aktuellen Bildschirm entspricht,
+        // wird der Bildschirm geleert
 
         screen = screen + digit;
+        // Gedrückte Zahl wird hinten an den Bildschirm rangehängt
     }
 
     /**
@@ -44,10 +48,16 @@ public class Calculator {
      * Werte sowie der aktuelle Operationsmodus zurückgesetzt, so dass der Rechner wieder
      * im Ursprungszustand ist.
      */
+    // In der Methode wird direkt alles gelöscht und nicht nur der letzter Wert, wie es der einmalige Druck
+    // auf die C-Taste erwarten lassen würde
     public void pressClearKey() {
+        if (Double.parseDouble(screen) == 0.0) {
+            screen = "0";
+            latestOperation = "";
+            latestValue = 0.0;
+            return;
+        }
         screen = "0";
-        latestOperation = "";
-        latestValue = 0.0;
     }
 
     /**
@@ -59,6 +69,9 @@ public class Calculator {
      * auf dem Bildschirm angezeigt. Falls hierbei eine Division durch Null auftritt, wird "Error" angezeigt.
      * @param operation "+" für Addition, "-" für Substraktion, "x" für Multiplikation, "/" für Division
      */
+    // 1. Beim zweiten Drüclen nach Eingabe einer weiteren Zahl wird noch kein aktuelles Zwischenergebnis
+    // auf dem Bildschirm angezeigt
+    // 2. Eine Division durch Null zeigt noch keinen Fehler an
     public void pressBinaryOperationKey(String operation)  {
         latestValue = Double.parseDouble(screen);
         latestOperation = operation;
@@ -92,8 +105,9 @@ public class Calculator {
      * Trennzeichen angegeben und daher als Dezimalziffern interpretiert.
      * Beim zweimaligem Drücken, oder wenn bereits ein Trennzeichen angezeigt wird, passiert nichts.
      */
+    // Unterschied zum Online-Rechner: Es kann mehrere Dezimaltrennzeichen verteilt über den Bildschirm geben
     public void pressDotKey() {
-        if(!screen.endsWith(".")) screen = screen + ".";
+        if(!screen.contains(".")) screen = screen + ".";
     }
 
     /**
@@ -116,12 +130,17 @@ public class Calculator {
      * Operation (ggf. inklusive letztem Operand) erneut auf den aktuellen Bildschirminhalt angewandt
      * und das Ergebnis direkt angezeigt.
      */
+    // Unterschied zum Online-Rechner: Wenn nur ein Operand und eine binäre Operationstaste gedrückt wird,
+    // müsste eigentlich ein Fehler kommen
+    // Division durch Null wird nicht als Fehler erkannt
+    // Wenn nur eine Zahl und keine Rechenoperation da steht, soll die Zahl stehen bleiben
     public void pressEqualsKey() {
         var result = switch(latestOperation) {
             case "+" -> latestValue + Double.parseDouble(screen);
             case "-" -> latestValue - Double.parseDouble(screen);
             case "x" -> latestValue * Double.parseDouble(screen);
             case "/" -> latestValue / Double.parseDouble(screen);
+            case "" -> latestValue;
             default -> throw new IllegalArgumentException();
         };
         screen = Double.toString(result);
