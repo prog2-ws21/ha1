@@ -56,29 +56,15 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
 
-//    @Test
-//    @DisplayName("Test für Teilaufgabe 2: checks behavior for negative numbers")
-//    void testNegativeNumbers() {
-//        Calculator calc = new Calculator();
-//
-//        calc.setScreen("-2");
-////        calc.pressDigitKey(screen);
-//        calc.pressNegativeKey();
-//
-//        String expected = "2";
-//        String actual = calc.readScreen();
-//
-//        assertEquals(expected, actual);
-//    }
-
     @Test
-    @DisplayName("Test für Teilaufgabe 3: der klassiker")
+    @DisplayName("Test für Teilaufgabe 2: Division by zero")
     void testDivideByZero() {
         Calculator calc = new Calculator();
 
         calc.pressDigitKey(1);
         calc.pressBinaryOperationKey("/");
         calc.pressDigitKey(0);
+        calc.pressEqualsKey();
 
         String expected = "Error";
         String actual = calc.readScreen();
@@ -86,5 +72,21 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
 
+    @Test
+    @DisplayName("Test für Teilaufgabe 3: Repetitive Equals Key")
+    void testRepeatEqualKey() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(100);
+        calc.pressBinaryOperationKey("/");
+        calc.pressDigitKey(10);
+        calc.pressEqualsKey();
+        calc.pressEqualsKey();
+
+        String expected = "1";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
 }
 
