@@ -60,5 +60,26 @@ class CalculatorTest {
 
     }
 
+    @Test
+    @DisplayName("first bug- only one dot can be written")
+    void testDotKey(){
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(1);
+        calc.pressDotKey();
+        calc.pressDigitKey(1);
+        calc.pressDotKey();
+        calc.pressDigitKey(1);
+        calc.pressDotKey();
+        calc.pressDigitKey(1);
+
+        String expected = "1.111";
+        String actual = calc.readScreen();
+
+        assertEquals(expected,actual);
+
+    }
+
+
 }
 
