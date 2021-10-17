@@ -103,7 +103,7 @@ public class Calculator {
      */
     // Unterschied zum Online-Rechner: Es kann mehrere Dezimaltrennzeichen verteilt über den Bildschirm geben
     public void pressDotKey() {
-        if(!screen.endsWith(".")) screen = screen + ".";
+        if(!screen.contains(".")) screen = screen + ".";
     }
 
     /**
