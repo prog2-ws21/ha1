@@ -39,7 +39,26 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
+    @Test
+    @DisplayName("should display the result after multiplying two negative numbers")
+    void testNegativeMultiplication(){
 
-    //TODO hier weitere Tests erstellen
+      Calculator calc = new Calculator();
+
+      calc.pressDigitKey(3);
+      calc.pressNegativeKey();
+      calc.pressBinaryOperationKey("x");
+      calc.pressDigitKey(3);
+      calc.pressNegativeKey();
+
+      calc.pressEqualsKey();
+
+      String expected = "9";
+      String actual = calc.readScreen();
+
+      assertEquals(expected,actual);
+
+    }
+
 }
 
