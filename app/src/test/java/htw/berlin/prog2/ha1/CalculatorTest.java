@@ -81,5 +81,64 @@ class CalculatorTest {
         assertEquals(expected,actual);
 
     }
+
+    @Test
+    @DisplayName("should delete screen output and cache")
+    void deleteCache(){
+        Calculator calculator = new Calculator();
+
+  /*      calculator.pressDigitKey(5);
+        calculator.pressBinaryOperationKey("+");
+        calculator.pressDigitKey(4);
+
+        System.out.println(calculator.readScreen());
+
+        calculator.pressClearKey();
+        calculator.pressDigitKey(9);
+        calculator.pressEqualsKey();
+
+        System.out.println(calculator.readScreen()); /*
+   */
+
+        calculator.pressDigitKey(3);
+        calculator.pressBinaryOperationKey("+");
+        calculator.pressDigitKey(9);
+        calculator.pressEqualsKey();
+        calculator.pressEqualsKey();
+        calculator.pressEqualsKey();
+
+
+
+        System.out.println(calculator.readScreen());
+
+    }
+
+
+    @Test
+    @DisplayName("should repeat the operator-operand execution")
+    void multipleEquals() {
+        Calculator calculator = new Calculator();
+
+        calculator.pressDigitKey(3);
+        calculator.pressBinaryOperationKey("+");
+        calculator.pressDigitKey(9);
+
+
+        calculator.pressEqualsKey();
+        calculator.pressEqualsKey();
+        calculator.pressEqualsKey();
+        calculator.pressEqualsKey();
+
+
+        System.out.println(calculator.readScreen());
+
+
+        String expected = "39";
+        assertEquals(expected,calculator.readScreen());
+
+    }
+
+
+
 }
 
