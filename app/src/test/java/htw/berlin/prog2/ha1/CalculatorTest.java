@@ -4,6 +4,7 @@ import org.checkerframework.framework.qual.IgnoreInWholeProgramInference;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @DisplayName("Retro calculator")
@@ -84,6 +85,22 @@ class CalculatorTest {
 
     }
 
+    @Test
+    @DisplayName("Test #5 ")
+    void testSomethingNew() {
+
+        Calculator calculator = new Calculator();
+
+        calculator.pressDigitKey(0);
+        calculator.pressBinaryOperationKey("/");
+//        calculator.pressUnaryOperationKey("1/x");
+        calculator.pressDigitKey(0);
+        calculator.pressEqualsKey();
+
+
+        assertEquals("Error", calculator.readScreen());
+
+    }
 
 
 
