@@ -40,6 +40,20 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
 
-    //TODO hier weitere Tests erstellen
+    @Test
+    @DisplayName("BEi der Division mit der Zahl 0 sollte eine 'Error' angezeigt werden")
+    void test123() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(2);
+        calc.pressBinaryOperationKey("/");
+        calc.pressDigitKey(0);
+        calc.pressEqualsKey();
+
+        System.out.println("Ausgabe: " + calc.readScreen());
+
+
+    }
+
 }
 
