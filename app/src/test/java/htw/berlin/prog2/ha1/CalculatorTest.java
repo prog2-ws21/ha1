@@ -44,7 +44,7 @@ class CalculatorTest {
     //TODO hier weitere Tests erstellen
 
     @Test
-    @DisplayName("should display zero after pressing the clear button")
+    @DisplayName("Test #3 - should display zero after pressing the clear button")
     void testClearFunction() {
         Calculator calculator = new Calculator();
 
@@ -59,7 +59,35 @@ class CalculatorTest {
         assertEquals(expected , actual);
     }
 
-    
+
+    @Test
+    @DisplayName("Test #4 - can handle floating-point numbers")
+    void testFloatingPointNumbers() {
+
+        Calculator calculator = new Calculator();
+        calculator.pressDigitKey(3);
+        calculator.pressDigitKey(3);
+        calculator.pressDotKey();
+        calculator.pressDigitKey(5);
+        calculator.pressDigitKey(5);
+        calculator.pressBinaryOperationKey("+");
+        calculator.pressDigitKey(1);
+        calculator.pressDigitKey(1);
+        calculator.pressDotKey();
+        calculator.pressDigitKey(3);
+        calculator.pressDigitKey(3);
+        calculator.pressEqualsKey();
+
+        var expected = "44.88";
+        var actual = calculator.readScreen();
+        assertEquals(expected, actual);
+
+    }
+
+  
+
+
+
 
 
 
