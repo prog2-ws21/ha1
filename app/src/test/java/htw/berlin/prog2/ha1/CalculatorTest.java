@@ -41,5 +41,24 @@ class CalculatorTest {
     }
 
     //TODO hier weitere Tests erstellen
+
+    @Test
+    @DisplayName("should show the result after adding a positive multi-digit number and a decimal number")
+    void testMultiDigitAddition() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(1);
+        calc.pressDigitKey(0);
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(2);
+        calc.pressDotKey();
+        calc.pressDigitKey(1);
+        calc.pressEqualsKey();
+
+        String expected = "12.1";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
 }
 
