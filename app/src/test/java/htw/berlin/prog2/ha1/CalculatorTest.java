@@ -39,7 +39,61 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
+    @Test
+    @DisplayName("should display the result after multiplying two negative numbers")
+    void testNegativeMultiplication(){
 
-    //TODO hier weitere Tests erstellen
+      Calculator calc = new Calculator();
+
+      calc.pressDigitKey(3);
+      calc.pressNegativeKey();
+      calc.pressBinaryOperationKey("x");
+      calc.pressDigitKey(3);
+      calc.pressNegativeKey();
+
+      calc.pressEqualsKey();
+
+      String expected = "9";
+      String actual = calc.readScreen();
+
+      assertEquals(expected,actual);
+
+    }
+
+    @Test
+    @DisplayName("first bug- only one dot can be written")
+    void testDotKey(){
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(1);
+        calc.pressDotKey();
+        calc.pressDigitKey(1);
+        calc.pressDotKey();
+        calc.pressDigitKey(1);
+        calc.pressDotKey();
+        calc.pressDigitKey(1);
+
+        String expected = "1.111";
+        String actual = calc.readScreen();
+
+        assertEquals(expected,actual);
+
+    }
+
+    @Test
+    @DisplayName("second bug - operation 1/x with x = 0 -> \"Error\" must be written ")
+    void testInversion(){
+
+        Calculator calculator = new Calculator();
+        calculator.pressDigitKey(0);
+        calculator.pressUnaryOperationKey("1/x");
+
+        String expected = "Error";
+        String actual = calculator.readScreen();
+
+        assertEquals(expected,actual);
+    }
+
+
 }
 
