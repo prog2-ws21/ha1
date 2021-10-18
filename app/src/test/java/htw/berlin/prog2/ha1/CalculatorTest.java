@@ -70,5 +70,18 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
+    @Test
+    @DisplayName("should display result after Squareroot with negative Number ")
+    void testSquareRootFromNegativeNumber() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(-2);
+        calc.pressUnaryOperationKey("√");
+
+        String expected = "Error";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
 }
 
