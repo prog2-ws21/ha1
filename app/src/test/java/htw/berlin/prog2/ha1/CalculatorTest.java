@@ -93,6 +93,7 @@ class CalculatorTest {
     void testDecimalNumbersSmallerThenOne() {
         Calculator calc = new Calculator();
 
+        calc.pressDigitKey(0);
         calc.pressDotKey();
         calc.pressDigitKey(1);
 
@@ -101,5 +102,22 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
+   /* @Test
+    @DisplayName("should didsplay a result from addition a positiv number from a negativ number")
+    void testDecimalNumbersSmallerThenOne() {
+
+        Calculator calc = new Calculator();
+        calc.pressDigitKey(2);
+        calc.pressNegativeKey();
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(2);
+        calc.pressNegativeKey();
+        calc.pressEqualsKey();
+
+        String expected = "-4";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }*/
 }
 
