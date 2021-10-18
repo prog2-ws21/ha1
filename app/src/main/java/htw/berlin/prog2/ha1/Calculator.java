@@ -75,8 +75,9 @@ public class Calculator {
         latestValue = Double.parseDouble(screen);
         latestOperation = operation;
         double d = Math.pow(10, 8);
+        double b = 0.1 ;
         var result = switch(operation) {
-            case "√" -> ((Math.round(((Math.sqrt(Double.parseDouble(screen))) * d)+1) / d);
+            case "√" -> ((Math.round(((Math.sqrt(Double.parseDouble(screen))) * d)+b) / d));
             case "%" -> Double.parseDouble(screen) / 100;
             case "1/x" -> 1 / Double.parseDouble(screen);
             case "^2"->Math.pow(Double.parseDouble(screen),Double.parseDouble(screen));

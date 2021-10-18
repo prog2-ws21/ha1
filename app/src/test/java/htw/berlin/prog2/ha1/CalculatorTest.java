@@ -85,8 +85,8 @@ class CalculatorTest {
     }
 
     @Test
-    @DisplayName("should display result after dividing with zero")
-    void testdoubledivison() {
+    @DisplayName("should round the result properly for double square root ")
+    void testdoubleroot() {
         Calculator calc = new Calculator();
 
         calc.pressDigitKey(2);
