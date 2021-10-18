@@ -77,8 +77,8 @@ class CalculatorTest {
 
     }
     @Test
-    @DisplayName("should display ")
-    void testfractions () {
+    @DisplayName("shouldn't display another dot after an existing one ")
+    void testmultipledots () {
         Calculator calc = new Calculator();
         calc.pressDigitKey(4);
         calc.pressDotKey();
