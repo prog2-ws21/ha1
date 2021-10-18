@@ -74,14 +74,16 @@ class CalculatorTest {
     }
 
     @Test
-    @DisplayName("test √, % and 1/x")
+    @DisplayName("test division by 0 ")
     void testUnbinaryOperationKey(){
         Calculator calc = new Calculator();
 
         calc.pressDigitKey(9);
-        calc.pressBinaryOperationKey("√");
+        calc.pressBinaryOperationKey("/");
+        calc.pressDigitKey(0);
+        calc.pressEqualsKey();
 
-        String expected = "3";
+        String expected = "Error";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
