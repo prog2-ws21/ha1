@@ -53,12 +53,11 @@ class CalculatorTest {
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
-
     }
 
     @Test
     @DisplayName("should display the decimal number as the result even if no calculation task has been specified.")
-    void testAlsoAResult(){
+    void testAlsoAResult() {
         Calculator calc = new Calculator();
 
         calc.pressDigitKey(2);
@@ -70,9 +69,22 @@ class CalculatorTest {
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
-
-
     }
 
+    @Test
+    @DisplayName("Shows the result 'Error' when dividing with the number 0")
+    void testShowError() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(2);
+        calc.pressBinaryOperationKey("/");
+        calc.pressDigitKey(0);
+        calc.pressEqualsKey();
+
+        String expected = "Error";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
 }
 
