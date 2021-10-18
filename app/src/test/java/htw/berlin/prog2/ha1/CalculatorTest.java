@@ -47,9 +47,9 @@ class CalculatorTest {
     void testSubstraction() {
         Calculator calc = new Calculator();
 
-        calc.pressDigitKey(9);
+        calc.pressDigitKey(5);
         calc.pressBinaryOperationKey("-");
-        calc.pressDigitKey(7);
+        calc.pressDigitKey(3);
         calc.pressEqualsKey();
 
         String expected = "2";
