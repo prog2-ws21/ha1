@@ -44,7 +44,7 @@ class CalculatorTest {
 
     @Test
     @DisplayName("Test für Teilaufgabe 1: checks the correct deletion of input numbers after pressing the C button")
-    void testy() {
+    void testCorrectDeletion() {
         Calculator calc = new Calculator();
 
         calc.pressDigitKey(1);
@@ -77,22 +77,13 @@ class CalculatorTest {
     void testRepeatEqualKey() {
         Calculator calc = new Calculator();
 
-//        calc.pressDigitKey(1);
-//        calc.pressDigitKey(0);
-//        calc.pressDigitKey(0);
-//        calc.pressDigitKey(0);
-//        calc.pressDigitKey(0);
-//        calc.pressDigitKey(0);
-
         calc.setScreen("10000");
         calc.pressBinaryOperationKey("/");
-//        calc.pressDigitKey(1);
-//        calc.pressDigitKey(0);
         calc.setScreen("10");
-        calc.pressEqualsKey(); //should be 10000
         calc.pressEqualsKey(); //should be 1000
         calc.pressEqualsKey(); //should be 100
         calc.pressEqualsKey(); //should be 10
+        calc.pressEqualsKey(); //should be 1
 
         String expected = "1";
         String actual = calc.readScreen();
