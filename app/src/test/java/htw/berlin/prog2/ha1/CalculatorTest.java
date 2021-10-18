@@ -43,7 +43,8 @@ class CalculatorTest {
     //TODO hier weitere Tests erstellen
 @Test
 @DisplayName("should display the result after distracting 15 of 20")
-    void testsubstraction () {
+    void testsubstraction ()
+{
         Calculator calc = new Calculator();
         calc.pressDigitKey(2);
         calc.pressDigitKey(0);
