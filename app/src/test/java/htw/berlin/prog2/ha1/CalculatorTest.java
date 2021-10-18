@@ -55,7 +55,7 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
     @Test
-    @DisplayName("should display result after getting the square root of two")
+    @DisplayName("should display result after getting the square of two")
     void testsquare() {
         Calculator calc = new Calculator();
 
@@ -78,7 +78,23 @@ class CalculatorTest {
         calc.pressDigitKey(0);
         calc.pressEqualsKey();
 
-        String expected = "nicht definiert";
+        String expected = "Error";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("should display result after dividing with zero")
+    void testdoubledivison() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(2);
+        calc.pressUnaryOperationKey("√");
+        calc.pressUnaryOperationKey("√");
+
+
+        String expected = "1.18920712";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
