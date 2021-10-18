@@ -41,7 +41,49 @@ class CalculatorTest {
     }
 
     @Test
-    @DisplayName("BEi der Division mit der Zahl 0 sollte eine 'Error' angezeigt werden")
+    @DisplayName("Should display the sum of the first summand with itself")
+    void testSummation() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(2);
+        calc.pressBinaryOperationKey("+");
+        calc.pressEqualsKey();
+
+        String expected = "4";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+
+    }
+
+    /**
+     * In Bearbeitung
+     *
+     @Test
+    @DisplayName("should display result after parallel use of addition and multiplication")
+    void testAdditionMultiplication(){
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(2);
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(2);
+        calc.pressEqualsKey();
+        calc.pressBinaryOperationKey("x");
+        calc.pressDigitKey(4);
+        calc.pressEqualsKey();
+
+        String expected = "10";
+        String actual = calc.readScreen();
+
+        assertEquals(expected,actual);
+
+    }*/
+
+    /**
+     * In Bearbeitung
+     *
+    @Test
+    @DisplayName("Bei der Division mit der Zahl 0 sollte eine 'Error' angezeigt werden")
     void test123() {
         Calculator calc = new Calculator();
 
@@ -54,6 +96,6 @@ class CalculatorTest {
 
 
     }
-
+*/
 }
 
