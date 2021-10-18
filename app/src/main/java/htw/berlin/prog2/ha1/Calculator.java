@@ -144,12 +144,37 @@ public class Calculator {
 
         countEquals ++;
 
+//        try{
+//            if (previousScreen=="0" && previousOperator=="/")
+//            throw new IllegalArgumentException();
+//        } catch (Exception e) {
+//            System.out.println("Division by zero not allowed. Please try again");
+//            setScreen("Error");
+//            return;
+//        }
+
+        System.out.println(previousScreen);
+        System.out.println(previousOperator);
+
+
+        if (previousScreen=="0" && latestOperation=="/") {
+            System.out.println("Division by zero not allowed. Please try again");
+            setScreen("Error");
+            return;
+        }
+
+
         if(countEquals>1){
             newResult = switch (previousOperator) {
                 case "+" -> previousResult + Double.parseDouble(previousScreen);
                 case "-" -> previousResult - Double.parseDouble(previousScreen);
                 case "x" -> previousResult * Double.parseDouble(previousScreen);
+//                try{
                 case "/" -> previousResult / Double.parseDouble(previousScreen);
+//                } catch (Exception e) {
+//                    System.out.println("Division by zero not allowed. Please try again");
+//                }
+
                 default -> throw new IllegalArgumentException();
             };
 
