@@ -41,5 +41,21 @@ class CalculatorTest {
     }
 
     //TODO hier weitere Tests erstellen
+
+    @Test
+    @DisplayName("should play result after getting substraction of two numbers")
+    void testSubstraction() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(9);
+        calc.pressBinaryOperationKey("-");
+        calc.pressDigitKey(6);
+        calc.pressEqualsKey();
+
+        String expected = "3";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
 }
 
