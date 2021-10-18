@@ -56,46 +56,23 @@ class CalculatorTest {
 
     }
 
-    /**
-     * In Bearbeitung
-     *
-     @Test
-    @DisplayName("should display result after parallel use of addition and multiplication")
-    void testAdditionMultiplication(){
+    @Test
+    @DisplayName("should display the decimal number as the result even if no calculation task has been specified.")
+    void testAlsoAResult(){
         Calculator calc = new Calculator();
 
         calc.pressDigitKey(2);
-        calc.pressBinaryOperationKey("+");
+        calc.pressDotKey();
         calc.pressDigitKey(2);
         calc.pressEqualsKey();
-        calc.pressBinaryOperationKey("x");
-        calc.pressDigitKey(4);
-        calc.pressEqualsKey();
 
-        String expected = "10";
+        String expected = "2.2";
         String actual = calc.readScreen();
 
-        assertEquals(expected,actual);
-
-    }*/
-
-    /**
-     * In Bearbeitung
-     *
-    @Test
-    @DisplayName("Bei der Division mit der Zahl 0 sollte eine 'Error' angezeigt werden")
-    void test123() {
-        Calculator calc = new Calculator();
-
-        calc.pressDigitKey(2);
-        calc.pressBinaryOperationKey("/");
-        calc.pressDigitKey(0);
-        calc.pressEqualsKey();
-
-        System.out.println("Ausgabe: " + calc.readScreen());
+        assertEquals(expected, actual);
 
 
     }
-*/
+
 }
 
