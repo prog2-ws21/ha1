@@ -41,5 +41,53 @@ class CalculatorTest {
     }
 
     //TODO hier weitere Tests erstellen
-}
 
+
+    @Test
+    void testClearEntry() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(2);
+        calc.pressClearKey();
+
+        String expected = "0";
+        String actual = calc.readScreen();
+        assertEquals(expected, actual);
+    }
+
+
+
+    @Test
+    void testWurzelNegativerZahlen() {
+
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(2);
+        calc.pressNegativeKey();
+        calc.pressUnaryOperationKey("√");
+
+        String expected = "Error";
+        String actual = calc.readScreen();
+        assertEquals(expected, actual);
+
+    }
+
+
+    @Test
+    void divisionDurchNull() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(2);
+        calc.pressBinaryOperationKey("/");
+        calc.pressDigitKey(0);
+        calc.pressEqualsKey();
+
+
+        String expected ="Error";
+        String actual = calc.readScreen();
+        assertEquals(expected, actual);
+
+
+    }
+
+}
