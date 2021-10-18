@@ -76,6 +76,20 @@ class CalculatorTest {
         assertEquals(expected, actual);
 
     }
+    @Test
+    @DisplayName("should display ")
+    void testfractions () {
+        Calculator calc = new Calculator();
+        calc.pressDigitKey(4);
+        calc.pressDotKey();
+        calc.pressDigitKey(1);
+        calc.pressDotKey();
 
+
+        String expected = "4.1";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
 }
 
