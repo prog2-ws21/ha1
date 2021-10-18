@@ -41,5 +41,48 @@ class CalculatorTest {
     }
 
     //TODO hier weitere Tests erstellen
+    //Schreiben Sie einen neuen zusätzlichen Test, der eine bisher nicht getestete Funktionalität abdeckt, die bereits funktioniert und der daher direkt grün wird.
+    @Test
+    @DisplayName("should display result after division by 100")
+    void testDivisionBy100() {
+        Calculator calc = new Calculator();
+        calc.pressDigitKey(2);
+        calc.pressUnaryOperationKey("%");
+
+        String expected = "0.02";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+    //Schreiben Sie zwei weitere zusätzliche Tests, die zwei unterschiedliche Fehlerkategorien aufdecken (d.h. deren Fehlerursachen in unterschiedlichen Methoden liegen) und somit fehlschlagen.
+    @Test
+    @DisplayName("should display 'Error' after division by 0")
+    void testDivisionBy0() {
+        Calculator calc = new Calculator();
+        calc.pressDigitKey(2);
+        calc.pressBinaryOperationKey("/");
+        calc.pressDigitKey(0);
+        calc.pressEqualsKey();
+
+
+        String expected = "Error";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+    // 3. Test
+    @Test
+    @DisplayName("should display result after following single digit number input with equals key input")
+    void testSecondBinaryOperation() {
+        Calculator calc = new Calculator();
+        calc.pressDigitKey(2);
+        calc.pressEqualsKey();
+        String expected = "2";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
 }
 
