@@ -47,12 +47,12 @@ class CalculatorTest {
     void testSubstraction() {
         Calculator calc = new Calculator();
 
-        calc.pressDigitKey(5);
+        calc.pressDigitKey(6);
         calc.pressBinaryOperationKey("-");
         calc.pressDigitKey(3);
         calc.pressEqualsKey();
 
-        String expected = "2";
+        String expected = "3";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
