@@ -72,5 +72,25 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
+
+    @Test
+    @DisplayName("Wenn Punkt am Anfang gesetzt nicht 1 sondern 0.1")
+    void testPunktBeginn() {
+        Calculator calc = new Calculator();
+
+        calc.pressDotKey();
+        calc.pressDigitKey(1);
+
+        calc.pressBinaryOperationKey("+");
+
+        calc.pressDotKey();
+        calc.pressDigitKey(1);
+        calc.pressEqualsKey();
+
+        String expected = "0.2";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
 }
 
