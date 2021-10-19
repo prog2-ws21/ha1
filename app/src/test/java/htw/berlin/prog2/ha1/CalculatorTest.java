@@ -75,4 +75,22 @@ class CalculatorTest {
         assertEquals(expected, actual);
 
     }
+
+    // 1. roter Test
+
+    @Test
+    @DisplayName("should display error when dividing with 0")
+    void testDivisionNull(){
+
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(1);
+        calc.pressBinaryOperationKey("/");
+        calc.pressDigitKey(0);
+        calc.pressEqualsKey();
+
+        String expected = "ERROR";
+        String actual = calc.readScreen();
+        assertEquals(expected, actual);
+    }
 }
