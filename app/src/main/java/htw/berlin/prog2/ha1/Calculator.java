@@ -16,7 +16,7 @@ public class Calculator {
 
     public double tempResult = 0;
 
-    private int clearTicker = 0;
+
 
     /**
      * @return den aktuellen Bildschirminhalt als String
@@ -82,7 +82,7 @@ public class Calculator {
             latestOperation = "";
             latestValue = 0.0;
             tempResult = 0.0;
-            clearTicker=0;
+           
 
     }
 
