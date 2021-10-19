@@ -41,5 +41,61 @@ class CalculatorTest {
     }
 
     //TODO hier weitere Tests erstellen
+
+    @Test
+    @DisplayName("should display result after division two positive multi-digit numbers")
+    void testPositiveDivision() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(2);
+        calc.pressDigitKey(0);
+        calc.pressBinaryOperationKey("/");
+        calc.pressDigitKey(2);
+        calc.pressDigitKey(0);
+        calc.pressEqualsKey();
+
+        String expected = "1";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+
+    @Test
+    @DisplayName("hould display result after division with Null")
+    void testDivisiondurchNull() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(2);
+        calc.pressDigitKey(0);
+        calc.pressBinaryOperationKey("/");
+        calc.pressDigitKey(0);
+        calc.pressEqualsKey();
+
+        String expected = "Error";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+
+    }
+    @Test
+    @DisplayName("should display result after adding two positive Comma multi-digit numbers")
+    void testKommazahlenaddieren() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(2);
+        calc.pressDotKey();
+        calc.pressDigitKey(3);
+        calc.pressDotKey();
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(2);
+
+        calc.pressEqualsKey();
+
+        String expected = "4.3";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
 }
 
