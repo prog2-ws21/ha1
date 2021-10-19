@@ -60,10 +60,10 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
 
-    /**
+
     @Test
-    @DisplayName("DivisiondurchNull")
-    void testDivisiondurchnull() {
+    @DisplayName("hould display result after division with Null")
+    void testDivisiondurchNull() {
         Calculator calc = new Calculator();
 
         calc.pressDigitKey(2);
@@ -72,11 +72,11 @@ class CalculatorTest {
         calc.pressDigitKey(0);
         calc.pressEqualsKey();
 
-        String expected = "Infinity";
+        String expected = "Error";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
 
-    } */
+    }
 }
 
