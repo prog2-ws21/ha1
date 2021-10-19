@@ -82,6 +82,8 @@ public class Calculator {
         };
 
         screen = Double.toString(result);
+        if (screen.contains(".0") && screen.length() < 4 )
+            screen = Integer.toString((int) result);
         if(screen.contains(".") && screen.length() > 11) screen = screen.substring(0, 10);
 
     }

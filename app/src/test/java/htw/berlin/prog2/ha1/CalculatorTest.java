@@ -57,13 +57,14 @@ class CalculatorTest {
     }
 
     @Test
-    @DisplayName("100 in Prozent anzeigen")
+    @DisplayName("100 in Prozent anzeigen, also 1")
     void testProzent() {
         Calculator calc = new Calculator();
 
         calc.pressDigitKey(1);
         calc.pressDigitKey(0);
         calc.pressDigitKey(0);
+
         calc.pressUnaryOperationKey("%");
 
         String expected = "1";
