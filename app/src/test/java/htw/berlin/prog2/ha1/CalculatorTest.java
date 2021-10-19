@@ -39,7 +39,30 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
-
     //TODO hier weitere Tests erstellen
+//    TODO 1x green test
+    @Test
+    @DisplayName("Should display the product as a result of two positive numbers")
+    void testMultiplication(){
+        Calculator calculator = new Calculator();
+        calculator.pressDigitKey(8);
+        calculator.pressBinaryOperationKey("x");
+        calculator.pressDigitKey(5);
+        calculator.pressEqualsKey();
+
+        String expected = "40";
+        String actual = calculator.readScreen();
+        assertEquals(expected, actual);
+    }
+//    TODO 1st RED test
+//    TODO 2nd RED test
+//    TODO 2x bugfixes for each red test
+    /*
+    Regression Tests:
+    - test for multiplication
+    - test for division
+    - etc.
+
+     */
 }
 
