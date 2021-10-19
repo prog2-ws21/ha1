@@ -61,21 +61,24 @@ class CalculatorTest {
     }
 
     @Test
-    @DisplayName("should display result with two operation and a negative number")
-    void testTwoOperation() {
+    @DisplayName("should display result with ERROR")
+    void testDividingByZero() {
         Calculator calc = new Calculator();
 
-        calc.pressDigitKey(-2);
-        calc.pressBinaryOperationKey("x");
-        calc.pressDigitKey(3);
-        calc.pressBinaryOperationKey("-");
-        calc.pressDigitKey(2);
+
+        calc.pressDigitKey(1);
+
+        calc.pressBinaryOperationKey("/");
+
+        calc.pressDigitKey(0);
+        calc.pressEqualsKey();
 
 
-        String expected = "2";
+
+        String expected = "ERROR";
         String actual = calc.readScreen();
 
-        assertEquals(expected, actual);
+        assertEquals( expected, actual);
     }
 
     @Test
