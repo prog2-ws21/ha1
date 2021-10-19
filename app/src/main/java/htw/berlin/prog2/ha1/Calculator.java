@@ -14,15 +14,26 @@ public class Calculator {
 
     private String latestOperation = "";
 
-    private double tempResult;
+    public double tempResult = 0;
+
+    private int clearTicker = 0;
 
     /**
      * @return den aktuellen Bildschirminhalt als String
      */
-    public String readScreen() {
-        if (screen.endsWith(".0")) screen = screen.substring(0, screen.length() - 2);
-        if (screen.contains(".") && screen.length() > 11) screen = screen.substring(0, 10);
-        return screen;
+    public String readScreen() throws IllegalArgumentException {
+        try {
+            if (screen.endsWith(".0")) screen = screen.substring(0, screen.length() - 2);
+            if (screen.contains(".") && screen.length() > 11) screen = screen.substring(0, 10);
+
+        } catch (IllegalArgumentException ex) {
+            ex.getMessage();
+
+
+        }
+        //return screen;
+         return screen.equals("Infinity") || screen.equals("NaN")  ? "Error" : screen;
+
     }
 
 
@@ -35,13 +46,27 @@ public class Calculator {
      * @param digit Die Ziffer, deren Taste gedrückt wurde
      */
     public void pressDigitKey(int digit) {
-        if (digit > 9 || digit < 0)
-            throw new IllegalArgumentException();
 
-        if (screen.equals("0") || latestValue == Double.parseDouble(screen))
-            screen = "";
 
-        screen = screen + digit;
+        try {
+
+
+            if (screen.equals("0") || latestValue == Double.parseDouble(screen)
+                    || Double.isInfinite(tempResult) || Double.isNaN(tempResult) )
+                screen = "";
+
+            if (digit > 9 || digit < 0)
+                throw new IllegalArgumentException();
+
+            screen = screen + digit;
+
+        } catch (IllegalArgumentException ex) {
+
+            ex.getMessage();
+
+        }
+
+
     }
 
     /**
@@ -53,10 +78,15 @@ public class Calculator {
      * im Ursprungszustand ist.
      */
     public void pressClearKey() {
-        screen = "0";
-        latestOperation = "";
-        latestValue = 0.0;
+            screen = "0";
+            latestOperation = "";
+            latestValue = 0.0;
+            tempResult = 0.0;
+            clearTicker=0;
+
     }
+
+
 
     /**
      * Empfängt den Wert einer gedrückten binären Operationstaste, also eine der vier Operationen
@@ -68,20 +98,29 @@ public class Calculator {
      *
      * @param operation "+" für Addition, "-" für Substraktion, "x" für Multiplikation, "/" für Division
      */
-    public void pressBinaryOperationKey(String operation) {
+    public void pressBinaryOperationKey(String operation)  {
+        try{
 
-        if(latestOperation.length()>0) {
-            pressEqualsKey();
-            screen=Double.toString(tempResult);
+            if(latestOperation.equals( "/") && screen.equals("0") && tempResult==0.0) tempResult=Double.POSITIVE_INFINITY;
 
+              if (latestOperation.length() > 0 && Double.parseDouble(screen) != tempResult) {
+
+                pressEqualsKey();
+                screen = Double.toString(tempResult);
+
+            }
+
+            latestValue = Double.parseDouble(screen);
+            latestOperation = operation;
+        }catch(NumberFormatException ex){
+             ex.getMessage();
 
 
         }
-//        System.out.println("latestVal " + latestValue);
-//        System.out.println(screen);
-        latestValue = Double.parseDouble(screen);
-        latestOperation = operation;
     }
+
+
+
 
     /**
      * Empfängt den Befehl der gedrückten "="-Taste.
@@ -91,21 +130,52 @@ public class Calculator {
      * Wird die Taste weitere Male gedrückt (ohne andere Tasten dazwischen), so wird die letzte
      * Operation (ggf. inklusive letztem Operand) erneut auf den aktuellen Bildschirminhalt angewandt
      * und das Ergebnis direkt angezeigt.
+     *
+     * @return
      */
+
+
     public void pressEqualsKey() {
-        var result = switch (latestOperation) {
-            case "+" -> latestValue + Double.parseDouble(screen);
-            case "-" -> latestValue - Double.parseDouble(screen);
-            case "x" -> latestValue * Double.parseDouble(screen);
-            case "/" -> latestValue / Double.parseDouble(screen);
-            default -> throw new IllegalArgumentException();
-        };
-        screen = Double.toString(result);
-        tempResult=Double.parseDouble(screen);
-        latestValue=0;
+
+        try {
+
+
+            var result = switch (latestOperation) {
+                case "+" -> latestValue + Double.parseDouble(screen);
+                case "-" -> latestValue - Double.parseDouble(screen);
+                case "x" -> latestValue * Double.parseDouble(screen);
+                case "/" ->   latestValue / Double.parseDouble(screen);
+
+                default -> throw new IllegalArgumentException();
+            };
+
+
+            if(Double.parseDouble(screen) == tempResult) {
+
+                screen = Double.toString(result);
+                tempResult = result;
+            } else if(Double.isNaN(result) || Double.isInfinite(result) ){
+                    result=Double.NaN;
+                    screen=Double.toString(result);
+                    tempResult=result;
+                }
+            else {
+
+                latestValue = Double.parseDouble(screen);
+                screen = Double.toString(result);
+                tempResult =result;
+
+
+            }
 
 //        if (screen.endsWith(".0")) screen = screen.substring(0, screen.length() - 2);
 //        if (screen.contains(".") && screen.length() > 11) screen = screen.substring(0, 10);
+          } catch (IllegalArgumentException ex) {
+            ex.getMessage();
+
+
+        }
+
 
     }
 
@@ -120,14 +190,14 @@ public class Calculator {
     public void pressUnaryOperationKey(String operation) {
         latestValue = Double.parseDouble(screen);
         latestOperation = operation;
-        var result = switch(operation) {
+        var result = switch (operation) {
             case "√" -> Math.sqrt(Double.parseDouble(screen));
             case "%" -> Double.parseDouble(screen) / 100;
             case "1/x" -> 1 / Double.parseDouble(screen);
             default -> throw new IllegalArgumentException();
         };
         screen = Double.toString(result);
-        if(screen.contains(".") && screen.length() > 11) screen = screen.substring(0, 10);
+        if (screen.contains(".") && screen.length() > 11) screen = screen.substring(0, 10);
 
     }
 
@@ -154,7 +224,6 @@ public class Calculator {
     public void pressNegativeKey() {
         screen = screen.startsWith("-") ? screen.substring(1) : "-" + screen;
     }
-
 
 
     public double getLatestValue() {
