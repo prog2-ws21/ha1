@@ -53,7 +53,6 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
-
     @Test
     @DisplayName("should throw an Error when dividing by Zero")
     void dividedByZero(){
