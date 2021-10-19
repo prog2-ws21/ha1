@@ -68,6 +68,20 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
-    //TODO hier weitere Tests erstellen
+    @Test
+    @DisplayName("should display result after pressing the same binary operation key instead of the equals key")
+    void operationKeyTwice(){
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(2);
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(2);
+        calc.pressBinaryOperationKey("+");
+
+        String expected = "4";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
 }
 
