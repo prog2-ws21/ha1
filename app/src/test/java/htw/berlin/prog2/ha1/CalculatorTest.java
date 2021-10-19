@@ -44,7 +44,6 @@ class CalculatorTest {
 
     @Test
     @DisplayName("clears screen after pressing buttons")
-
     void testClearScreen(){
         Calculator calc = new Calculator();
 
