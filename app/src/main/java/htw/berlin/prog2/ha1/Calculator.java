@@ -8,8 +8,6 @@ package htw.berlin.prog2.ha1;
  */
 public class Calculator {
 
-
-
     private String screen = "0";
 
     private double latestValue;
@@ -24,6 +22,8 @@ public class Calculator {
     double previousResult = 0;
 
     private int countEquals = 0;
+//  counts how often the Equals-Key was pressed, resets when pressing a clear or Operator
+
     public void setCountEquals(int countEquals) {
         this.countEquals = countEquals;
     }
@@ -144,26 +144,22 @@ public class Calculator {
 
         countEquals ++;
 
-//        try{
-//            if (previousScreen=="0" && previousOperator=="/")
-//            throw new IllegalArgumentException();
-//        } catch (Exception e) {
+//      This and below prevent division by zero
+        try{
+            if (screen.equals("0") && latestOperation.equals("/"))
+            throw new IllegalArgumentException();
+        } catch (Exception e) {
+            System.out.println("Division by zero not allowed. Please try again");
+            setScreen("Error");
+            return;
+        }
+//        if (screen.equals("0") && latestOperation.equals("/")) {
 //            System.out.println("Division by zero not allowed. Please try again");
 //            setScreen("Error");
 //            return;
 //        }
 
-        System.out.println(previousScreen);
-        System.out.println(previousOperator);
-
-
-        if (previousScreen=="0" && latestOperation=="/") {
-            System.out.println("Division by zero not allowed. Please try again");
-            setScreen("Error");
-            return;
-        }
-
-
+//      Path taken if Equal-Key is pressed multiple times in a row
         if(countEquals>1){
             newResult = switch (previousOperator) {
                 case "+" -> previousResult + Double.parseDouble(previousScreen);
@@ -177,11 +173,11 @@ public class Calculator {
 
                 default -> throw new IllegalArgumentException();
             };
-
             screen = Double.toString(newResult);
             previousResult = newResult;
-
         }
+
+        //      Path taken if Equal-Key is just pressed once
         else {
             result = switch (latestOperation) {
                 case "+" -> latestValue + Double.parseDouble(screen);
@@ -197,7 +193,6 @@ public class Calculator {
                 screen = Double.toString(result);
             }
         }
-
 //        screen = Double.toString(result);
         if(screen.endsWith(".0")) screen = screen.substring(0,screen.length()-2);
         if(screen.contains(".") && screen.length() > 11) screen = screen.substring(0, 10);
