@@ -41,5 +41,54 @@ class CalculatorTest {
     }
 
     //TODO hier weitere Tests erstellen
+
+    @Test
+    @DisplayName("Test für Teilaufgabe 1: checks the correct deletion of input numbers after pressing the C button")
+    void testCorrectDeletion() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(1);
+        calc.pressClearKey();
+
+        String expected = "0";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("Test für Teilaufgabe 2: Division by zero")
+    void testDivideByZero() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(1);
+        calc.pressBinaryOperationKey("/");
+        calc.pressDigitKey(0);
+        calc.pressEqualsKey();
+
+        String expected = "Error";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("Test für Teilaufgabe 3: Repetitive Equals Key")
+    void testRepeatEqualKey() {
+        Calculator calc = new Calculator();
+
+        calc.setScreen("10000");
+        calc.pressBinaryOperationKey("/");
+        calc.setScreen("10");
+        calc.pressEqualsKey(); //should be 1000
+        calc.pressEqualsKey(); //should be 100
+        calc.pressEqualsKey(); //should be 10
+        calc.pressEqualsKey(); //should be 1
+
+        String expected = "1";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
 }
 

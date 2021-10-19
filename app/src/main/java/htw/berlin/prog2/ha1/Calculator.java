@@ -14,6 +14,25 @@ public class Calculator {
 
     private String latestOperation = "";
 
+
+    private String previousScreen = "0";
+
+    double result = 0;
+    double newResult = 0;
+    double previousResult = 0;
+
+    private int countEquals = 0;
+//  counts how often the Equals-Key was pressed, resets when pressing a clear or Operator
+
+    public void setCountEquals(int countEquals) {
+        this.countEquals = countEquals;
+    }
+
+    String previousOperator = "";
+    public void setScreen(String screen) {
+        this.screen = screen;
+    }
+
     /**
      * @return den aktuellen Bildschirminhalt als String
      */
@@ -23,7 +42,7 @@ public class Calculator {
 
     /**
      * Empfängt den Wert einer gedrückten Zifferntaste. Da man nur eine Taste auf einmal
-     * drücken kann muss der Wert positiv und einstellig sein und zwischen 0 und 9 liegen.
+     * drücken kann, muss der Wert positiv und einstellig sein und zwischen 0 und 9 liegen.
      * Führt in jedem Fall dazu, dass die gerade gedrückte Ziffer auf dem Bildschirm angezeigt
      * oder rechts an die zuvor gedrückte Ziffer angehängt angezeigt wird.
      * @param digit Die Ziffer, deren Taste gedrückt wurde
@@ -48,6 +67,8 @@ public class Calculator {
         screen = "0";
         latestOperation = "";
         latestValue = 0.0;
+
+        setCountEquals(0);
     }
 
     /**
@@ -62,6 +83,8 @@ public class Calculator {
     public void pressBinaryOperationKey(String operation)  {
         latestValue = Double.parseDouble(screen);
         latestOperation = operation;
+
+        setCountEquals(0);
     }
 
     /**
@@ -83,6 +106,7 @@ public class Calculator {
         screen = Double.toString(result);
         if(screen.contains(".") && screen.length() > 11) screen = screen.substring(0, 10);
 
+        setCountEquals(0);
     }
 
     /**
@@ -117,14 +141,59 @@ public class Calculator {
      * und das Ergebnis direkt angezeigt.
      */
     public void pressEqualsKey() {
-        var result = switch(latestOperation) {
-            case "+" -> latestValue + Double.parseDouble(screen);
-            case "-" -> latestValue - Double.parseDouble(screen);
-            case "x" -> latestValue * Double.parseDouble(screen);
-            case "/" -> latestValue / Double.parseDouble(screen);
-            default -> throw new IllegalArgumentException();
-        };
-        screen = Double.toString(result);
+
+        countEquals ++;
+
+//      This and below prevent division by zero
+        try{
+            if (screen.equals("0") && latestOperation.equals("/"))
+            throw new IllegalArgumentException();
+        } catch (Exception e) {
+            System.out.println("Division by zero not allowed. Please try again");
+            setScreen("Error");
+            return;
+        }
+//        if (screen.equals("0") && latestOperation.equals("/")) {
+//            System.out.println("Division by zero not allowed. Please try again");
+//            setScreen("Error");
+//            return;
+//        }
+
+//      Path taken if Equal-Key is pressed multiple times in a row
+        if(countEquals>1){
+            newResult = switch (previousOperator) {
+                case "+" -> previousResult + Double.parseDouble(previousScreen);
+                case "-" -> previousResult - Double.parseDouble(previousScreen);
+                case "x" -> previousResult * Double.parseDouble(previousScreen);
+//                try{
+                case "/" -> previousResult / Double.parseDouble(previousScreen);
+//                } catch (Exception e) {
+//                    System.out.println("Division by zero not allowed. Please try again");
+//                }
+
+                default -> throw new IllegalArgumentException();
+            };
+            screen = Double.toString(newResult);
+            previousResult = newResult;
+        }
+
+        //      Path taken if Equal-Key is just pressed once
+        else {
+            result = switch (latestOperation) {
+                case "+" -> latestValue + Double.parseDouble(screen);
+                case "-" -> latestValue - Double.parseDouble(screen);
+                case "x" -> latestValue * Double.parseDouble(screen);
+                case "/" -> latestValue / Double.parseDouble(screen);
+                default -> throw new IllegalArgumentException();
+            };
+            if(countEquals<2) {
+                previousOperator = latestOperation;
+                previousScreen = screen;
+                previousResult = result;
+                screen = Double.toString(result);
+            }
+        }
+//        screen = Double.toString(result);
         if(screen.endsWith(".0")) screen = screen.substring(0,screen.length()-2);
         if(screen.contains(".") && screen.length() > 11) screen = screen.substring(0, 10);
     }
