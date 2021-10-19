@@ -70,7 +70,7 @@ class CalculatorTest {
     }
     @Test
     @DisplayName("should display result after pressing the same binary operation key instead of the equals key")
-    void operationKeyTwice(){
+    void binaryOperationKeyTwice(){
         Calculator calc = new Calculator();
 
         calc.pressDigitKey(2);
@@ -79,6 +79,26 @@ class CalculatorTest {
         calc.pressBinaryOperationKey("+");
 
         String expected = "4";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("should display result after pressing the same binary operation key with operands in between multiple times")
+    void multipleBinaryOperations(){
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(2);
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(2);
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(2);
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(2);
+        calc.pressBinaryOperationKey("+");
+
+        String expected = "8";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
