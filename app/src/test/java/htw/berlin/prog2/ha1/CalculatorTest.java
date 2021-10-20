@@ -77,20 +77,36 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
 
+    /*@Test
+        @DisplayName("should display negative number after pressing negativeKey")
+        void testShowNegativeNumber() {
+            Calculator calc = new Calculator();
+
+            calc.pressNegativeKey();
+            calc.pressDigitKey(2);
+
+            String expected = "-2";
+            String actual = calc.readScreen();
+
+            assertEquals(expected, actual);
+        }
+
+*/
     @Test
-    @DisplayName("should display negative number after pressing negativeKey first")
-    void testNegativeNumbers() {
+    @DisplayName("should display a point number with one dot, when two periods are typed")
+    void testPressDotKey() {
         Calculator calc = new Calculator();
 
-        calc.pressNegativeKey();
+        calc.pressDigitKey(4);
+        calc.pressDotKey();
         calc.pressDigitKey(2);
+        calc.pressDotKey();
+        calc.pressDigitKey(1);
 
-
-        String expected = "-2";
+        String expected = "4.21";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
     }
-
 }
 
