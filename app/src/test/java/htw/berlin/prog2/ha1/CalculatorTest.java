@@ -40,6 +40,46 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
 
-    //TODO hier weitere Tests erstellen
-}
+    /**
+     *  grüne Tests Teilaufgabe 1 - Subtraktion und Division positiver Zahlen
+     */
 
+    @Test
+    @DisplayName("should display result after subtraction of two positive multi-digit numbers")
+    void testSubtraction() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(3);
+        calc.pressDigitKey(0);
+        calc.pressBinaryOperationKey("-");
+        calc.pressDigitKey(2);
+        calc.pressDigitKey(0);
+        calc.pressEqualsKey();
+
+        String expected = "10";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("should display result after dividing two positive numbers")
+    void testDivision() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(2);
+        calc.pressBinaryOperationKey("/");
+        calc.pressDigitKey(2);
+        calc.pressEqualsKey();
+
+        String expected = "1";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+
+
+
+
+}
