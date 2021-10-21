@@ -80,6 +80,7 @@ class CalculatorTest {
     /*
     roter Test 1 - Division 2 negative Zahlen
      */
+    /*
     @Test
     @DisplayName("should display result after dividing two negative numbers")
     void testNegDivision() {
@@ -89,6 +90,23 @@ class CalculatorTest {
         calc.pressBinaryOperationKey("/");
         calc.pressNegativeKey();
         calc.pressDigitKey(2);
+        calc.pressEqualsKey();
+
+        String expected = "1";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    } */
+    /*
+    grüner Test - Division zwei negativer Zahlen mit veränderter Methode pressDigitKey
+     */
+    @Test
+    @DisplayName("should display result after dividing two negative numbers")
+    void testNDivision() {
+        Calculator calc = new Calculator();
+        calc.pressDigitKey(-2);
+        calc.pressBinaryOperationKey("/");
+        calc.pressDigitKey(-2);
         calc.pressEqualsKey();
 
         String expected = "1";
