@@ -43,7 +43,7 @@ class CalculatorTest {
     //TODO hier weitere Tests erstellen
 
     @Test
-    @DisplayName("should display result after getting the inverse of a 4")
+    @DisplayName("should display result after getting the inverse of 4")
     void testInversion() {
         Calculator calc = new Calculator();
 
@@ -51,6 +51,36 @@ class CalculatorTest {
         calc.pressUnaryOperationKey("1/x");
 
         String expected = "0.25";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+    /*@Test
+    @DisplayName("should display result 9 mal = 81")
+    void testMulti() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(9);
+        calc.pressBinaryOperationKey("*");
+        calc.pressEqualsKey();
+
+        String expected = "81";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }*/
+
+    @Test
+    @DisplayName("should display -3 after negating 3")
+    void testNegate() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(3);
+        calc.pressNegativeKey();
+        calc.pressEqualsKey();
+
+        String expected = "-3";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
