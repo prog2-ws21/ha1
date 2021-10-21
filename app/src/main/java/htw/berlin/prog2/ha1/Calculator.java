@@ -91,9 +91,15 @@ public class Calculator {
      * Seite hinzu und aktualisiert den Bildschirm. Daraufhin eingegebene Zahlen werden rechts vom
      * Trennzeichen angegeben und daher als Dezimalziffern interpretiert.
      * Beim zweimaligem Drücken, oder wenn bereits ein Trennzeichen angezeigt wird, passiert nichts.
+     * falls bereits ein Dezimaltrennzeichen existiert, so wird kein weiteres hinzugefügt
      */
     public void pressDotKey() {
+        if (screen.contains(".")) {
+        return;
+        }
+
         if(!screen.endsWith(".")) screen = screen + ".";
+
     }
 
     /**
@@ -122,6 +128,8 @@ public class Calculator {
             case "-" -> latestValue - Double.parseDouble(screen);
             case "x" -> latestValue * Double.parseDouble(screen);
             case "/" -> latestValue / Double.parseDouble(screen);
+
+
             default -> throw new IllegalArgumentException();
         };
         screen = Double.toString(result);
