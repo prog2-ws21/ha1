@@ -63,9 +63,9 @@ class CalculatorTest {
         Calculator calc = new Calculator();
 
         calc.pressDigitKey(7);
-        calc.pressBinaryOperationKey("%");
+        calc.pressUnaryOperationKey("%");
         calc.pressDigitKey(2);
-        calc.pressEqualsKey();
+        calc.pressEqualsUnary();
 
         String expected = "1";
         String actual = calc.readScreen();
@@ -80,7 +80,7 @@ class CalculatorTest {
 
         calc.pressDigitKey(9);
         calc.pressUnaryOperationKey("√");
-        calc.pressEqualsKey();
+        calc.pressEqualsUnary();
 
         String expected = "3";
         String actual = calc.readScreen();
