@@ -64,7 +64,7 @@ class CalculatorTest {
     // Der 1.Test der rot werden soll
     @Test
     @DisplayName("should display an Error where divider is 0")
-    void testIllegalArgumentException() {
+    void testDividerIsZero() {
         Calculator calc = new Calculator();
 
         calc.pressDigitKey(6);
@@ -73,6 +73,24 @@ class CalculatorTest {
         calc.pressEqualsKey();
 
         String expected = "Error";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+    // Der 2.Test der rot werden soll
+    @Test
+    @DisplayName("should display a result just with one dot after adding two")
+    void testDoubleDot() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(1);
+        calc.pressDigitKey(1);
+        calc.pressDotKey();
+        calc.pressDigitKey(1);
+        calc.pressDotKey();
+
+        String expected = "11.1";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
