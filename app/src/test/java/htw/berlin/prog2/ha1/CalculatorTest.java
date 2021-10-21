@@ -73,5 +73,20 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
 
+    @Test@DisplayName("should not add a dot if the number already contains one")
+    void testDotKey() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(4);
+        calc.pressDotKey();
+        calc.pressDigitKey(2);
+        calc.pressDotKey();
+
+        String expected = "4.2";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
 }
 
