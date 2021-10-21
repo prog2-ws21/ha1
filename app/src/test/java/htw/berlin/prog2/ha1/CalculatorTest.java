@@ -53,5 +53,33 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
-}
 
+    @Test
+    @DisplayName("should display Error after dividing number 1 with 0")
+    void testDivisionWithZero() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(7);
+        calc.pressBinaryOperationKey("/");
+        calc.pressDigitKey(0);
+        calc.pressEqualsKey();
+
+        String expected = "Error";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("should display Error after press inversion without press digit key")
+    void testPressInversionKey() {
+        Calculator calc = new Calculator();
+
+        calc.pressUnaryOperationKey("1/x");
+
+        String expected = "Error";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+}
