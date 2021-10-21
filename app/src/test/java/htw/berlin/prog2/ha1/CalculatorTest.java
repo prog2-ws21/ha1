@@ -59,8 +59,8 @@ class CalculatorTest {
 
     //TODO hier weitere Tests erstellen
     @Test
-    @DisplayName("should display result after dividing two negative solo-digit numbers")
-    void testMultiplyTwoTimes() {
+    @DisplayName("should display result after using multiple digits and operators")
+    void testOperatorMultipleTimes() {
         Calculator calc = new Calculator();
 
         calc.pressDigitKey(2);
@@ -68,60 +68,32 @@ class CalculatorTest {
         calc.pressDigitKey(2);
         calc.pressBinaryOperationKey("x");
         calc.pressDigitKey(2);
+        calc.pressBinaryOperationKey("x");
+        calc.pressDigitKey(2);
         calc.pressEqualsKey();
 
-        String expected = "8";
+        String expected = "16";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
     }
-//    @Test
-//    @DisplayName("should display result after dividing two negative solo-digit numbers")
-//    void testNegativeDivision() {
-//        Calculator calc = new Calculator();
-//
-//        calc.pressDigitKey(-6);
-//        calc.pressBinaryOperationKey("/");
-//        calc.pressDigitKey(-2);
-//        calc.pressEqualsKey();
-//
-//        String expected = "-4";
-//        String actual = calc.readScreen();
-//
-//        assertEquals(expected, actual);
-//    }
+
     @Test
-    @DisplayName("should display result after dividing two negative solo-digit numbers")
+    @DisplayName("should display Error after dividing by zero")
     void testZeroDivision() {
         Calculator calc = new Calculator();
 
-        calc.pressDigitKey(4);
+        calc.pressDigitKey(9);
         calc.pressBinaryOperationKey("/");
         calc.pressDigitKey(0);
-        calc.pressEqualsKey();
+        calc.pressBinaryOperationKey("+");
 
         String expected = "Error";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
     }
-//    @Test
-//    @DisplayName("should display result after dividing two negative solo-digit numbers")
-//    void testMultiplyBeforeDividing() {
-//        Calculator calc = new Calculator();
-//
-//        calc.pressDigitKey(2);
-//        calc.pressBinaryOperationKey("x");
-//        calc.pressDigitKey(2);
-//        calc.pressBinaryOperationKey("x");
-//        calc.pressDigitKey(4);
-//        calc.pressEqualsKey();
-//
-//        String expected = "16";
-//        String actual = calc.readScreen();
-//
-//        assertEquals(expected, actual);
-//    }
+
 }
 
 
