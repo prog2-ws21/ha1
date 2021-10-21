@@ -57,5 +57,23 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
+    //Teilaufgabe 2
+    @Test
+    @DisplayName("")
+    void testDotKey()
+    {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(2);
+        calc.pressDotKey();
+        calc.pressDigitKey(4);
+        calc.pressDotKey();
+        calc.pressDigitKey(6);
+
+        String expected = "2.46";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
 }
 
