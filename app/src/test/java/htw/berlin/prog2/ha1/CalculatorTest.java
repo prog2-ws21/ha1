@@ -33,7 +33,7 @@ class CalculatorTest {
 
         calc.pressDigitKey(2);
         calc.pressUnaryOperationKey("√");
-
+        calc.pressEqualsUnary();
         String expected = "1.41421356";
         String actual = calc.readScreen();
 
@@ -62,12 +62,12 @@ class CalculatorTest {
     void testPositiveModulo() {
         Calculator calc = new Calculator();
 
-        calc.pressDigitKey(7);
+        calc.pressDigitKey(6);
         calc.pressUnaryOperationKey("%");
         calc.pressDigitKey(2);
         calc.pressEqualsUnary();
 
-        String expected = "1";
+        String expected = "0";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);

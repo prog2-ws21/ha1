@@ -72,8 +72,10 @@ public class Calculator {
      * @param operation "√" für Quadratwurzel, "%" für Prozent, "1/x" für Inversion
      */
     public void pressUnaryOperationKey(String operation) {
+
         latestOperation = operation;
     }
+
     public void pressEqualsUnary () {
         var result = switch (latestOperation) {
             case "%" -> latestValue % Double.parseDouble(screen);
@@ -82,6 +84,7 @@ public class Calculator {
         };
         screen = Double.toString(result);
         if (screen.endsWith(".0")) screen = screen.substring(0, screen.length() - 2);
+        if (screen.contains(".") && screen.length() > 11) screen = screen.substring(0, 10);
     }
 
     /**
