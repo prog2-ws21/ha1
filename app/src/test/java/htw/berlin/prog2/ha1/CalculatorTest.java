@@ -119,6 +119,7 @@ class CalculatorTest {
     Test 2  - Division einer positiven und negativen Zahl
      */
 
+    /*
     @Test
     @DisplayName("should display result after dividing one positive and one negative number")
     void testNPDivision() {
@@ -134,7 +135,25 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
+*/
 
+    /*
+    grüner Test - Division einer positiven und negativen Zahl mit veränderter Methode pressDigitKey
+     */
+    @Test
+    @DisplayName("should display result after dividing one positive and one negative numbers")
+    void testNPDivision() {
+        Calculator calc = new Calculator();
+        calc.pressDigitKey(2);
+        calc.pressBinaryOperationKey("/");
+        calc.pressDigitKey(-2);
+        calc.pressEqualsKey();
+
+        String expected = "-1";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
 
 
 }
