@@ -77,7 +77,25 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
+    /*
+    roter Test 1 - Division negative und positive Zahl
+     */
+    @Test
+    @DisplayName("should display result after dividing one negative and one positive number")
+    void testNegDivision() {
+        Calculator calc = new Calculator();
+        calc.pressNegativeKey();
+        calc.pressDigitKey(2);
+        calc.pressBinaryOperationKey("/");
+        calc.pressNegativeKey();
+        calc.pressDigitKey(2);
+        calc.pressEqualsKey();
 
+        String expected = "1";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
 
 
 
