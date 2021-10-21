@@ -41,5 +41,72 @@ class CalculatorTest {
     }
 
     //TODO hier weitere Tests erstellen
+
+    //Teilaufgabe 1
+    @Test
+    @DisplayName("should turn a digit into a negative number")
+    void testNegativeKey()
+    {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(6);
+        calc.pressNegativeKey();
+
+        String expected = "-6";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+    //Teilaufgabe 2+3: Erster Bug
+    @Test
+    @DisplayName("should allow only one dot on the screen")
+    void testDotKey()
+    {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(2);
+        calc.pressDotKey();
+        calc.pressDigitKey(4);
+        calc.pressDotKey();
+        calc.pressDigitKey(6);
+
+        String expected = "2.46";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+    //Teilaufgabe 2+3: Zweiter Bug
+    @Test
+    @DisplayName("should convert a negative number into a positive when pressing the negative button")
+    void testNegativeNumberConversion()
+    {
+        Calculator calc = new Calculator();
+
+        calc.pressNegativeKey();
+        calc.pressDigitKey(2);
+        calc.pressNegativeKey();
+
+        String expected = "2";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+    //Teilaufgabe 2+3: Dritter Bug (Zusatz)
+    @Test
+    @DisplayName("should display an error message when dividing by zero")
+    void testDivisionByZero()
+    {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(2);
+        calc.pressBinaryOperationKey("/");
+        calc.pressDigitKey(0);
+        calc.pressEqualsKey();
+
+        String expected = "Error";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
 }
 
