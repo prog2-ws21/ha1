@@ -41,5 +41,46 @@ class CalculatorTest {
     }
 
     //TODO hier weitere Tests erstellen
-}
+    @Test
+    @DisplayName("should display result after multiply a positive digit number and percent number")
 
+    void testPercentNumber() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(2);
+        calc.pressDigitKey(5);
+        calc.pressUnaryOperationKey("%");
+        calc.pressBinaryOperationKey("x");
+        calc.pressDigitKey(4);
+        calc.pressDigitKey(5);
+        calc.pressEqualsKey();
+
+        String expected = "11.25";
+        String actual = calc.readScreen();
+        assertEquals(expected, actual);
+
+    }
+
+
+    @Test
+    @DisplayName("should do the last binary operation")
+
+    void testDoLastBinaryOperationAgain() {
+        Calculator calc = new Calculator ();
+
+        calc.pressDigitKey(2);
+        calc.pressBinaryOperationKey("-");
+        calc.pressDigitKey(1);
+        calc.pressDigitKey(1);
+        calc.pressEqualsKey();
+        calc.pressEqualsKey();
+
+
+
+        String expected = "-20";
+        String actual = calc.readScreen();
+        assertEquals(expected, actual);
+    }
+
+
+}
