@@ -57,9 +57,9 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
-    //Teilaufgabe 2
+    //Teilaufgabe 2: Erster Bug
     @Test
-    @DisplayName("")
+    @DisplayName("should allow only one dot on the screen")
     void testDotKey()
     {
         Calculator calc = new Calculator();
@@ -71,6 +71,22 @@ class CalculatorTest {
         calc.pressDigitKey(6);
 
         String expected = "2.46";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+    //Teilaufgabe 2: Zweiter Bug
+    @Test
+    @DisplayName("should convert a negative number into a positive when pressing the negative button")
+    void testNegativeNumberConversion()
+    {
+        Calculator calc = new Calculator();
+
+        calc.pressNegativeKey();
+        calc.pressDigitKey(2);
+        calc.pressNegativeKey();
+
+        String expected = "2";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
