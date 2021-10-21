@@ -41,5 +41,62 @@ class CalculatorTest {
     }
 
     //TODO hier weitere Tests erstellen
-}
+
+    @Test
+    @DisplayName("should display result after getting the division of 100")
+    void testDivision() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(1);
+        calc.pressDigitKey(0);
+        calc.pressDigitKey(0);
+        calc.pressBinaryOperationKey("/");
+        calc.pressDigitKey(2);
+        calc.pressDigitKey(0);
+        calc.pressEqualsKey();
+
+        String expected = "5";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+        @Test
+        @DisplayName("no result ERROR or illegal agumenation")
+        void testdivionbyzero () {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(3);
+        calc.pressBinaryOperationKey("/");
+        calc.pressDigitKey(0);
+        calc.pressEqualsKey();
+
+        String expected = "ERROR";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+
+        }
+
+    @Test
+    @DisplayName("should display result after adding  two negativ-numbers ")
+    void TestDotOperation(){
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(5);
+        calc.pressDotKey();
+        calc.pressDigitKey(5);
+        calc.pressDotKey();
+        calc.pressDigitKey(5);
+
+
+        String expected = "5.55";
+        String actual = calc.readScreen();
+
+        assertEquals(expected,actual);
+
+    }
+
+    }
+
+
 
