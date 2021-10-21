@@ -59,7 +59,7 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
     @Test
-    @DisplayName("test if a number can be divided")
+    @DisplayName("test if a number can be divided and then added in one operation")
     void testdivide() {
         Calculator calc = new Calculator();
         calc.pressDigitKey(2);
@@ -87,6 +87,22 @@ class CalculatorTest {
 
 
         String expected = "4.1";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("test power 2")
+    void testPower () {
+        Calculator calc = new Calculator();
+        calc.pressDigitKey(4);
+        calc.pressUnaryOperationKey("^");
+        calc.pressDigitKey(2);
+        calc.pressEqualsKey();
+
+
+        String expected = "16";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
