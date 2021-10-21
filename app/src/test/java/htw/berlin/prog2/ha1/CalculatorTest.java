@@ -61,5 +61,21 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
 
+    // Der 1.Test der rot werden soll
+    @Test
+    @DisplayName("should display an Error where divider is 0")
+    void testIllegalArgumentException() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(6);
+        calc.pressBinaryOperationKey("/");
+        calc.pressDigitKey(0);
+        calc.pressEqualsKey();
+
+        String expected = "Error";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
 }
 
