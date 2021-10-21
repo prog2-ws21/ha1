@@ -83,4 +83,23 @@ class CalculatorTest {
     }
 
 
+    @Test
+    @DisplayName("should do two binary operation")
+
+    void testDoTwoBinaryOperation() {
+        Calculator calc = new Calculator ();
+
+        calc.pressDigitKey(2);
+        calc.pressBinaryOperationKey("x");
+        calc.pressDigitKey(5);
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(3);
+        calc.pressEqualsKey();
+
+
+
+        String expected = "13";
+        String actual = calc.readScreen();
+        assertEquals(expected, actual);
+    }
 }
