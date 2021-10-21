@@ -31,7 +31,7 @@ public class Calculator {
      *              || digit < 0)
      */
     public void pressDigitKey(int digit) {
-        if(digit > 9 ) throw new IllegalArgumentException();
+        if(digit > 9 || digit < 0) throw new IllegalArgumentException();
 
         if(screen.equals("0") || latestValue == Double.parseDouble(screen)) screen = "";
 
