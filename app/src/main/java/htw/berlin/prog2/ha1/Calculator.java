@@ -30,10 +30,9 @@ public class Calculator {
      */
     public void pressDigitKey(int digit) {
         if(digit > 9 || digit < 0) throw new IllegalArgumentException();
-
+        if(screen.startsWith("-")) screen = "-" + digit;
         if(screen.equals("0") || latestValue == Double.parseDouble(screen)) screen = "";
-
-        screen = screen + digit;
+        if (!screen.startsWith("-")) screen = screen + digit;
     }
 
     /**
@@ -103,7 +102,7 @@ public class Calculator {
      * entfernt und der Inhalt fortan als positiv interpretiert.
      */
     public void pressNegativeKey() {
-        screen = screen.startsWith("-") ? screen.substring(1) : "" + screen;
+        screen = screen.startsWith("-") ? screen.substring(1) : "-" + screen;
     }
 
     /**
