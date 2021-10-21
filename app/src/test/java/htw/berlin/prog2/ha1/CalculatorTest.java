@@ -78,10 +78,10 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
     /*
-    roter Test 1 - Division negative und positive Zahl
+    roter Test 1 - Division 2 negative Zahlen
      */
     @Test
-    @DisplayName("should display result after dividing one negative and one positive number")
+    @DisplayName("should display result after dividing two negative numbers")
     void testNegDivision() {
         Calculator calc = new Calculator();
         calc.pressNegativeKey();
