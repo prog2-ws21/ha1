@@ -125,7 +125,7 @@ public class Calculator {
      * und das Ergebnis direkt angezeigt.
      */
 
-   
+
     public void pressEqualsKey() {
         var result = switch(latestOperation) {
             case "+" -> latestValue + Double.parseDouble(screen);
