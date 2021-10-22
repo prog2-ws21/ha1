@@ -105,7 +105,6 @@ public class Calculator {
      */
     public void pressNegativeKey() {
         screen = screen.startsWith("-") ? screen.substring(1) : "-" + screen;
-        //if (screen.startsWith("-")) screen = screen * -1;
     }
 
     /**
@@ -118,27 +117,19 @@ public class Calculator {
      * und das Ergebnis direkt angezeigt.
      */
     public void pressEqualsKey() {
-        if((screen == "0") && (String.valueOf(latestValue) == "0")) screen = Double.toString(0);
-        if ((latestOperation == "/") && (String.valueOf(latestValue).equals(0))){
-        } else {
-            var result = switch(latestOperation) {
-                case "+" -> latestValue + Double.parseDouble(screen);
-                case "-" -> latestValue - Double.parseDouble(screen);
-                case "x" -> latestValue * Double.parseDouble(screen);
-                case "/" -> latestValue / Double.parseDouble(screen);
-                default -> throw new IllegalArgumentException();
-            };
-            screen = Double.toString(result);
-            //if(screen.endsWith(".0")) screen = screen.substring(0,screen.length()-2);
-            if(screen.contains(".") && screen.length() > 11) screen = screen.substring(0, 10);
-        }
+        var result = switch(latestOperation) {
+            case "+" -> latestValue + Double.parseDouble(screen);
+            case "-" -> latestValue - Double.parseDouble(screen);
+            case "x" -> latestValue * Double.parseDouble(screen);
+            case "/" -> latestValue / Double.parseDouble(screen);
+            default -> throw new IllegalArgumentException();
+        };
+        screen = Double.toString(result);
+        if(screen.endsWith(".0")) screen = screen.substring(0,screen.length()-2);
+        if(screen.contains(".") && screen.length() > 11) screen = screen.substring(0, 10);
         if (screen.equals("Infinity") ) {
             screen = "Error";
         }
 
-        /*if(screen.startsWith("-")) screen = "-" + screen;*/
-       /* if (*/
-        //if(screen.endsWith(".")) screen = String.valueOf(latestValue);
-        //if (result."infinty")
     }
 }
