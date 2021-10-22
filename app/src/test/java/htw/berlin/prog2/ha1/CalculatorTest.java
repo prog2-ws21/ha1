@@ -1,3 +1,5 @@
+
+
 package htw.berlin.prog2.ha1;
 
 import org.junit.jupiter.api.DisplayName;
@@ -40,6 +42,26 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
 
-    //TODO hier weitere Tests erstellen
+    @Test
+    @DisplayName("should display result after getting Equals Key")
+    void testEqualsKey() {
+        Calculator calc = new Calculator();
+        calc.pressDigitKey(1);
+        calc.pressDigitKey(5);
+        calc.pressDigitKey(7);
+        calc.pressBinaryOperationKey("-");
+        calc.pressDigitKey(2);
+        calc.pressDigitKey(7);
+        calc.pressEqualsKey();
+
+        String expected = "130";
+        String actual = calc.readScreen();
+        assertEquals(expected, actual);
+    }
+
+
+
+
+
 }
 
