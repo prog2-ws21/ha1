@@ -48,10 +48,10 @@ class CalculatorTest {
         Calculator calc = new Calculator();
         calc.pressDigitKey(1);
         calc.pressDigitKey(5);
-        calc.pressDigitKey(7);
+        calc.pressDigitKey(0);
         calc.pressBinaryOperationKey("-");
         calc.pressDigitKey(2);
-        calc.pressDigitKey(7);
+        calc.pressDigitKey(0);
         calc.pressEqualsKey();
 
         String expected = "130";
