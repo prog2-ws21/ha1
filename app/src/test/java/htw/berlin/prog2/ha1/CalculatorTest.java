@@ -60,6 +60,23 @@ class CalculatorTest {
     }
 
 
+    @Test
+    @DisplayName("should display error after trying division through 0")
+    void testDivisionThroughZero() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(8);
+        calc.pressBinaryOperationKey("/");
+        calc.pressDigitKey(0);
+        calc.pressEqualsKey();
+
+
+        String expected = "Error";
+        String actual = calc.readScreen();
+
+
+        assertEquals(expected, actual);
+    }
 
 
 
