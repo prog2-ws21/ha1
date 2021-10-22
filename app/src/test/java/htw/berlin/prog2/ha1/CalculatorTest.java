@@ -55,14 +55,53 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
 //    TODO 1st RED test
+//    ideas: adding 1 or 2 negative numbers, changing number sign with +/- button,
+//    adding, sub., etc. decimal numbers, dividing by a sq.rt number 18/ ^4, etc.
+    @Test
+    @DisplayName("should display result of the multiplication of two negative numbers")
+    void testNegativeMultiplication(){
+        Calculator calc = new Calculator();
+        calc.pressNegativeKey();
+        calc.pressDigitKey(5);
+        calc.pressBinaryOperationKey("x");
+        calc.pressNegativeKey();
+        calc.pressDigitKey(3);
+        calc.pressEqualsKey();
+
+        String expected = "15";
+        String actual = calc.readScreen();
+        assertEquals(expected, actual);
+    }
+    @Test
+    @DisplayName("should display quotient of number and percent")
+    void testDivisionByPercent(){
+        Calculator c = new Calculator();
+        c.pressDigitKey(4);
+        c.pressBinaryOperationKey("/");
+        c.pressDigitKey(5);
+        c.pressDigitKey(0);
+        c.pressUnaryOperationKey("%");
+        c.pressEqualsKey();
+
+        String expected = "2";
+        String actual = c.readScreen();
+        assertEquals(expected, actual);
+    }
+    @Test
+    @DisplayName("should display negative number after pressing digit key")
+    void testPressNegativeFirst(){
+        Calculator calc = new Calculator();
+        calc.pressNegativeKey();
+        calc.pressDigitKey(5);
+
+        String expected = "-5";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
 //    TODO 2nd RED test
 //    TODO 2x bugfixes for each red test
-    /*
-    Regression Tests:
-    - test for multiplication
-    - test for division
-    - etc.
 
-     */
 }
 

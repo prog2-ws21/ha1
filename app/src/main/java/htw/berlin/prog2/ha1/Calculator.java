@@ -31,9 +31,14 @@ public class Calculator {
     public void pressDigitKey(int digit) {
         if(digit > 9 || digit < 0) throw new IllegalArgumentException();
 
-        if(screen.equals("0") || latestValue == Double.parseDouble(screen)) screen = "";
-
-        screen = screen + digit;
+        if (screen.startsWith("-0")) {
+            digit = digit * (-1);
+            screen = Double.toString(digit);
+        } else if(screen.startsWith("0") || latestValue == Double.parseDouble(screen)) {
+            screen = "" + digit;
+        } else {
+            screen = screen + digit;
+        }
     }
 
     /**
@@ -105,6 +110,7 @@ public class Calculator {
      */
     public void pressNegativeKey() {
         screen = screen.startsWith("-") ? screen.substring(1) : "-" + screen;
+        latestValue = Double.parseDouble(screen);
     }
 
     /**
