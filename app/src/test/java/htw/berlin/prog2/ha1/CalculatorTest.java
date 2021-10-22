@@ -58,5 +58,42 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
 
+    @Test
+    @DisplayName("Should ignore dots when there's one on the screen")
+    void testDotKey(){
+        // 1) Erstellen Objekt der Klasse + (Beispieldaten)
+        Calculator calc = new Calculator();
+
+        // 2) Führst Methoden der Klasse aus n
+        calc.pressDigitKey(2);
+        calc.pressDotKey();
+        calc.pressDigitKey(2);
+        calc.pressDotKey();
+        calc.pressDigitKey(2);
+
+        // 3) Erwartete Werte
+        String expected = "2.22";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+
+    }
+
+    @Test
+    @DisplayName("Should display Error when dividing by zero")
+    void testDivZero(){
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(4);
+        calc.pressBinaryOperationKey("/");
+        calc.pressDigitKey(0);
+        calc.pressEqualsKey();
+
+        String expected = "Error";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
 }
 
