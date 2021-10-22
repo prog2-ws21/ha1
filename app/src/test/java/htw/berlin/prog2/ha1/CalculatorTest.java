@@ -41,5 +41,19 @@ class CalculatorTest {
     }
 
     //TODO hier weitere Tests erstellen
+
+    @Test
+    @DisplayName("should display result after getting the inverse of five")
+    void testInverse() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(5);
+        calc.pressUnaryOperationKey("1/x");
+
+        String expected = "0.2";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
 }
 
