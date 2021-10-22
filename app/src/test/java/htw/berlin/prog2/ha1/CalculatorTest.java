@@ -56,34 +56,40 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
 
-    /*@Test
-    @DisplayName("should display result 9 mal = 81")
-    void testMulti() {
-        Calculator calc = new Calculator();
-
-        calc.pressDigitKey(9);
-        calc.pressBinaryOperationKey("*");
-        calc.pressEqualsKey();
-
-        String expected = "81";
-        String actual = calc.readScreen();
-
-        assertEquals(expected, actual);
-    }*/
 
     @Test
-    @DisplayName("should display -3 after negating 3")
-    void testNegate() {
+    @DisplayName("should show an Error after trying to divide by 0") //nr 2
+    void testDivideByZero() {
         Calculator calc = new Calculator();
 
         calc.pressDigitKey(3);
-        calc.pressNegativeKey();
+        calc.pressBinaryOperationKey("/");
+        calc.pressDigitKey(0);
         calc.pressEqualsKey();
 
-        String expected = "-3";
+        String expected = "Error";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
     }
+
+
+    @Test
+    @DisplayName("should show 5.55 after trying to place 2 dots") //nr 3
+    void testDotMultiple() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(5);
+        calc.pressDotKey();
+        calc.pressDigitKey(5);
+        calc.pressDotKey();
+        calc.pressDigitKey(5);
+
+        String expected = "5.55";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
 }
 
