@@ -46,36 +46,46 @@ class CalculatorTest {
     void testPositiveMultiplikation() {
         Calculator calc = new Calculator();
 
-        calc.pressDigitKey(8);
+        calc.pressDigitKey(4);
         calc.pressDigitKey(0);
         calc.pressBinaryOperationKey("x");
         calc.pressDigitKey(2);
         calc.pressDigitKey(0);
         calc.pressEqualsKey();
 
-        String expected = "1600";
+        String expected = "800";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
     }
-
-    /*
     @Test
-    @DisplayName("should display result after minus two positive multi-digit numbers")
-    void testPositiveSubtraktion() {
+    @DisplayName("should display result after inversion")
+    void testInversion() {
         Calculator calc = new Calculator();
 
-        calc.pressDigitKey(4);
         calc.pressDigitKey(0);
-        calc.pressBinaryOperationKey("-");
-        calc.pressDigitKey(3);
-        calc.pressDigitKey(0);
-        calc.pressEqualsKey();
-
-        String expected = "10";
+        calc.pressUnaryOperationKey("1/x");
+        String expected = "Error";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
-    }*/
+    }
+    @Test
+    @DisplayName("should display result after split two positive multi-digit numbers")
+    void testPositiveDivision() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(2);
+        calc.pressDigitKey(0);
+        calc.pressBinaryOperationKey("/");
+        calc.pressDigitKey(0);
+        calc.pressDigitKey(0);
+        calc.pressEqualsKey();
+
+        String expected = "Error";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
 }
 
