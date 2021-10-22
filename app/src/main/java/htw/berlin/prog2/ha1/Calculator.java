@@ -9,7 +9,7 @@ package htw.berlin.prog2.ha1;
 public class Calculator {
 
     private String screen = "0";
-
+// comment demo
     private double latestValue;
 
     private String latestOperation = "";
