@@ -80,8 +80,13 @@ public class Calculator {
             case "1/x" -> 1 / Double.parseDouble(screen);
             default -> throw new IllegalArgumentException();
         };
-        screen = Double.toString(result);
-        if (screen.contains(".") && screen.length() > 11) screen = screen.substring(0, 10);
+        if (latestValue == 0) {
+            String err = "Error";
+            screen = err;
+        } else {
+            screen = Double.toString(result);
+            if (screen.contains(".") && screen.length() > 11) screen = screen.substring(0, 10);
+        }
     }
     /**
      * Empfängt den Befehl der gedrückten Dezimaltrennzeichentaste, im Englischen üblicherweise "."
