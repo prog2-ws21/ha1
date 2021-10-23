@@ -55,5 +55,25 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
+
+    @Test
+    @DisplayName("should display result after adding serval numbers ")
+    void testAddingServalNumbers(){
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(2);
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(2);
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(3);
+        calc.pressEqualsKey();
+
+        String expected ="7";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+
+
+    }
 }
 
