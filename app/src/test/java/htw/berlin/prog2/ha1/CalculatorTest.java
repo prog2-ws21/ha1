@@ -69,36 +69,42 @@ class CalculatorTest {
         Calculator calc = new Calculator ();
 
         calc.pressDigitKey(2);
+        calc.pressDigitKey(1);
         calc.pressBinaryOperationKey("-");
         calc.pressDigitKey(1);
         calc.pressDigitKey(1);
         calc.pressEqualsKey();
         calc.pressEqualsKey();
+        calc.pressEqualsKey();
 
 
-
-        String expected = "-20";
+        String expected = "-12";
         String actual = calc.readScreen();
         assertEquals(expected, actual);
     }
 
 
     @Test
-    @DisplayName("should do two binary operation")
+    @DisplayName("should do multiple binary operations")
 
-    void testDoTwoBinaryOperation() {
+    void testMultipleBinaryOperations() {
         Calculator calc = new Calculator ();
 
+        calc.pressDigitKey(1);
         calc.pressDigitKey(2);
         calc.pressBinaryOperationKey("x");
+        calc.pressDigitKey(1);
         calc.pressDigitKey(5);
         calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(1);
+        calc.pressDigitKey(3);
+        calc.pressBinaryOperationKey("-");
         calc.pressDigitKey(3);
         calc.pressEqualsKey();
 
 
 
-        String expected = "13";
+        String expected = "190";
         String actual = calc.readScreen();
         assertEquals(expected, actual);
     }
