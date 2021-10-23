@@ -75,9 +75,9 @@ class CalculatorTest {
     void testSquareRootFromNegativeNumber() {
         Calculator calc = new Calculator();
 
-        calc.pressDigitKey(-2);
+        calc.pressDigitKey(2);
+        calc.pressNegativeKey();
         calc.pressUnaryOperationKey("√");
-
         String expected = "Error";
         String actual = calc.readScreen();
 
