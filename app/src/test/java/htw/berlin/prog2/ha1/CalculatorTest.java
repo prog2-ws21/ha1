@@ -83,7 +83,7 @@ class CalculatorTest {
         c.pressUnaryOperationKey("%");
         c.pressEqualsKey();
 
-        String expected = "2";
+        String expected = "8";
         String actual = c.readScreen();
         assertEquals(expected, actual);
     }
@@ -94,14 +94,10 @@ class CalculatorTest {
         calc.pressNegativeKey();
         calc.pressDigitKey(5);
 
-        String expected = "-5";
+        String expected = "-5.0";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
     }
-
-//    TODO 2nd RED test
-//    TODO 2x bugfixes for each red test
-
 }
 
