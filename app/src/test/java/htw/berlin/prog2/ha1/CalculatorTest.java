@@ -59,6 +59,19 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
 
+    @Test
+    @DisplayName("nachdem man clear taste drückt, werden latestvalue und latestoperation in der online version nicht verändert, falls latest operation eingegeben wurde")
+    void testClearKey() {
+        Calculator calc = new Calculator();
+        calc.pressDigitKey(3);
+        calc.pressBinaryOperationKey("+");
+        calc.pressClearKey();
+        calc.pressDigitKey(3);
+        calc.pressEqualsKey();
+        String expected = "6";
+        String actual = calc.readScreen();
+        Assertions.assertEquals(expected, actual);
+    }
 
 }
 
