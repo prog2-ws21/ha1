@@ -65,9 +65,10 @@ class CalculatorTest {
     void testsign() {
         Calculator calc = new Calculator();
 
-        calc.pressBinaryOperationKey("-");
+
         calc.pressDigitKey(1);
         calc.pressDigitKey(0);
+        calc.pressBinaryOperationKey("+/-");
 
 
         String expected = "-10";
