@@ -98,8 +98,9 @@ public class Calculator {
      * Beim zweimaligem Drücken, oder wenn bereits ein Trennzeichen angezeigt wird, passiert nichts.
      */
     public void pressDotKey() {
-        if (!screen.endsWith(".")) screen = screen + ".";
-    }
+
+     if(!screen.contains(".")) screen = screen + ".";
+       }
 
     /**
      * Empfängt den Befehl der gedrückten Vorzeichenumkehrstaste ("+/-").
@@ -110,6 +111,8 @@ public class Calculator {
      */
     public void pressNegativeKey() {
         screen = screen.startsWith("-") ? screen.substring(1) : "-" + screen;
+
+
     }
 
     /**
