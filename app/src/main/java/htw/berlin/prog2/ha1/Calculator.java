@@ -32,7 +32,8 @@ public class Calculator {
     public void pressDigitKey(int digit) {
         if (digit > 9 || digit < 0) throw new IllegalArgumentException();
 
-        if ((screen.equals("0") || latestValue == Double.parseDouble(screen)) && !screen.equals("-0")) screen = "";
+        if ((screen.equals("0") || latestValue == Double.parseDouble(screen)) && !screen.equals("-0") && !screen.equals("0.")) screen = "";
+        if (screen.equals("0.")) screen= "0.";
         if (screen.equals("-0")) screen= "-";
 
         screen = screen + digit;
@@ -88,7 +89,7 @@ public class Calculator {
         };
         screen = Double.toString(result);
         if (screen.contains(".") && screen.length() > 11) screen = screen.substring(0, 10);
-
+        if (screen.endsWith(".0")) screen = screen.substring(0, screen.length() - 2);
     }
 
     /**
