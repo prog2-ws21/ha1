@@ -73,7 +73,7 @@ class CalculatorTest {
 
 
     }
-    
+
 
     @Test
     @DisplayName("Should display the result after pressing clear key ")
@@ -93,6 +93,23 @@ class CalculatorTest {
 
     }
 
+    @Test
+    @DisplayName("Should display the result after pressing clear key twice ")
+    void testClearKey2() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(3);
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(3);
+        calc.pressClearKey();
+        calc.pressClearKey();
+
+
+        String expected = "0";
+        String actual =calc.readScreen();
+        assertEquals(expected, actual);
+
+    }
     @Test
     @DisplayName("should display result after adding two positive point numbers")
     void testAdditionPointNumbers() {
