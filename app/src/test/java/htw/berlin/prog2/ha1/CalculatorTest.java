@@ -1,3 +1,5 @@
+
+
 package htw.berlin.prog2.ha1;
 
 import org.junit.jupiter.api.DisplayName;
@@ -40,6 +42,79 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
 
-    //TODO hier weitere Tests erstellen
-}
+    @Test
+    @DisplayName("should display result after getting Equals Key")
+    void testEqualsKey() {
+        Calculator calc = new Calculator();
+        calc.pressDigitKey(1);
+        calc.pressDigitKey(5);
+        calc.pressDigitKey(0);
+        calc.pressBinaryOperationKey("-");
+        calc.pressDigitKey(2);
+        calc.pressDigitKey(0);
+        calc.pressEqualsKey();
+
+        String expected = "130";
+        String actual = calc.readScreen();
+        assertEquals(expected, actual);
+    }
+
+
+    @Test
+    @DisplayName("should display error after trying division through 0")
+    void testDivisionThroughZero() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(8);
+        calc.pressBinaryOperationKey("/");
+        calc.pressDigitKey(0);
+        calc.pressEqualsKey();
+
+
+        String expected = "Error";
+        String actual = calc.readScreen();
+
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("nothing should happen if you press dot twice, or if a separator is already displayed")
+    void testDotKey() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(1);
+        calc.pressDotKey();
+        calc.pressDigitKey(7);
+        calc.pressDotKey();
+
+        String expected = "1.7";
+        String actual = calc.readScreen();
+
+
+        assertEquals(expected, actual);
+    }
+
+//    @Test
+//    @DisplayName("should happen ")
+//    void testNegativeKey() {
+//        Calculator calc = new Calculator();
+//        calc.pressNegativeKey();
+//        calc.pressDigitKey(6);
+//        calc.pressEqualsKey();
+//        String expected = "-6";
+//        String actual = calc.readScreen();
+////
+////
+//        assertEquals(expected, actual);
+//    }
+
+
+
+    }
+
+
+
+
+
 
