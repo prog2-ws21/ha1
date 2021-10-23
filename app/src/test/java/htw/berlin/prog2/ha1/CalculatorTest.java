@@ -79,7 +79,7 @@ class CalculatorTest {
     void testDivisionZero() {
         Calculator calc = new Calculator();
 
-        calc.pressDigitKey(2);
+        calc.pressDigitKey(8);
         calc.pressBinaryOperationKey("/");
         calc.pressDigitKey(0);
         calc.pressEqualsKey();
