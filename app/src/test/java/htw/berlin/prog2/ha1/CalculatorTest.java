@@ -61,7 +61,7 @@ class CalculatorTest {
     }
 
     @Test
-    @DisplayName("should display decimal number without the secound dot after pressing dotkey while the dot exist ")
+    @DisplayName("should display decimal number without the second dot after pressing dotkey while the dot exist ")
     void testDotKey2() {
         Calculator calc = new Calculator();
 
