@@ -73,6 +73,8 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
+
+    //Test fail: Ergebnis war 3.0 und nicht 3
    @Test
     @DisplayName("test √, % and 1/x")
     void testUnbinaryOperationKey2(){
@@ -86,6 +88,7 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
+
 
 
 }
