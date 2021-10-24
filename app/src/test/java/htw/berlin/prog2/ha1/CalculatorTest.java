@@ -109,5 +109,22 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
+
+    @Test
+    @DisplayName("should display result after pressing dot key twice")
+    void testDotKey() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(2);
+        calc.pressDotKey();
+        calc.pressDigitKey(0);
+        calc.pressDotKey();
+
+
+        String expected = "2.0";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
 }
 
