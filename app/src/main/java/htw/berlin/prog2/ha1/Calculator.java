@@ -110,7 +110,7 @@ public class Calculator {
                 screen.replace("-","");
             }
             else{
-                screen = "-"+screen+"";
+                 screen = "-"+screen+"";
             }
         }
     }
