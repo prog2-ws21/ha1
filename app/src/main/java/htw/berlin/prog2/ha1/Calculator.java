@@ -93,7 +93,15 @@ public class Calculator {
      * Beim zweimaligem Drücken, oder wenn bereits ein Trennzeichen angezeigt wird, passiert nichts.
      */
     public void pressDotKey() {
-        if(!screen.endsWith(".")) screen = screen + ".";
+
+        if (!screen.contains(".")){
+            screen = screen + ".";
+        }else {
+
+            screen.endsWith("");
+
+        }
+       // if(!screen.endsWith(".")) screen = screen + ".";
     }
 
     /**
@@ -124,7 +132,14 @@ public class Calculator {
             case "/" -> latestValue / Double.parseDouble(screen);
             default -> throw new IllegalArgumentException();
         };
-        screen = Double.toString(result);
+       
+
+        if (Double.isInfinite(result)){
+            screen = "ERROR";
+        }
+        else{
+            screen = Double.toString(result);
+        }
         if(screen.endsWith(".0")) screen = screen.substring(0,screen.length()-2);
         if(screen.contains(".") && screen.length() > 11) screen = screen.substring(0, 10);
     }
