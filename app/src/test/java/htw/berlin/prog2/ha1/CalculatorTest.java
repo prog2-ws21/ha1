@@ -45,7 +45,7 @@ class CalculatorTest {
     @Test
 
     @DisplayName("should display result after adding 2 numbers")
-    void testDivision(){
+    void testAddition(){
         Calculator calc = new Calculator();
 
         calc.pressDigitKey(8);
