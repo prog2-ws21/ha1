@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @DisplayName("Retro calculator")
 class CalculatorTest {
@@ -83,12 +84,8 @@ class CalculatorTest {
 
         calc.pressDigitKey(2);
         calc.pressNegativeKey();
-        calc.pressUnaryOperationKey("√");
 
-        String expected = "-2";
-        String actual = calc.readScreen();
-
-        assertEquals(expected, actual);
+        assertThrows(IllegalArgumentException.class, () -> {calc.pressUnaryOperationKey("√");} );
     }
 
 

@@ -80,6 +80,11 @@ public class Calculator {
      * @param operation "√" für Quadratwurzel, "%" für Prozent, "1/x" für Inversion
      */
     public void pressUnaryOperationKey(String operation) {
+
+        if (Double.parseDouble(screen) < 0) {
+            throw new IllegalArgumentException("Wurzel aus negativen Zahlen kann man nicht ziehen!");
+        }
+
         latestValue = Double.parseDouble(screen);
         latestOperation = operation;
         var result = switch(operation) {
