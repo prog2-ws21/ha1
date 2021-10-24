@@ -42,7 +42,7 @@ class CalculatorTest {
 
     //Teilaufgabe 1
     @Test
-    @DisplayName("should display result after multiplying two negative single-digit numbers")
+    @DisplayName("should display result after multiplying two positive single-digit numbers")
     void testPositiveMultiplikation() {
         Calculator calc = new Calculator();
 
@@ -57,6 +57,22 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
 
+    //Teilaufgabe 2 Erster roter test
+    @Test
+    @DisplayName("should display Error String if a Number is divided by 0")
+    void testDivisionByZero() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(5);
+        calc.pressBinaryOperationKey("/");
+        calc.pressDigitKey(0);
+        calc.pressEqualsKey();
+
+        String expected = "Error";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
 
 
 }
