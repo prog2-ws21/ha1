@@ -94,6 +94,7 @@ public class Calculator {
      */
     public void pressDotKey() {
         if(!screen.endsWith("."))
+            if(!screen.contains("."))
             screen = screen + ".";
     }
 
