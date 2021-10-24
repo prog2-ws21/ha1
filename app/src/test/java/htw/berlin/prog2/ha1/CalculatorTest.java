@@ -78,7 +78,7 @@ class CalculatorTest {
     @Test
     @DisplayName("should display the right result when first factor has a 0 before the decimal point")
 
-    void DivisorZeroDecimal () {
+    void FactorZeroDecimal () {
         Calculator calc = new Calculator();
 
         calc.pressDigitKey(0);
@@ -89,6 +89,23 @@ class CalculatorTest {
         calc.pressEqualsKey();
 
         String expected = "1.8";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("should ignore a second dot, when there's already one")
+
+    void TwoDotKeys () {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(3);
+        calc.pressDotKey();
+        calc.pressDigitKey(6);
+        calc.pressDotKey();
+
+        String expected = "3.6";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
