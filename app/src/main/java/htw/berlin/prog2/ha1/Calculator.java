@@ -62,6 +62,7 @@ public class Calculator {
     public void pressBinaryOperationKey(String operation)  {
         latestValue = Double.parseDouble(screen);
         latestOperation = operation;
+
     }
 
     /**
@@ -92,8 +93,16 @@ public class Calculator {
      * Trennzeichen angegeben und daher als Dezimalziffern interpretiert.
      * Beim zweimaligem Drücken, oder wenn bereits ein Trennzeichen angezeigt wird, passiert nichts.
      */
-    public void pressDotKey() {
-        if(!screen.endsWith(".")) screen = screen + ".";
+    public void pressDotKey(String operation) {
+        latestOperation = operation;
+        if(operation == ".") {
+            if(screen.contains(".")){
+                screen = screen;
+            }
+            else{
+                screen = ""+screen+".";
+            }
+        }
     }
 
     /**
