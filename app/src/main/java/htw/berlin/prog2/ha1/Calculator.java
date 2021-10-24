@@ -65,7 +65,6 @@ public class Calculator {
 
         latestValue = Double.parseDouble(screen);
         latestOperation = operation;
-
     }
 
     /**
@@ -98,7 +97,9 @@ public class Calculator {
      * Beim zweimaligem Drücken, oder wenn bereits ein Trennzeichen angezeigt wird, passiert nichts.
      */
     public void pressDotKey() {
+
         if (!screen.endsWith(".")) screen = screen + ".";
+
     }
 
     /**
@@ -136,6 +137,7 @@ public class Calculator {
             screen = "Error";
             return;
         }
+
         screen = Double.toString(result);
 
         if (screen.endsWith(".0")) screen = screen.substring(0, screen.length() - 2);
