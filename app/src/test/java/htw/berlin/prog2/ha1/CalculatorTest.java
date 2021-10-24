@@ -84,12 +84,27 @@ class CalculatorTest {
 
         calc.pressDigitKey(4);
         //calc.pressDigitKey(0);
-        calc.pressBinaryOperationKey("x");
+        calc.pressBinaryOperationKey("/");
         calc.pressDigitKey(-4);
         //calc.pressDigitKey(8);
         calc.pressEqualsKey();
 
         String expected = "-1";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("should display result after getting the square root of a number with two digits")
+    void testSquareRoot2() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(1);
+        calc.pressDigitKey(6);
+        calc.pressUnaryOperationKey("√");
+
+        String expected = "4";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
