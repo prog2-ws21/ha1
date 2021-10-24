@@ -93,4 +93,25 @@ class CalculatorTest {
         String actual = calc.readScreen();
         assertEquals(expected, actual);
     }
+
+
+    //2. roter Test
+
+    @Test
+    @DisplayName("calc should ignore a second dot on the screen")
+    void secondDotKey() {
+
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(5);
+        calc.pressDigitKey(5);
+        calc.pressDotKey();
+        calc.pressDotKey();
+        calc.pressDigitKey(7);
+        calc.pressDotKey();
+
+        String expected = "55.7";
+        String actual = calc.readScreen();
+        assertEquals(actual, expected);
+    }
 }
