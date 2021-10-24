@@ -93,26 +93,6 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
 
-    @Test
-    @DisplayName("Punkt statt Zahl zu erst")
-    void testPunktBeginn() {
-        Calculator calc = new Calculator();
 
-
-        calc.pressDotKey();
-        calc.pressDigitKey(1);
-
-        calc.pressBinaryOperationKey("+");
-
-        calc.pressDotKey();
-        calc.pressDigitKey(3);
-
-        calc.pressEqualsKey();
-
-        String expected = "0.4";
-        String actual = calc.readScreen();
-
-        assertEquals(expected, actual);
-    }
 }
 
