@@ -74,6 +74,24 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
 
+    //Teilaufgabe 2 zweiter roter Test
+    @Test
+    @DisplayName("should display only one dot ")
+    void testGettingRidOfMultipleDotKeys() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(5);
+        calc.pressDotKey();
+        calc.pressDotKey();
+        calc.pressDigitKey(2);
+        calc.pressEqualsKey();
+
+        String expected = "5.0";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
 
 }
 
