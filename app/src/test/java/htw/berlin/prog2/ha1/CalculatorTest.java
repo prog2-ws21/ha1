@@ -63,5 +63,21 @@ class CalculatorTest {
         calc.pressDotKey();
         assertEquals("5.2", calc.readScreen());
     }
+
+    @Test
+    @DisplayName("should calculate with multiple numbers")
+    void calculatorCanDoMultipleCalculations(){
+        Calculator calc = new Calculator();
+        calc.pressDigitKey(2);
+        calc.pressDotKey();
+        calc.pressDigitKey(4);
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(5);
+        calc.pressBinaryOperationKey("-");
+        calc.pressDigitKey(3);
+        calc.pressEqualsKey();
+        assertEquals("4.4", calc.readScreen());
+
+    }
 }
 
