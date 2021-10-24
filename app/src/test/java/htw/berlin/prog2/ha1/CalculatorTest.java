@@ -45,7 +45,7 @@ class CalculatorTest {
      @Test
     void testPressEqualsKey(){
         Calculator calc = new Calculator();
-        calc.pressDigitKey(5);
+        calc.pressDigitKey(4);
         calc.pressBinaryOperationKey("/");
         calc.pressDigitKey(0);
         calc.pressEqualsKey();
