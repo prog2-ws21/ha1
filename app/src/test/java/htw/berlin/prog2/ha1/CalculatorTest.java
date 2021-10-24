@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @DisplayName("Retro calculator")
 class CalculatorTest {
-
+/*
     @Test
     @DisplayName("should display result after adding two positive multi-digit numbers")
     void testPositiveAddition() {
@@ -39,11 +39,11 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
-
+/*
     /**
-     *  grüne Tests Teilaufgabe 1 - Subtraktion und Division positiver Zahlen
+     * grüne Tests Teilaufgabe 1 - Subtraktion und Division positiver Zahlen
      */
-
+/*
     @Test
     @DisplayName("should display result after subtraction of two positive multi-digit numbers")
     void testSubtraction() {
@@ -61,7 +61,7 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
-
+/*
     @Test
     @DisplayName("should display result after dividing two positive numbers")
     void testDivision() {
@@ -77,6 +77,7 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
+
     /*
     roter Test 1 - Division 2 negative Zahlen
      */
@@ -100,6 +101,7 @@ class CalculatorTest {
     /*
     grüner Test - Division zwei negativer Zahlen mit veränderter Methode pressDigitKey
      */
+    /*
     @Test
     @DisplayName("should display result after dividing two negative numbers")
     void testNDivision() {
@@ -119,7 +121,7 @@ class CalculatorTest {
     Test 2  - Division einer positiven und negativen Zahl
      */
 
-    /*
+
     @Test
     @DisplayName("should display result after dividing one positive and one negative number")
     void testNPDivision() {
@@ -135,11 +137,12 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
-*/
+
 
     /*
     grüner Test - Division einer positiven und negativen Zahl mit veränderter Methode pressDigitKey
      */
+    /*
     @Test
     @DisplayName("should display result after dividing one positive and one negative numbers")
     void testNPDivision() {
@@ -156,4 +159,6 @@ class CalculatorTest {
     }
 
 
+
+     */
 }
