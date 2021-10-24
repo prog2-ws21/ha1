@@ -74,20 +74,26 @@ class CalculatorTest {
     }
 
     @Test
-    @DisplayName("Wenn Punkt am Anfang gesetzt nicht 1 sondern 0.1")
-    void testPunktBeginn() {
+    @DisplayName("Wenn Punkt am Anfang gesetzt nicht 2 sondern 0.2")
+    void testNullAbgrenzung() {
         Calculator calc = new Calculator();
 
+        calc.pressDigitKey(1);
         calc.pressDotKey();
         calc.pressDigitKey(1);
+
+
 
         calc.pressBinaryOperationKey("+");
 
-        calc.pressDotKey();
         calc.pressDigitKey(1);
+
+        calc.pressDotKey();
+        calc.pressDigitKey(3);
+
         calc.pressEqualsKey();
 
-        String expected = "0.2";
+        String expected = "2.4";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
