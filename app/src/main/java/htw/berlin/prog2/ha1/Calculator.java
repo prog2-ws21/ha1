@@ -101,8 +101,8 @@ public class Calculator {
 	 * daher als Dezimalziffern interpretiert. Beim zweimaligem Drücken, oder wenn
 	 * bereits ein Trennzeichen angezeigt wird, passiert nichts.
 	 */
-	public void pressDotKey() {
-		if (!screen.endsWith("."))
+	public void pressDotKey(String s) {
+		if (!screen.contains("."))
 			screen = screen + ".";
 	}
 
@@ -113,7 +113,7 @@ public class Calculator {
 	 * Zeigt der Bildschirm bereits einen negativen Wert mit führendem Minus an,
 	 * dann wird dieses entfernt und der Inhalt fortan als positiv interpretiert.
 	 */
-	public void pressNegativeKey() {
+	public void pressNegativeKey(String s) {
 		screen = screen.startsWith("-") ? screen.substring(1) : "-" + screen;
 	}
 
