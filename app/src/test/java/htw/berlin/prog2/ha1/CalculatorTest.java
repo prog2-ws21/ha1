@@ -96,7 +96,7 @@ class CalculatorTest {
         calc.pressEqualsKey();
 
 
-        String expected = "6.66";
+        String expected = "6.65";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
