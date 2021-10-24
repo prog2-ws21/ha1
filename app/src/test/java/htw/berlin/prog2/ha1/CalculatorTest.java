@@ -66,7 +66,6 @@ class CalculatorTest {
         calc.pressBinaryOperationKey("/");
         calc.pressDigitKey(0);
         calc.pressEqualsKey();
-
         String expected = "Error";
         String actual = calc.readScreen();
 
