@@ -41,5 +41,22 @@ class CalculatorTest {
     }
 
     //TODO hier weitere Tests erstellen
+
+     @Test
+    void testPressEqualsKey(){
+        Calculator calc = new Calculator();
+        calc.pressDigitKey(5);
+        calc.pressBinaryOperationKey("/");
+        calc.pressDigitKey(0);
+        calc.pressEqualsKey();
+        calc.readScreen();
+        String expected = "Error";
+        String actual = calc.readScreen();
+        assertEquals(expected, actual);
+     }
+
+
+
+
 }
 

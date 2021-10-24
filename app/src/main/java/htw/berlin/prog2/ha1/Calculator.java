@@ -1,5 +1,7 @@
 package htw.berlin.prog2.ha1;
 
+import jdk.dynalink.Operation;
+
 /**
  * Eine Klasse, die das Verhalten des Online Taschenrechners imitiert, welcher auf
  * https://www.online-calculator.com/ aufgerufen werden kann (ohne die Memory-Funktionen)
@@ -62,6 +64,7 @@ public class Calculator {
     public void pressBinaryOperationKey(String operation)  {
         latestValue = Double.parseDouble(screen);
         latestOperation = operation;
+
     }
 
     /**
@@ -93,7 +96,10 @@ public class Calculator {
      * Beim zweimaligem Drücken, oder wenn bereits ein Trennzeichen angezeigt wird, passiert nichts.
      */
     public void pressDotKey() {
-        if(!screen.endsWith(".")) screen = screen + ".";
+        if(!screen.endsWith(".")){
+            screen = screen + ".";
+
+        }
     }
 
     /**
@@ -104,7 +110,10 @@ public class Calculator {
      * entfernt und der Inhalt fortan als positiv interpretiert.
      */
     public void pressNegativeKey() {
-        screen = screen.startsWith("-") ? screen.substring(1) : "-" + screen;
+
+     screen = screen.startsWith("-") ? screen.substring(1) : "-" + screen ;
+
+
     }
 
     /**
@@ -117,15 +126,27 @@ public class Calculator {
      * und das Ergebnis direkt angezeigt.
      */
     public void pressEqualsKey() {
-        var result = switch(latestOperation) {
-            case "+" -> latestValue + Double.parseDouble(screen);
-            case "-" -> latestValue - Double.parseDouble(screen);
-            case "x" -> latestValue * Double.parseDouble(screen);
-            case "/" -> latestValue / Double.parseDouble(screen);
-            default -> throw new IllegalArgumentException();
-        };
-        screen = Double.toString(result);
-        if(screen.endsWith(".0")) screen = screen.substring(0,screen.length()-2);
-        if(screen.contains(".") && screen.length() > 11) screen = screen.substring(0, 10);
+
+
+
+            var result = switch (latestOperation) {
+                case "+" -> latestValue + Double.parseDouble(screen);
+                case "-" -> latestValue - Double.parseDouble(screen);
+                case "x" -> latestValue * Double.parseDouble(screen);
+                case "/" -> latestValue / Double.parseDouble(screen);
+
+                default -> throw new IllegalArgumentException();
+            };
+
+            screen = Double.toString(result);
+
+            if (screen.endsWith(".0")) screen = screen.substring(0, screen.length() - 2);
+            if (screen.contains(".") && screen.length() > 11) screen = screen.substring(0, 10);
+
+
+
+
+
     }
+
 }
