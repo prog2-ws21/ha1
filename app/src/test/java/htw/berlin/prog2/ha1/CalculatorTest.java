@@ -43,21 +43,20 @@ class CalculatorTest {
     //TODO hier weitere Tests erstellen
 
     @Test
-    @DisplayName("should display result after multiply two positive multi-digit numbers")
-    void testPositiveMultiplikation(){
+    @DisplayName("should display result after adding three positive single-digit numbers")
+    void testReadScreen(){
         Calculator calc = new Calculator();
 
-        calc.pressDigitKey(2);
-        calc.pressBinaryOperationKey("x");
+        calc.pressDigitKey(5);
+        calc.pressDotKey();
         calc.pressDigitKey(1);
-        calc.pressDigitKey(0);
-        calc.pressDigitKey(0);
-        calc.pressEqualsKey();
 
-        String expected = "200";
+        String expected = "5.1";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
     }
+
+
 }
 
