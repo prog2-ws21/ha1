@@ -18,7 +18,7 @@ class CalculatorTest {
         calc.pressBinaryOperationKey("+");
         calc.pressDigitKey(2);
         calc.pressDigitKey(0);
-        calc.pressEqualsKey();
+        calc.pressEqualsKey("+");
 
         String expected = "40";
         String actual = calc.readScreen();
@@ -38,6 +38,24 @@ class CalculatorTest {
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
+    }
+    @Test
+    @DisplayName("jdnd")
+    void test1(){
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(1);
+        calc.pressBinaryOperationKey("/");
+        calc.pressDigitKey(0);
+        calc.pressEqualsKey("/");
+
+        String expected ="Error";
+        String actual = calc.readScreen();
+
+        assertEquals(expected,actual);
+
+
+
     }
 
     //TODO hier weitere Tests erstellen
