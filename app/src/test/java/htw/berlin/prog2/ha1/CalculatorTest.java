@@ -68,7 +68,7 @@ class CalculatorTest {
 
         calc.pressDigitKey(1);
         calc.pressDigitKey(0);
-        calc.pressBinaryOperationKey("+/-");
+        calc.pressNegativeKey("+/-");
 
 
         String expected = "-10";
