@@ -52,5 +52,16 @@ class CalculatorTest {
         calc.pressEqualsKey();
         assertEquals("3", calc.readScreen());
     }
+
+    @Test
+    @DisplayName("should display the point number correctly")
+    void calculatorCanDoNumbersWithDots() {
+        Calculator calc = new Calculator();
+        calc.pressDigitKey(5);
+        calc.pressDotKey();
+        calc.pressDigitKey(2);
+        calc.pressDotKey();
+        assertEquals("5.2", calc.readScreen());
+    }
 }
 
