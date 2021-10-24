@@ -59,7 +59,22 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
-//probe
-    //TODO hier weitere Tests erstellen
+
+    @Test
+    @DisplayName("should display decimal number without the secound dot after pressing dotkey while the dot exist ")
+    void testDotKey2() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(1);
+        calc.pressDotKey();
+        calc.pressDigitKey(2);
+        calc.pressDotKey();
+
+        String expected = "1.2";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
 }
 
