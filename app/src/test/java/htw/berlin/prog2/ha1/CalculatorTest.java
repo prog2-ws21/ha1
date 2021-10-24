@@ -39,6 +39,26 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
+    @Test
+    @DisplayName("should display result after adding two decimal digits")
+    void testDotKey() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(1);
+        calc.pressDotKey();
+        calc.pressDigitKey(2);
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(2);
+        calc.pressDotKey();
+        calc.pressDigitKey(1);
+
+        calc.pressEqualsKey();
+
+        String expected = "3.3";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
 //probe
     //TODO hier weitere Tests erstellen
 }
