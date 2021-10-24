@@ -58,5 +58,23 @@ class CalculatorTest {
     }
 
 
+    @Test
+    @DisplayName("should display result after adding three positive single-digit numbers")
+    void testAdditionThree(){
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(5);
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(1);
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(4);
+        calc.pressEqualsKey();
+
+        String expected = "10";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
 }
 
