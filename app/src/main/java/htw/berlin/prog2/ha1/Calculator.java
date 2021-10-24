@@ -124,7 +124,7 @@ public class Calculator {
             case "x" -> latestValue * Double.parseDouble(screen);
             case "/" -> latestValue / Double.parseDouble(screen);
          if(Double.parseDouble(screen))  !=0{
-             System.out.println("Error11");
+             System.out.println("Error");
             }else{
                 latestValue / Double.parseDouble(screen);
             }
