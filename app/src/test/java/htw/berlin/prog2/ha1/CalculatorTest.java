@@ -44,15 +44,15 @@ class CalculatorTest {
 
     @Test
 
-    @DisplayName("should display result after adding 2 numbers")
-    void testAddition(){
+    @DisplayName("should display result after multiplying 2 numbers")
+    void testMultiplikation(){
         Calculator calc = new Calculator();
 
         calc.pressDigitKey(8);
-        calc.pressBinaryOperationKey("+");
+        calc.pressBinaryOperationKey("*");
         calc.pressDigitKey(1);
         calc.pressEqualsKey();
-        String expected = "9";
+        String expected = "8";
         String actual = calc.readScreen();
         assertEquals(expected, actual);
     }
