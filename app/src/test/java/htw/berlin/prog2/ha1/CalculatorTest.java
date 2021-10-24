@@ -41,8 +41,8 @@ class CalculatorTest {
     }
 
     @Test
-    @DisplayName("Testen der Subtraktion mit einer Kommazahl die in dem Ergebnis mit 0 beginnt")
-    void testSubtraktion() {
+    @DisplayName("Testen der Division mit einer Kommazahl die in dem Ergebnis mit 0 beginnt")
+    void testDivision() {
         Calculator calc = new Calculator();
 
         calc.pressDigitKey(2);
@@ -79,20 +79,37 @@ class CalculatorTest {
         Calculator calc = new Calculator();
 
 
-        calc.pressDotKey();
         calc.pressDigitKey(1);
-
-
 
         calc.pressBinaryOperationKey("/");
 
-
-        calc.pressDotKey();
         calc.pressDigitKey(0);
 
         calc.pressEqualsKey();
 
         String expected = "Error";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("Punkt statt Zahl zu erst")
+    void testPunktBeginn() {
+        Calculator calc = new Calculator();
+
+
+        calc.pressDotKey();
+        calc.pressDigitKey(1);
+
+        calc.pressBinaryOperationKey("+");
+
+        calc.pressDotKey();
+        calc.pressDigitKey(3);
+
+        calc.pressEqualsKey();
+
+        String expected = "0.4";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
