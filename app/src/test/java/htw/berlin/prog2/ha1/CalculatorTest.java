@@ -41,13 +41,14 @@ class CalculatorTest {
     }
 
     @Test
-    @DisplayName("should display 0 after pressing clear button")
-    void testClearScreen(){
+    @DisplayName("should display result after multiplying two positive numbers")
+    void testPositiveMultiplication(){
         Calculator calc = new Calculator();
         calc.pressDigitKey(3);
+        calc.pressBinaryOperationKey("x");
         calc.pressDigitKey(2);
-        calc.pressClearKey();
-        String expected = "0";
+        calc.pressEqualsKey();
+        String expected = "6";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
@@ -67,16 +68,17 @@ class CalculatorTest {
     }
 
     @Test
-    @DisplayName("should display result after pressing equalsKey two times in a row")
-    void testPressNegativeKey() {
+    @DisplayName("should clear screen and previously typed digits or operations, when pressed twice")
+    void testPressClearKey() {
         Calculator calc = new Calculator();
-        calc.pressDigitKey(2);
+        calc.pressDigitKey(5);
         calc.pressBinaryOperationKey("-");
-        calc.pressDigitKey(4);
+        calc.pressDigitKey(2);
         calc.pressEqualsKey();
-        calc.pressEqualsKey();
-        calc.pressEqualsKey();
-        String expected = "-6";
+        calc.pressClearKey();
+        calc.pressClearKey();
+        calc.clearEntry();
+        String expected = "0";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
