@@ -55,6 +55,20 @@ class CalculatorTest {
         assertEquals(expected, actual);
      }
 
+   @Test
+    void test2(){
+        Calculator calc = new Calculator();
+        calc.pressDigitKey(2);
+        calc.pressBinaryOperationKey("-");
+        calc.pressDigitKey(2);
+        calc.pressBinaryOperationKey("x");
+        calc.pressDigitKey(5);
+        calc.pressEqualsKey();
+        calc.readScreen();
+        String expected = "-8";
+        String actual = calc.readScreen();
+        assertEquals(expected, actual);
+   }
 
 
 
