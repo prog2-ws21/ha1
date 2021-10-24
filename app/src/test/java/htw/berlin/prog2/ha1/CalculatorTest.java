@@ -59,33 +59,47 @@ class CalculatorTest {
     }
 
     @Test
-    @DisplayName("should display result after calculating 1% of any positive number")
-    void testPositivePerCent() {
+    @DisplayName("should display result after first multiplying two two-digit numbers and then calculating the square root")
+    void testsquareRootOfMultiplication () {
         Calculator calc = new Calculator();
 
-        calc.pressDigitKey(4);
-        calc.pressDigitKey(7);
-        calc.pressBinaryOperationKey("%");
+        calc.pressDigitKey(2);
+        calc.pressDigitKey(0);
+        calc.pressBinaryOperationKey("x");
+        calc.pressDigitKey(2);
+        calc.pressDigitKey(0);
+        calc.pressEqualsKey();
+        calc.pressUnaryOperationKey("√");
 
-        String expected = "0.47";
+        String expected = "20";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
     }
 
     @Test
-    @DisplayName("should display result after dividing 1 by any positive number")
-    void testoneDividedby () {
+    @DisplayName("should display result when adding two positive numbers while trying to enter multiple dots")
+    void testmultipleDots () {
         Calculator calc = new Calculator();
 
         calc.pressDigitKey(5);
-        calc.pressBinaryOperationKey("1/x");
+        calc.pressDotKey();
+        calc.pressDigitKey(4);
+        calc.pressDotKey();
+        calc.pressDigitKey(4);
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(1);
+        calc.pressDotKey();
+        calc.pressDigitKey(2);
+        calc.pressDotKey();
+        calc.pressDigitKey(1);
+        calc.pressEqualsKey();
 
-        String expected = "0.2";
+
+        String expected = "6.66";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
     }
-
 }
 
