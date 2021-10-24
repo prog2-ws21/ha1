@@ -102,7 +102,7 @@ public class Calculator {
 	 * bereits ein Trennzeichen angezeigt wird, passiert nichts.
 	 */
 	public void pressDotKey(String s) {
-		if (!screen.contains("."))
+		if (!screen.endsWith("."))
 			screen = screen + ".";
 	}
 
