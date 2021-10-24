@@ -74,26 +74,25 @@ class CalculatorTest {
     }
 
     @Test
-    @DisplayName("Wenn Punkt am Anfang gesetzt nicht 2 sondern 0.2")
-    void testNullAbgrenzung() {
+    @DisplayName("Division durch 0")
+    void testError() {
         Calculator calc = new Calculator();
 
-        calc.pressDigitKey(1);
-        calc.pressDotKey();
-        calc.pressDigitKey(1);
-
-
-
-        calc.pressBinaryOperationKey("+");
-
-        calc.pressDigitKey(1);
 
         calc.pressDotKey();
-        calc.pressDigitKey(3);
+        calc.pressDigitKey(1);
+
+
+
+        calc.pressBinaryOperationKey("/");
+
+
+        calc.pressDotKey();
+        calc.pressDigitKey(0);
 
         calc.pressEqualsKey();
 
-        String expected = "2.4";
+        String expected = "Error";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);

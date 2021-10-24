@@ -135,6 +135,6 @@ public class Calculator {
         screen = Double.toString(result);
         if(screen.endsWith(".0")) screen = screen.substring(0,screen.length()-2);
         if(screen.contains(".") && screen.length() > 11) screen = screen.substring(0, 10);
-        if(screen.contains(".") && screen.length() < 11 && screen.length() > 4) screen = screen.substring(0,screen.length()-7);
+       if(screen.equalsIgnoreCase("Infinity")) screen = "Error";
     }
 }
