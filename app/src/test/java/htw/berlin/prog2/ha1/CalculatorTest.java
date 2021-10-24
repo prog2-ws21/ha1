@@ -58,7 +58,7 @@ class CalculatorTest {
     }
     
     @Test
-    @DisplayName("should multiply with either x or * ")
+    @DisplayName("should multiply with either -x- or -*- ")
     void testMultiplyOperator() {
         Calculator calc = new Calculator();
 
@@ -73,6 +73,21 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
     
+    @Test
+    @DisplayName("should display -Error- after dividing with -0-")
+    void testDividingKey() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(2);
+        calc.pressBinaryOperationKey("/");
+        calc.pressDigitKey(0);
+        calc.pressEqualsKey();
+
+        String expected = "Error";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
 
     
 }
