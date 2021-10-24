@@ -41,5 +41,51 @@ class CalculatorTest {
     }
 
     //TODO hier weitere Tests erstellen
+
+    @Test
+
+    @DisplayName("should display result after multiplying 2 numbers")
+    void testMultiplikation(){
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(8);
+        calc.pressBinaryOperationKey("*");
+        calc.pressDigitKey(1);
+        calc.pressEqualsKey();
+        String expected = "8";
+        String actual = calc.readScreen();
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("should display an error after trying division with 0")
+    void testDivisonWith0() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(22);
+        calc.pressBinaryOperationKey("/");
+        calc.pressDigitKey(0);
+        calc.pressEqualsKey();
+        String expected = "Error";
+        String actual = calc.readScreen();
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("should show result of squareroot with negative number")
+    void testSquareRootFromNegativeNumber() {
+        Calculator calc = new Calculator();
+
+        calc.pressBinaryOperationKey(-);
+        calc.pressDigitKey(5);
+        calc.pressUnaryOperationKey("√");
+        String expected = "Error";
+        String actual = calc.readScreen();
+        assertEquals(expected, actual);
+    }
+}
+
+
+    }
 }
 
