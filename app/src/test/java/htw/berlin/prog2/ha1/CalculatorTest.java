@@ -71,7 +71,27 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
-    
+
+    @Test
+    @DisplayName("should display result of triple binary operation of three negative one-digit numbers")
+    void testTripleBinaryOperation() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(5);
+        calc.pressNegativeKey();
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(7);
+        calc.pressNegativeKey();
+        calc.pressBinaryOperationKey("x");
+        calc.pressDigitKey(2);
+        calc.pressEqualsKey();
+
+        String expected = "-24";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
 
 }
 
