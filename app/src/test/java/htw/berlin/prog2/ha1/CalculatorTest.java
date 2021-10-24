@@ -41,5 +41,21 @@ class CalculatorTest {
     }
 
     //TODO hier weitere Tests erstellen
+
+    @Test
+
+    @DisplayName("should display result after adding 2 numbers")
+    void testDivision(){
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(8);
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(1);
+        calc.pressEqualsKey();
+        String expected = "9";
+        String actual = calc.readScreen();
+        assertEquals(expected, actual);
+    }
+
 }
 
