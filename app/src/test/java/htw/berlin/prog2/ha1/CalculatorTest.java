@@ -76,5 +76,25 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
+
+
+    @Test
+    @DisplayName("should display result after adding a dot")
+    void testdot() {
+        Calculator calc = new Calculator();
+
+
+        calc.pressDigitKey(1);
+        calc.pressDigitKey(0);
+        calc.pressDotKey(".");
+        calc.pressDigitKey(1);
+        calc.pressDigitKey(0);
+
+
+        String expected = "10.10";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
 }
 
