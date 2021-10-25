@@ -2,6 +2,8 @@ package htw.berlin.prog2.ha1;
 
 import jdk.dynalink.Operation;
 
+import java.util.Scanner;
+
 /**
  * Eine Klasse, die das Verhalten des Online Taschenrechners imitiert, welcher auf
  * https://www.online-calculator.com/ aufgerufen werden kann (ohne die Memory-Funktionen)
@@ -15,6 +17,11 @@ public class Calculator {
     private double latestValue;
 
     private String latestOperation = "";
+
+
+
+
+
 
     /**
      * @return den aktuellen Bildschirminhalt als String
@@ -33,10 +40,15 @@ public class Calculator {
     public void pressDigitKey(int digit) {
         if(digit > 9 || digit < 0) throw new IllegalArgumentException();
 
+
         if(screen.equals("0") || latestValue == Double.parseDouble(screen)) screen = "";
 
-        screen = screen + digit;
-    }
+        screen = screen + digit ;
+
+
+
+        }
+
 
     /**
      * Empfängt den Befehl der C- bzw. CE-Taste (Clear bzw. Clear Entry).
@@ -50,7 +62,13 @@ public class Calculator {
         screen = "0";
         latestOperation = "";
         latestValue = 0.0;
+
+
+
     }
+
+
+
 
     /**
      * Empfängt den Wert einer gedrückten binären Operationstaste, also eine der vier Operationen
@@ -65,7 +83,9 @@ public class Calculator {
         latestValue = Double.parseDouble(screen);
         latestOperation = operation;
 
-    }
+
+     }
+
 
     /**
      * Empfängt den Wert einer gedrückten unären Operationstaste, also eine der drei Operationen
@@ -86,6 +106,7 @@ public class Calculator {
         screen = Double.toString(result);
         if(screen.contains(".") && screen.length() > 11) screen = screen.substring(0, 10);
 
+
     }
 
     /**
@@ -96,11 +117,24 @@ public class Calculator {
      * Beim zweimaligem Drücken, oder wenn bereits ein Trennzeichen angezeigt wird, passiert nichts.
      */
     public void pressDotKey() {
-        if(!screen.endsWith(".")){
-            screen = screen + ".";
+
+        if(!screen.contains(".")) screen = screen  + "." ;
+
+
+
+
+
+
+
+
+
 
         }
-    }
+
+
+
+
+
 
     /**
      * Empfängt den Befehl der gedrückten Vorzeichenumkehrstaste ("+/-").
