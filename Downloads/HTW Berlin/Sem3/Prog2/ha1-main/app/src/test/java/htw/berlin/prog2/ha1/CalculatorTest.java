@@ -74,6 +74,23 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
 
+    @Test
+    @DisplayName("should display 0 when a multi-digit number is multiplied by 0 or -0")
+    void testMultipleByZero() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(5);
+        calc.pressBinaryOperationKey("*");
+        calc.pressDigitKey(0);
+        calc.pressNegativeKey();
+        calc.pressEqualsKey();
+
+        String expected = "0";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
 
 }
 
