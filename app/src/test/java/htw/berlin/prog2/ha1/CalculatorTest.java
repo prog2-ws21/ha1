@@ -70,6 +70,7 @@ class CalculatorTest {
         calc.pressDigitKey(8);
         calc.pressDotKey();
 
+
         String expected = "2.78";
         String actual = calc.readScreen();
 
@@ -78,22 +79,19 @@ class CalculatorTest {
     }
 
     @Test
-    @DisplayName("should display result after adding two negative number  when pressing the negative button")
-    void testpressNegativeKey()
-    {
+    @DisplayName("should display result an error message when dividing by 0")
+    void testdivision0() {
         Calculator calc = new Calculator();
 
-        calc.pressNegativeKey();
-        calc.pressDigitKey(2);
-        calc.pressBinaryOperationKey("+");
-        calc.pressNegativeKey();
-        calc.pressDigitKey(7);
-
-
-        String expected = "-9";
+        calc.pressDigitKey(5);
+        calc.pressBinaryOperationKey("/");
+        calc.pressDigitKey(0);
+        calc.pressEqualsKey();
+        String expected = "ERROR";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
     }
 }
+
 
