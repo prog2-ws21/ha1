@@ -43,7 +43,7 @@ class CalculatorTest {
     //TODO hier weitere Tests erstellen
 @Test
 @DisplayName("should display the result after distracting 15 of 20")
-    void testsubstraction ()
+    void testSubstraction ()
 {
         Calculator calc = new Calculator();
         calc.pressDigitKey(2);
@@ -60,7 +60,7 @@ class CalculatorTest {
     }
     @Test
     @DisplayName("test if a number can be divided and then added in one operation")
-    void testdivide() {
+    void testDivide() {
         Calculator calc = new Calculator();
         calc.pressDigitKey(2);
         calc.pressDigitKey(0);
@@ -78,7 +78,7 @@ class CalculatorTest {
     }
     @Test
     @DisplayName("shouldn't display another dot after an existing one ")
-    void testmultipledots () {
+    void testMultipledots () {
         Calculator calc = new Calculator();
         calc.pressDigitKey(4);
         calc.pressDotKey();
@@ -91,7 +91,20 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
+    @Test
+    @DisplayName("should add a 0 before the dot")
+    void testDotAsFirst () {
+        Calculator calc = new Calculator();
+        calc.pressDotKey();
+        calc.pressDigitKey(1);
 
+
+
+        String expected = "0.1";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
     @Test
     @DisplayName("test power 2")
     void testPower () {
