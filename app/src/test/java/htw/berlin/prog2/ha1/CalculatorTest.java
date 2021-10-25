@@ -40,7 +40,7 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
     @Test
-    @DisplayName("jdnd")
+    @DisplayName("jdnnd")
     void test1(){
         Calculator calc = new Calculator();
 
