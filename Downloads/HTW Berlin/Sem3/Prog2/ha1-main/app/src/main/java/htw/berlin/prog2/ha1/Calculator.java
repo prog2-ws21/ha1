@@ -118,6 +118,7 @@ public class Calculator {
      */
     public void pressEqualsKey() {
         if ((latestOperation.equals("/")) && screen.equals("0")) screen = "Error";
+        else if (latestOperation.equals("*") && (screen.equals("0") || screen.equals("-0"))) screen = "0";
         else {
             var result = switch (latestOperation) {
                 case "+" -> latestValue + Double.parseDouble(screen);
