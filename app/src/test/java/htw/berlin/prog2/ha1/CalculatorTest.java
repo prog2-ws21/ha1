@@ -43,6 +43,7 @@ class CalculatorTest {
     //TODO hier weitere Tests erstellen
 
      @Test
+     @DisplayName("Should display result after divide a number by zero")
     void testPressEqualsKey(){
         Calculator calc = new Calculator();
         calc.pressDigitKey(4);
@@ -55,22 +56,21 @@ class CalculatorTest {
         assertEquals(expected, actual);
      }
 
-   @Test
-    void test2(){
+
+    @Test
+    @DisplayName("Should display only one dot instead of two. Only one after the first number")
+    void testPressDotKey(){
         Calculator calc = new Calculator();
         calc.pressDigitKey(2);
-        calc.pressBinaryOperationKey("-");
-        calc.pressDigitKey(2);
-        calc.pressBinaryOperationKey("x");
-        calc.pressDigitKey(5);
-        calc.pressEqualsKey();
+        calc.pressDotKey();
+        calc.pressDigitKey(4);
+        calc.pressDotKey();
+       // calc.pressEqualsKey();
         calc.readScreen();
-        String expected = "-8";
+        String expected = "2.4";
         String actual = calc.readScreen();
         assertEquals(expected, actual);
-   }
-
-
+    }
 
 }
 
