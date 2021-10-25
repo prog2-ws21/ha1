@@ -67,6 +67,7 @@ public class Calculator {
     /**
      * Empfängt den Wert einer gedrückten unären Operationstaste, also eine der drei Operationen
      * Quadratwurzel, Prozent, Inversion, welche nur einen Operanden benötigen.
+     * Wenn aus einer negativen Zahl die Wurzel gezogen werden soll, wird direkt Error angezeigt
      * Beim Drücken der Taste wird direkt die Operation auf den aktuellen Zahlenwert angewendet und
      * der Bildschirminhalt mit dem Ergebnis aktualisiert.
      * @param operation "√" für Quadratwurzel, "%" für Prozent, "1/x" für Inversion
@@ -74,14 +75,21 @@ public class Calculator {
     public void pressUnaryOperationKey(String operation) {
         latestValue = Double.parseDouble(screen);
         latestOperation = operation;
-        var result = switch(operation) {
-            case "√" -> Math.sqrt(Double.parseDouble(screen));
-            case "%" -> Double.parseDouble(screen) / 100;
-            case "1/x" -> 1 / Double.parseDouble(screen);
-            default -> throw new IllegalArgumentException();
-        };
-        screen = Double.toString(result);
-        if(screen.contains(".") && screen.length() > 11) screen = screen.substring(0, 10);
+        if(operation.equals("√") && latestValue <=0){
+            screen = "ERROR";
+        }
+        else {
+            var result = switch (operation) {
+                case "√" -> Math.sqrt(Double.parseDouble(screen));
+                case "%" -> Double.parseDouble(screen) / 100;
+                case "1/x" -> 1 / Double.parseDouble(screen);
+                default -> throw new IllegalArgumentException();
+            };
+
+
+            screen = Double.toString(result);
+            if (screen.contains(".") && screen.length() > 11) screen = screen.substring(0, 10);
+        }
 
     }
 
