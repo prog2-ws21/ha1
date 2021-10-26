@@ -12,7 +12,6 @@ class CalculatorTest {
     @DisplayName("should display result after adding two positive multi-digit numbers")
     void testPositiveAddition() {
         Calculator calc = new Calculator();
-
         calc.pressDigitKey(2);
         calc.pressDigitKey(0);
         calc.pressBinaryOperationKey("+");
@@ -40,9 +39,10 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
 
-    /**
-     *  grüne Tests Teilaufgabe 1 - Subtraktion und Division positiver Zahlen
-     */
+/*
+Teilaufgabe 1 subtraktion
+ */
+
 
     @Test
     @DisplayName("should display result after subtraction of two positive multi-digit numbers")
@@ -62,98 +62,53 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
 
+    /*
+    Teilaufgabe 2 & 3 - Addieren von zwei Dezimalzahlen; Punkt wird zwei mal gedrückt
+     */
+
+
     @Test
-    @DisplayName("should display result after dividing two positive numbers")
+    @DisplayName("should display result after adding two decimal numbers pressing dot 2 times")
+    void testDot() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(3);
+        calc.pressDotKey();
+        calc.pressDigitKey(0);
+        calc.pressDotKey();
+        calc.pressBinaryOperationKey("-");
+        calc.pressDigitKey(2);
+        calc.pressDotKey();
+        calc.pressDigitKey(0);
+        calc.pressEqualsKey();
+
+        String expected = "1";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+/*
+Teilaufgabe 2&3 - Division durch Null
+ */
+    @Test
+    @DisplayName("should display error after dividing with 0 not infinity")
     void testDivision() {
         Calculator calc = new Calculator();
 
         calc.pressDigitKey(2);
         calc.pressBinaryOperationKey("/");
-        calc.pressDigitKey(2);
+        calc.pressDigitKey(0);
         calc.pressEqualsKey();
 
-        String expected = "1";
-        String actual = calc.readScreen();
-
-        assertEquals(expected, actual);
-    }
-    /*
-    roter Test 1 - Division 2 negative Zahlen
-     */
-    /*
-    @Test
-    @DisplayName("should display result after dividing two negative numbers")
-    void testNegDivision() {
-        Calculator calc = new Calculator();
-        calc.pressNegativeKey();
-        calc.pressDigitKey(2);
-        calc.pressBinaryOperationKey("/");
-        calc.pressNegativeKey();
-        calc.pressDigitKey(2);
-        calc.pressEqualsKey();
-
-        String expected = "1";
-        String actual = calc.readScreen();
-
-        assertEquals(expected, actual);
-    } */
-    /*
-    grüner Test - Division zwei negativer Zahlen mit veränderter Methode pressDigitKey
-     */
-    @Test
-    @DisplayName("should display result after dividing two negative numbers")
-    void testNDivision() {
-        Calculator calc = new Calculator();
-        calc.pressDigitKey(-2);
-        calc.pressBinaryOperationKey("/");
-        calc.pressDigitKey(-2);
-        calc.pressEqualsKey();
-
-        String expected = "1";
+        String expected = "error";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
     }
 
-    /*
-    Test 2  - Division einer positiven und negativen Zahl
-     */
 
-    /*
-    @Test
-    @DisplayName("should display result after dividing one positive and one negative number")
-    void testNPDivision() {
-        Calculator calc = new Calculator();
-        calc.pressDigitKey(2);
-        calc.pressBinaryOperationKey("/");
-        calc.pressNegativeKey();
-        calc.pressDigitKey(2);
-        calc.pressEqualsKey();
 
-        String expected = "-1";
-        String actual = calc.readScreen();
-
-        assertEquals(expected, actual);
-    }
-*/
-
-    /*
-    grüner Test - Division einer positiven und negativen Zahl mit veränderter Methode pressDigitKey
-     */
-    @Test
-    @DisplayName("should display result after dividing one positive and one negative numbers")
-    void testNPDivision() {
-        Calculator calc = new Calculator();
-        calc.pressDigitKey(2);
-        calc.pressBinaryOperationKey("/");
-        calc.pressDigitKey(-2);
-        calc.pressEqualsKey();
-
-        String expected = "-1";
-        String actual = calc.readScreen();
-
-        assertEquals(expected, actual);
-    }
 
 
 }
+
