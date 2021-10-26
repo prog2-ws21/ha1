@@ -40,7 +40,7 @@ class CalculatorTest {
     }
 
 /*
-Teilaufgabe 1 subtraktion
+Teilaufgabe 1 subtraktion zwei positiver Zahlen
  */
 
 
