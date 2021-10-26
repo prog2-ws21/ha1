@@ -70,12 +70,28 @@ class CalculatorTest {
         calc.pressDigitKey(7);
         calc.pressUnaryOperationKey("%");
         calc.pressEqualsKey();
-
         String expected = "0.07";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
 
+    }
+
+    // 2 Neuer roter Test
+    // Teilaufgabe 2
+
+    @Test
+    @DisplayName ("should display result after inversion")
+    void testInversion() {
+        Calculator calc = new Calculator ();
+        calc.pressDigitKey(8);
+        calc.pressUnaryOperationKey("1/x");
+        calc.pressEqualsKey();
+
+        String expected = "0.125";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
     }
 
 }
