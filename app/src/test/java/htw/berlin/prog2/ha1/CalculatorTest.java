@@ -89,7 +89,7 @@ Teilaufgabe 1 subtraktion zwei positiver Zahlen
     }
 
     /*
-    Teilaufgabe 2&3 - Division durch Null
+    Teilaufgabe 2 & 3 - Division durch Null
      */
     @Test
     @DisplayName("should display error after dividing with 0 not infinity")
