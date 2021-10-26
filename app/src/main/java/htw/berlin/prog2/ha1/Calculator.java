@@ -11,6 +11,7 @@ public class Calculator {
     private String screen = "0";
 
     private double latestValue;
+    private double latestLatestValue;
 
     private String latestOperation = "";
 
@@ -31,7 +32,7 @@ public class Calculator {
     public void pressDigitKey(int digit) {
         if(digit > 9 || digit < 0) throw new IllegalArgumentException();
 
-        if(screen.equals("0") || latestValue == Double.parseDouble(screen) || latestValue == Double.parseDouble(screen) + 1) screen = "";
+        if(screen.equals("0") || latestValue == Double.parseDouble(screen) /*|| latestValue == Double.parseDouble(screen) + 1*/) screen = "";
 
         screen = screen + digit;
     }
@@ -60,12 +61,16 @@ public class Calculator {
      * @param operation "+" für Addition, "-" für Substraktion, "x" für Multiplikation, "/" für Division
      */
     public void pressBinaryOperationKey(String operation)  {
-        if(!latestOperation.equals("")) {
+        if(!(latestValue ==0)) {
+            latestLatestValue = latestValue;
+        }
+
+        /*if(!latestOperation.equals("")) {
             latestValue += Double.parseDouble(screen );
         }
-        else {
+        else {*/
             latestValue = Double.parseDouble(screen);
-        }
+       // }
         latestOperation = operation;
     }
 
@@ -123,7 +128,7 @@ public class Calculator {
      */
     public void pressEqualsKey() {
         var result = switch(latestOperation) {
-            case "+" -> latestValue + Double.parseDouble(screen);
+            case "+" -> latestValue + Double.parseDouble(screen) + latestLatestValue;
             case "-" -> latestValue - Double.parseDouble(screen);
             case "x" -> latestValue * Double.parseDouble(screen);
             case "/" -> latestValue / Double.parseDouble(screen);
