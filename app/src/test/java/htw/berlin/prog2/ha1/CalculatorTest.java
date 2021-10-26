@@ -59,5 +59,21 @@ public class CalculatorTest {
 
     }
 
+    @Test
+    @DisplayName("should calculate the division of two numbers 2 and 0")
+    void testDivisionRoot(){
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(2);
+        calc.pressBinaryOperationKey("/");
+        calc.pressDigitKey(0);
+        calc.pressEqualsKey();
+
+        String expected ="Error";
+        String actual =calc.readScreen();
+
+        assertEquals(expected,actual);
+
+    }
 
 }
