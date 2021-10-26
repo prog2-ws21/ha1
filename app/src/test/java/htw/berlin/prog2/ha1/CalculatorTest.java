@@ -41,5 +41,59 @@ class CalculatorTest {
     }
 
     //TODO hier weitere Tests erstellen
+
+    // grüner test
+    @Test
+    @DisplayName("should display result after subtracting two positive numbers")
+    void testPositiveSubtraction() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(5);
+        calc.pressBinaryOperationKey("-");
+        calc.pressDigitKey(4);
+        calc.pressEqualsKey();
+
+        String expected = "1";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+    // roter test 1
+
+    @Test
+    @DisplayName("should display result after rooting a number")
+    void testRoot() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(5);
+        calc.pressBinaryOperationKey("1/x");
+        calc.pressEqualsKey();
+
+        String expected = "0.2";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+    // roter Test 2
+    @Test
+    @DisplayName("should display Error after dividing a number with zero")
+    void testDivisionWithZero() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(9);
+        calc.pressBinaryOperationKey("/");
+        calc.pressDigitKey(0);
+        calc.pressEqualsKey();
+
+        String expected = "Error";
+
+        String actual = calc.readScreen();
+        assertEquals(expected, actual);
+    }
+
+
+
 }
 
