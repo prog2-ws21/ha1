@@ -11,6 +11,7 @@ public class Calculator {
     private String screen = "0";
 
     private double latestValue;
+    private double latestLatestValue;
 
     private String latestOperation = "";
 
@@ -31,7 +32,7 @@ public class Calculator {
     public void pressDigitKey(int digit) {
         if(digit > 9 || digit < 0) throw new IllegalArgumentException();
 
-        if(screen.equals("0") || latestValue == Double.parseDouble(screen)) screen = "";
+        if(screen.equals("0") || latestValue == Double.parseDouble(screen) /*|| latestValue == Double.parseDouble(screen) + 1*/) screen = "";
 
         screen = screen + digit;
     }
@@ -60,7 +61,16 @@ public class Calculator {
      * @param operation "+" für Addition, "-" für Substraktion, "x" für Multiplikation, "/" für Division
      */
     public void pressBinaryOperationKey(String operation)  {
-        latestValue = Double.parseDouble(screen);
+        if(!(latestValue ==0)) {
+            latestLatestValue = latestValue;
+        }
+
+        /*if(!latestOperation.equals("")) {
+            latestValue += Double.parseDouble(screen );
+        }
+        else {*/
+            latestValue = Double.parseDouble(screen);
+       // }
         latestOperation = operation;
     }
 
@@ -118,7 +128,7 @@ public class Calculator {
      */
     public void pressEqualsKey() {
         var result = switch(latestOperation) {
-            case "+" -> latestValue + Double.parseDouble(screen);
+            case "+" -> latestValue + Double.parseDouble(screen) + latestLatestValue;
             case "-" -> latestValue - Double.parseDouble(screen);
             case "x" -> latestValue * Double.parseDouble(screen);
             case "/" -> latestValue / Double.parseDouble(screen);
@@ -127,5 +137,6 @@ public class Calculator {
         screen = Double.toString(result);
         if(screen.endsWith(".0")) screen = screen.substring(0,screen.length()-2);
         if(screen.contains(".") && screen.length() > 11) screen = screen.substring(0, 10);
+        if(screen.contains("Infinity")) screen = "Error";
     }
 }
