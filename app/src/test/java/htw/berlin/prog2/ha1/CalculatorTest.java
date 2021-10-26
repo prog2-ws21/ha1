@@ -41,5 +41,36 @@ class CalculatorTest {
     }
 
     //TODO hier weitere Tests erstellen
+
+     @Test
+     @DisplayName("Should display result after divide a number by zero")
+    void testPressEqualsKey(){
+        Calculator calc = new Calculator();
+        calc.pressDigitKey(4);
+        calc.pressBinaryOperationKey("/");
+        calc.pressDigitKey(0);
+        calc.pressEqualsKey();
+        calc.readScreen();
+        String expected = "Error";
+        String actual = calc.readScreen();
+        assertEquals(expected, actual);
+     }
+
+
+    @Test
+    @DisplayName("Should display only one dot instead of two. Only one after the first number")
+    void testPressDotKey(){
+        Calculator calc = new Calculator();
+        calc.pressDigitKey(2);
+        calc.pressDotKey();
+        calc.pressDigitKey(4);
+        calc.pressDotKey();
+       // calc.pressEqualsKey();
+        calc.readScreen();
+        String expected = "2.4";
+        String actual = calc.readScreen();
+        assertEquals(expected, actual);
+    }
+
 }
 
