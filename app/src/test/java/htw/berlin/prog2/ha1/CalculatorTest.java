@@ -45,8 +45,8 @@ public class CalculatorTest {
 
 
     @Test
-    @DisplayName("should display result after getting the division of 1/x ")
-    void testDivisionRoot(){
+    @DisplayName("should display result after getting the inverse of 2")
+    void testInversionRoot(){
         Calculator calc = new Calculator();
 
         calc.pressDigitKey(2);
@@ -58,5 +58,6 @@ public class CalculatorTest {
         assertEquals(expected, actual);
 
     }
+
 
 }
