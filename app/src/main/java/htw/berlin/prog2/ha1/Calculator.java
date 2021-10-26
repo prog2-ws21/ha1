@@ -8,9 +8,9 @@ package htw.berlin.prog2.ha1;
  */
 public class Calculator {
 
-    public String screen = "0";
+    private String screen = "0";
 
-    public double latestValue;
+    private double latestValue;
 
     private String latestOperation = "";
 
