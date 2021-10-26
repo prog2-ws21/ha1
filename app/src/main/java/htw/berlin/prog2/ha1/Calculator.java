@@ -14,6 +14,8 @@ public class Calculator {
 
     private String latestOperation = "";
 
+
+    public Calculator(){}
     /**
      * @return den aktuellen Bildschirminhalt als String
      */
