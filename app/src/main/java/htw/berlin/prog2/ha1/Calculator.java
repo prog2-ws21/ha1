@@ -122,7 +122,10 @@ public class Calculator {
      */
     public void pressEqualsKey() {
 
-
+        if (screen.equals("0")) {
+            screen = "error";
+            return;
+        }
 
         var result = switch (latestOperation) {
 
