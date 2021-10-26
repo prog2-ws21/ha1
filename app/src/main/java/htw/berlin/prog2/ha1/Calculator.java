@@ -131,7 +131,8 @@ public class Calculator {
 
                 };
                 screen = Double.toString(result);
-               if (screen==i1) {
+
+                if (screen==i1) {
                    screen = ("Error");
                }
 
