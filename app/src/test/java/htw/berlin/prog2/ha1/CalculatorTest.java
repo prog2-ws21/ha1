@@ -41,6 +41,9 @@ class CalculatorTest {
     }
 
     //TODO hier weitere Tests erstellen
+
+    // Neuer grüner Test
+    // Teilaufgabe 1
     @Test
     @DisplayName("should dispaly result after subtracting a multi-digit number from a positive multi-digit number")
     void testSubstraction() {
@@ -57,6 +60,24 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
+    // 1 Neuer roter Test
+    // Teilaufgabe 2
+
+    @Test
+    @DisplayName("should display percentage")
+    void testPercentage() {
+        Calculator calc = new Calculator ();
+        calc.pressDigitKey(7);
+        calc.pressUnaryOperationKey("%");
+        calc.pressEqualsKey();
+
+        String expected = "0.07";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+
+    }
 
 }
+
 
