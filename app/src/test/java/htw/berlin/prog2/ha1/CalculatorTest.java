@@ -41,5 +41,63 @@ class CalculatorTest {
     }
 
     //TODO hier weitere Tests erstellen
+
+
+    // Regression Test
+    @Test
+    @DisplayName("multiply negative digits to get a positive result")
+    void calculateWithNegativeDigits () {
+        Calculator calc = new Calculator();
+        calc.pressDigitKey(-2);
+
+        calc.pressBinaryOperationKey("x");
+        calc.pressDigitKey(-4);
+
+        calc.pressEqualsKey();
+        String expected = "8";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+
+    }
+
+
+    // Test-driven Test 1
+    @Test
+    @DisplayName("calculate with more than two digits")
+    void testCalculateWithMoreDigits () {
+        Calculator calc = new Calculator();
+        calc.pressDigitKey(9);
+        calc.pressBinaryOperationKey("-");
+        calc.pressDigitKey(4);
+
+        calc.pressBinaryOperationKey("-");
+        calc.pressDigitKey(3);
+
+        calc.pressEqualsKey();
+        String expected = "2";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+
+    }
+
+    // Test-driven Test 2
+    @Test
+    @DisplayName("try to square the root of negative numbers")
+    void testSquareTheRootNegativeNumbers () {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(3);
+        calc.pressNegativeKey();
+        calc.pressUnaryOperationKey("√");
+
+        String expected = "ERROR";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+
+    }
+
 }
 
