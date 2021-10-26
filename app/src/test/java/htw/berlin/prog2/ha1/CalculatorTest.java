@@ -48,14 +48,13 @@ class CalculatorTest {
     @DisplayName("multiply negative digits to get a positive result")
     void calculateWithNegativeDigits () {
         Calculator calc = new Calculator();
-        calc.pressDigitKey(2);
-        //calc.pressNegativeKey();
+        calc.pressDigitKey(-2);
+
         calc.pressBinaryOperationKey("x");
         calc.pressDigitKey(-4);
-        //calc.pressNegativeKey();
 
         calc.pressEqualsKey();
-        String expected = "-8";
+        String expected = "8";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
