@@ -71,21 +71,21 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
     @Test
-    @DisplayName("should display -3 after dividing 3 through -1")
-    void testPlusOrMinus() {
+    @DisplayName("should display 6 after adding 1, 2 and 3")
+    void testTwoOperations() {
         Calculator calc = new Calculator();
-        calc.pressDigitKey(3);
-        calc.pressBinaryOperationKey("/");
         calc.pressDigitKey(1);
-        calc.pressNegativeKey();
         calc.pressBinaryOperationKey("+");
         calc.pressDigitKey(2);
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(3);
         calc.pressEqualsKey();
 
-        String expected = "-1";
+        String expected = "6";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
     }
+
 }
 
