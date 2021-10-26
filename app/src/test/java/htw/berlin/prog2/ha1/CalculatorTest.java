@@ -40,11 +40,11 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
     @Test
-    @DisplayName("jdnnd")
+    @DisplayName("")
     void test1(){
         Calculator calc = new Calculator();
 
-        calc.pressDigitKey(1);
+        calc.pressDigitKey(6);
         calc.pressBinaryOperationKey("/");
         calc.pressDigitKey(0);
         calc.pressEqualsKey("/");

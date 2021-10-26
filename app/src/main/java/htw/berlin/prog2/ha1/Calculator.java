@@ -120,8 +120,7 @@ public class Calculator {
      * und das Ergebnis direkt angezeigt.
      */
     public void pressEqualsKey(String s) {
-    boolean b2=screen.endsWith("i");
-
+    String i1 = "Infinity";
 
                 var result = switch (latestOperation) {
                     case "+" -> latestValue + Double.parseDouble(screen);
@@ -129,9 +128,15 @@ public class Calculator {
                     case "x" -> latestValue * Double.parseDouble(screen);
                     case "/" -> latestValue / Double.parseDouble(screen);
                     default -> throw new IllegalArgumentException();
+
                 };
                 screen = Double.toString(result);
-                if (b2=true) screen=("Error");
+               if (screen==i1) {
+                   screen = ("Error");
+               }
+
+
+
                 if (screen.endsWith(".0")) screen = screen.substring(0, screen.length() - 2);
                 if (screen.contains(".") && screen.length() > 11) screen = screen.substring(0, 10);
             }
