@@ -69,7 +69,6 @@ public class Calculator {
 
         latestValue = Double.parseDouble(screen);
         latestOperation = operation;
-
     }
 
     /**
@@ -82,11 +81,12 @@ public class Calculator {
     public void pressUnaryOperationKey(String operation) {
 
         if (Double.parseDouble(screen) < 0) {
-            throw new IllegalArgumentException("Wurzel aus negativen Zahlen kann man nicht ziehen!");
+            throw new IllegalArgumentException("Error");
         }
 
         latestValue = Double.parseDouble(screen);
         latestOperation = operation;
+
         var result = switch(operation) {
             case "√" -> Math.sqrt(Double.parseDouble(screen));
             case "%" -> Double.parseDouble(screen) / 100;
@@ -130,6 +130,11 @@ public class Calculator {
      * und das Ergebnis direkt angezeigt.
      */
     public void pressEqualsKey() {
+
+        /*if(latestOperation == "/"){
+            screen = "Error";
+        }*/
+
         var result = switch(latestOperation) {
             case "+" -> latestValue + Double.parseDouble(screen);
             case "-" -> latestValue - Double.parseDouble(screen);
