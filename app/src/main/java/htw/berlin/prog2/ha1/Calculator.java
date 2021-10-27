@@ -78,7 +78,7 @@ public class Calculator {
 
     public void pressEqualsUnary () {
         var result = switch (latestOperation) {
-            case "%" -> latestValue % Double.parseDouble(screen);
+            case "%" -> Double.parseDouble(screen) / 100;
             case "√" -> Math.sqrt(Double.parseDouble(screen));
             default -> throw new IllegalArgumentException();
         };
@@ -129,5 +129,6 @@ public class Calculator {
         screen = Double.toString(result);
         if(screen.endsWith(".0")) screen = screen.substring(0,screen.length()-2);
         if(screen.contains(".") && screen.length() > 11) screen = screen.substring(0, 10);
+        if(screen == "Infinity") {screen = "Error";}
     }
 }

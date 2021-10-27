@@ -58,16 +58,15 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
     @Test
-    @DisplayName("should display result after modulo two positive numbers")
+    @DisplayName("should display result after square a positive number")
     void testPositiveModulo() {
         Calculator calc = new Calculator();
 
         calc.pressDigitKey(6);
         calc.pressUnaryOperationKey("%");
-        calc.pressDigitKey(2);
         calc.pressEqualsUnary();
 
-        String expected = "0";
+        String expected = "0.06";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
@@ -83,6 +82,22 @@ class CalculatorTest {
         calc.pressEqualsUnary();
 
         String expected = "3";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("should display result after divide a number with 0 with an error")
+    void testPositiveDivide() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(9);
+        calc.pressBinaryOperationKey("/");
+        calc.pressDigitKey(0);
+        calc.pressEqualsKey();
+
+        String expected = "Error";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
