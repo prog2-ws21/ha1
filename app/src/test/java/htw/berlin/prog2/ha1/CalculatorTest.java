@@ -10,10 +10,24 @@ class CalculatorTest {
     //TODO hier weitere Tests erstellen
 
     @Test
-    @DisplayName("should display ERROR after dividing by 0")
+    @DisplayName("no error should accure when pressing . twice")
         //RedResult
-        //Solution to 1st red test
-        if (screen.contains("Infinity")) screen = "Error";
+
+    void testDotKey() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(4);
+        calc.pressDigitKey(0);
+        calc.pressDotKey(".");
+        calc.pressDotKey(".");
+        calc.pressDigitKey(5);
+
+
+        String expected = "40.5";
+        String actual = calc.readScreen();
+        assertEquals(expected, actual);
+    }
+
 
 }
 
