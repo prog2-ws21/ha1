@@ -13,20 +13,7 @@ class CalculatorTest {
     @DisplayName("should display ERROR after dividing by 0")
         //RedResult
         //Solution to 1st red test
-        //if (screen.contains("Infinity")) screen = "Error";
-    void testDivisionNull() {
-        Calculator calc = new Calculator();
+        if (screen.contains("Infinity")) screen = "Error";
 
-        calc.pressDigitKey(5);
-        calc.pressDigitKey(0);
-        calc.pressBinaryOperationKey("/");
-        calc.pressDigitKey(0);
-
-        calc.pressEqualsKey();
-
-        String expected = "Error";
-        String actual = calc.readScreen();
-        assertEquals(expected, actual);
-    }
 }
 
