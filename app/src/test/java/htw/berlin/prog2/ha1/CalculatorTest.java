@@ -60,6 +60,26 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
+    //Teilaufgabe 2
+    @Test
+    @DisplayName("should display error after dividing positive multi-digit numbers with zero")
+    void testPositiveDivide() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(5);
+        calc.pressDigitKey(3);
+        calc.pressBinaryOperationKey("/");
+        calc.pressDigitKey(0);
+        calc.pressEqualsKey();
+
+        String expected = "Error";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+
+
 
 }
 
