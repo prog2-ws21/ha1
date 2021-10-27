@@ -40,6 +40,34 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
 
+    @Test
+    @DisplayName("should display result of two decimal numbers multiplied")
+    void testMultiplicationOfDecimalNumbers() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(1);
+        calc.pressDotKey();
+        calc.pressDigitKey(5);
+        calc.pressBinaryOperationKey("x");
+        calc.pressDigitKey(6);
+        calc.pressDotKey();
+        calc.pressDigitKey(2);
+        calc.pressEqualsKey();
+
+        String expected = "9.3";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+
+    }
+
+
+
+
+
+
+
+
     //TODO hier weitere Tests erstellen
 }
 
