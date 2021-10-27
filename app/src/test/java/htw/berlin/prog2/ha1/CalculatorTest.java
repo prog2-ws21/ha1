@@ -44,7 +44,7 @@ class CalculatorTest {
      * Teilaufgabe 1:
      * Es handelt sich hier um test welche direkt funktionieren sollten, weil die
      * basis Implementierungen schon korrekt sind.
-     *
+     * <p>
      * testPostiveDivision: Ist für die richtige postive Division zuständig.
      * testPostiveProzent: Ist für die richtige postive Prozent berechnung zuständig.
      */
@@ -87,9 +87,9 @@ class CalculatorTest {
      * Teilaufgabe 2-3:
      * Es handelt sich hier um test welche nicht direkt funktionieren sollten, weil die
      * basis Implementierungen diese funktionalität nicht enthält oder ein Bug vorliegt.
-     *
+     * <p>
      * Diese werden durch die Aufgabe korrigiert und Implementiert um einen Grünen Test zu erhalten.
-     *
+     * <p>
      * testDividingByZero: Ist für die richtige Division mit null zuständig.
      * testNegativKeyFirst: Negative Zeichen am anfang klicken.
      */
