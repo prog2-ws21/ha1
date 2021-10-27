@@ -1,5 +1,7 @@
 package htw.berlin.prog2.ha1;
 
+import java.text.NumberFormat;
+
 /**
  * Eine Klasse, die das Verhalten des Online Taschenrechners imitiert, welcher auf
  * https://www.online-calculator.com/ aufgerufen werden kann (ohne die Memory-Funktionen)
@@ -78,10 +80,16 @@ public class Calculator {
             case "√" -> Math.sqrt(Double.parseDouble(screen));
             case "%" -> Double.parseDouble(screen) / 100;
             case "1/x" -> 1 / Double.parseDouble(screen);
+            case "recip" -> (1 / (Double.parseDouble(screen)));
             default -> throw new IllegalArgumentException();
         };
-        screen = Double.toString(result);
-        if(screen.contains(".") && screen.length() > 11) screen = screen.substring(0, 10);
+        //screen = Double.toString(result);
+        //if(screen.contains(".") && screen.length() > 11) screen = screen.substring(0, 10);
+
+        // QuellIdee https://www.youtube.com/watch?v=KLvnQhdx4BI Java: formatting numbers with NumberFormat
+        NumberFormat nf = NumberFormat.getNumberInstance(); //initialize numberformat
+        nf.setMaximumFractionDigits(8); //max number of decimal digits
+        screen = nf.format(result);//rounded operation
 
     }
 
@@ -93,7 +101,7 @@ public class Calculator {
      * Beim zweimaligem Drücken, oder wenn bereits ein Trennzeichen angezeigt wird, passiert nichts.
      */
     public void pressDotKey() {
-        if(!screen.endsWith(".")) screen = screen + ".";
+        if(!screen.contains(".")) screen = screen + ".";
     }
 
     /**
