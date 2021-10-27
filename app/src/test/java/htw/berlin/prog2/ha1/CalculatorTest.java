@@ -41,5 +41,25 @@ class CalculatorTest {
     }
 
     //TODO hier weitere Tests erstellen
+
+    //Teilaufgabe 1
+    @Test
+    @DisplayName("should display result after multiplying two positive multi-digit numbers")
+    void testPositiveMultiplication() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(1);
+        calc.pressDigitKey(0);
+        calc.pressBinaryOperationKey("x");
+        calc.pressDigitKey(1);
+        calc.pressDigitKey(5);
+        calc.pressEqualsKey();
+
+        String expected = "150";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
 }
 
