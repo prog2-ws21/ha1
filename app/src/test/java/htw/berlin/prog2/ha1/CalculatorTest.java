@@ -91,6 +91,7 @@ class CalculatorTest {
      * Diese werden durch die Aufgabe korrigiert und Implementiert um einen Grünen Test zu erhalten.
      *
      * testDividingByZero: Ist für die richtige Division mit null zuständig.
+     * testNegativKeyFirst: Negative Zeichen am anfang klicken.
      */
 
     @Test
@@ -104,6 +105,24 @@ class CalculatorTest {
         calc.pressEqualsKey();
 
         String expected = "Error";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("should display result when NegativeKey ist pressed first, before adding a negative multi-digit number with a positive multi-digit number")
+    void testNegativKeyFirst() {
+        Calculator calc = new Calculator();
+
+        calc.pressNegativeKey();
+        calc.pressDigitKey(7);
+        calc.pressDigitKey(2);
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(2);
+        calc.pressEqualsKey();
+
+        String expected = "-70";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
