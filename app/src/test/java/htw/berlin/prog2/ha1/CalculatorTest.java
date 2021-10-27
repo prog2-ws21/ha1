@@ -10,17 +10,21 @@ class CalculatorTest {
     //TODO hier weitere Tests erstellen
 
     @Test
-    @DisplayName("should display result after dividing by 100")
-
-        //green
-    void testPercent() {
+    @DisplayName("should display ERROR after dividing by 0")
+        //RedResult
+        //Solution to 1st red test
+        //if (screen.contains("Infinity")) screen = "Error";
+    void testDivisionNull() {
         Calculator calc = new Calculator();
 
         calc.pressDigitKey(5);
         calc.pressDigitKey(0);
-        calc.pressUnaryOperationKey("%");
+        calc.pressBinaryOperationKey("/");
+        calc.pressDigitKey(0);
 
-        String expected = "0.5";
+        calc.pressEqualsKey();
+
+        String expected = "Error";
         String actual = calc.readScreen();
         assertEquals(expected, actual);
     }
