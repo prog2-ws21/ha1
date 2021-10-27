@@ -41,5 +41,28 @@ class CalculatorTest {
     }
 
     //TODO hier weitere Tests erstellen
+
+    @Test
+    @DisplayName("should display result after addition of two positive decimal-digit numbers")
+    void testMultiplication() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(1);
+        calc.pressDigitKey(8);
+        calc.pressDotKey();
+        calc.pressDigitKey(5);
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(1);
+        calc.pressDigitKey(2);
+        calc.pressDotKey();
+        calc.pressDigitKey(2);
+        calc.pressEqualsKey();
+
+        String expected = "30.7";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+
+    }
 }
 

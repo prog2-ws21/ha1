@@ -15,7 +15,7 @@ public class Calculator {
     private String latestOperation = "";
 
     /**
-     * @return den aktuellen Bildschirminhalt als String
+     * //@return den aktuellen Bildschirminhalt als String
      */
     public String readScreen() {
         return screen;
@@ -26,7 +26,7 @@ public class Calculator {
      * drücken kann muss der Wert positiv und einstellig sein und zwischen 0 und 9 liegen.
      * Führt in jedem Fall dazu, dass die gerade gedrückte Ziffer auf dem Bildschirm angezeigt
      * oder rechts an die zuvor gedrückte Ziffer angehängt angezeigt wird.
-     * @param digit Die Ziffer, deren Taste gedrückt wurde
+     * //@param //digit Die Ziffer, deren Taste gedrückt wurde
      */
     public void pressDigitKey(int digit) {
         if(digit > 9 || digit < 0) throw new IllegalArgumentException();
@@ -57,7 +57,7 @@ public class Calculator {
      * Rechner in den passenden Operationsmodus versetzt.
      * Beim zweiten Drücken nach Eingabe einer weiteren Zahl wird direkt des aktuelle Zwischenergebnis
      * auf dem Bildschirm angezeigt. Falls hierbei eine Division durch Null auftritt, wird "Error" angezeigt.
-     * @param operation "+" für Addition, "-" für Substraktion, "x" für Multiplikation, "/" für Division
+     * //@param //operation "+" für Addition, "-" für Substraktion, "x" für Multiplikation, "/" für Division
      */
     public void pressBinaryOperationKey(String operation)  {
         latestValue = Double.parseDouble(screen);
