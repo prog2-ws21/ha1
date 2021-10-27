@@ -46,7 +46,7 @@ public class CalculatorTest {
 
     @Test
     @DisplayName("should display result after getting the percent  of 2")
-    void testInversionRoot(){
+    void testPercentRoot(){
         Calculator calc = new Calculator();
 
         calc.pressDigitKey(2);
