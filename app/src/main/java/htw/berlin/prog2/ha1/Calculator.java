@@ -117,14 +117,33 @@ public class Calculator {
      * und das Ergebnis direkt angezeigt.
      */
     public void pressEqualsKey() {
-        var result = switch(latestOperation) {
-            case "+" -> latestValue + Double.parseDouble(screen);
-            case "-" -> latestValue - Double.parseDouble(screen);
-            case "x" -> latestValue * Double.parseDouble(screen);
-            case "/" -> latestValue / Double.parseDouble(screen);
-            default -> throw new IllegalArgumentException();
-        };
-        screen = Double.toString(result);
+        var result = 0.0;
+        switch (latestOperation) {
+            case "+":
+                result = latestValue + Double.parseDouble(screen);
+                break;
+            case "-":
+                result = latestValue - Double.parseDouble(screen);
+                break;
+            case "x":
+                result = latestValue * Double.parseDouble(screen);
+                break;
+            case "/":
+                /**
+                 * Überprüfen ob der zweite oberand null ist, wenn es der fall ist wird screen auf "Error" gesetzt.
+                 */
+                if (Double.parseDouble(screen) != 0.0) {
+                    result = latestValue / Double.parseDouble(screen);
+                } else {
+                    screen = "Error";
+                }
+                break;
+            default:
+                throw new IllegalArgumentException();
+        }
+
+        screen = screen.equalsIgnoreCase("Error") ? screen : Double.toString(result);
+
         if(screen.endsWith(".0")) screen = screen.substring(0,screen.length()-2);
         if(screen.contains(".") && screen.length() > 11) screen = screen.substring(0, 10);
     }
