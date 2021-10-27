@@ -44,7 +44,7 @@ class CalculatorTest {
 
     @Test
     @DisplayName("should display result after addition of two positive decimal-digit numbers")
-    void testMultiplication() {
+    void testDecimalAddition() {
         Calculator calc = new Calculator();
 
         calc.pressDigitKey(1);
@@ -64,5 +64,21 @@ class CalculatorTest {
         assertEquals(expected, actual);
 
     }
-}
 
+    @Test
+    @DisplayName("should display result after calculating a first number with an exponent as the second  numbers")
+    void testExponentiation() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(5);
+        calc.pressBinaryOperationKey("^");
+        calc.pressDigitKey(3);
+        calc.pressEqualsKey();
+
+        String expected = "125";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+
+    }
+}
