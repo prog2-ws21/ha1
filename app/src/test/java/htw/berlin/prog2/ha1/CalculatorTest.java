@@ -75,6 +75,19 @@ public class CalculatorTest {
         assertEquals(expected,actual);
 
     }
+    @Test
+    @DisplayName("should test the reverse of 0")
+    void testInversionRoot(){
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(0);
+        calc.pressUnaryOperationKey("1/x");
+
+        String expected="Error";
+        String actual=calc.readScreen();
+
+        assertEquals(expected,actual);
+    }
 
 
 
