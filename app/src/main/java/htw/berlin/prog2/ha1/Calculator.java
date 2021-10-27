@@ -71,6 +71,9 @@ public class Calculator {
      * der Bildschirminhalt mit dem Ergebnis aktualisiert.
      * @param operation "√" für Quadratwurzel, "%" für Prozent, "1/x" für Inversion
      */
+    /**
+    *  operation "+/-" hinzugefügt für Vorzeichenwechsel
+     */
     public void pressUnaryOperationKey(String operation) {
         latestValue = Double.parseDouble(screen);
         latestOperation = operation;
@@ -78,10 +81,11 @@ public class Calculator {
             case "√" -> Math.sqrt(Double.parseDouble(screen));
             case "%" -> Double.parseDouble(screen) / 100;
             case "1/x" -> 1 / Double.parseDouble(screen);
+            case "+/-" -> Math.abs(Double.parseDouble(screen));
             default -> throw new IllegalArgumentException();
         };
         screen = Double.toString(result);
-        if(screen.contains(".") && screen.length() > 11) screen = screen.substring(0, 10);
+        if(screen.contains(".") && screen.length() > 11 ) screen = screen.substring(0, 10);
 
     }
 
@@ -126,10 +130,11 @@ public class Calculator {
             case "x" -> latestValue * Double.parseDouble(screen);
             case "/" -> latestValue / Double.parseDouble(screen);
             case "^" -> Math.pow(latestValue, Double.parseDouble(screen)); // (double a, double b) a = latestValue, b = screen
+
             default -> throw new IllegalArgumentException();
         };
         screen = Double.toString(result);
         if(screen.endsWith(".0")) screen = screen.substring(0,screen.length()-2);
-        if(screen.contains(".") && screen.length() > 11) screen = screen.substring(0, 10);
+        if(screen.contains(".") && screen.length() > 11 ) screen = screen.substring(0, 10);
     }
 }
