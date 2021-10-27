@@ -70,6 +70,7 @@ class CalculatorTest {
         calc.pressDigitKey(7);
         calc.pressUnaryOperationKey("%");
         calc.pressEqualsKey();
+
         String expected = "0.07";
         String actual = calc.readScreen();
 
