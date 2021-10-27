@@ -61,7 +61,7 @@ public class CalculatorTest {
 
     @Test
     @DisplayName("should calculate the division of two numbers 2 and 0")
-    void testDivisionRoot(){
+    void testDivision(){
         Calculator calc = new Calculator();
 
         calc.pressDigitKey(2);
