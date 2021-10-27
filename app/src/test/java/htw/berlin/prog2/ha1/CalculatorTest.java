@@ -42,7 +42,7 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
     @Test
-    @DisplayName("")
+    @DisplayName("Division durch 0 = Error")
     void test1(){
         Calculator calc = new Calculator();
 
@@ -61,7 +61,7 @@ class CalculatorTest {
 
     }
     @Test
-    @DisplayName("")
+    @DisplayName("Mehrmals klicken auf = -Taste addiert das Ergebnis mit der letzten eingegebenen Ziffer")
     void test2(){
         Calculator calc = new Calculator();
 

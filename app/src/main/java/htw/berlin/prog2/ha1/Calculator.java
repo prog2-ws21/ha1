@@ -14,6 +14,8 @@ public class Calculator {
 
     private String latestOperation = "";
 
+    private String lastdigit;
+
     /**
      * @return den aktuellen Bildschirminhalt als String
      */
@@ -32,6 +34,8 @@ public class Calculator {
 
         if (screen.equals("0") || latestValue == Double.parseDouble(screen)) screen = "";
         screen = screen + digit;
+
+        lastdigit=screen;
 
 
     }
@@ -137,7 +141,7 @@ public class Calculator {
 
                 };
                 screen = Double.toString(result);
-
+                latestValue=Double.parseDouble(lastdigit);
                 if (screen==i1) {
                    screen = ("Error");
                }
