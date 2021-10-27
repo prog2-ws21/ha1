@@ -17,9 +17,7 @@ public class Calculator {
     /**
      * @return den aktuellen Bildschirminhalt als String
      */
-    public String readScreen() {
-        return screen;
-    }
+    public String readScreen() {return screen;}
 
     /**
      * Empfängt den Wert einer gedrückten Zifferntaste. Da man nur eine Taste auf einmal
@@ -33,9 +31,12 @@ public class Calculator {
         if (digit > 9 || digit < 0) throw new IllegalArgumentException();
 
         if (screen.equals("0") || latestValue == Double.parseDouble(screen)) screen = "";
-
         screen = screen + digit;
+
+
     }
+
+
 
     /**
      * Empfängt den Befehl der C- bzw. CE-Taste (Clear bzw. Clear Entry).
@@ -49,6 +50,7 @@ public class Calculator {
         screen = "0";
         latestOperation = "";
         latestValue = 0.0;
+
     }
 
     /**
@@ -75,6 +77,7 @@ public class Calculator {
      * @param operation "√" für Quadratwurzel, "%" für Prozent, "1/x" für Inversion
      */
     public void pressUnaryOperationKey(String operation) {
+
         latestValue = Double.parseDouble(screen);
         latestOperation = operation;
         var result = switch (operation) {
@@ -84,6 +87,7 @@ public class Calculator {
             default -> throw new IllegalArgumentException();
         };
         screen = Double.toString(result);
+
         if (screen.contains(".") && screen.length() > 11) screen = screen.substring(0, 10);
 
     }
@@ -105,10 +109,12 @@ public class Calculator {
      * aktualisiert und die Inhalt fortan als negativ interpretiert.
      * Zeigt der Bildschirm bereits einen negativen Wert mit führendem Minus an, dann wird dieses
      * entfernt und der Inhalt fortan als positiv interpretiert.
+     * @param digit
      */
-    public void pressNegativeKey() {
+    public void pressNegativeKey(int digit) {
         screen = screen.startsWith("-") ? screen.substring(1) : "-" + screen;
     }
+
 
     /**
      * Empfängt den Befehl der gedrückten "="-Taste.
@@ -119,7 +125,7 @@ public class Calculator {
      * Operation (ggf. inklusive letztem Operand) erneut auf den aktuellen Bildschirminhalt angewandt
      * und das Ergebnis direkt angezeigt.
      */
-    public void pressEqualsKey(String s) {
+    public void pressEqualsKey() {
     String i1 = "Infinity";
 
                 var result = switch (latestOperation) {

@@ -18,7 +18,9 @@ class CalculatorTest {
         calc.pressBinaryOperationKey("+");
         calc.pressDigitKey(2);
         calc.pressDigitKey(0);
-        calc.pressEqualsKey("+");
+
+        calc.pressEqualsKey();
+
 
         String expected = "40";
         String actual = calc.readScreen();
@@ -47,7 +49,7 @@ class CalculatorTest {
         calc.pressDigitKey(6);
         calc.pressBinaryOperationKey("/");
         calc.pressDigitKey(0);
-        calc.pressEqualsKey("/");
+        calc.pressEqualsKey();
 
 
         String expected ="Error";
@@ -58,6 +60,28 @@ class CalculatorTest {
 
 
     }
+    @Test
+    @DisplayName("")
+    void test2(){
+        Calculator calc = new Calculator();
+
+
+        calc.pressDigitKey(3);
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(7);
+        calc.pressEqualsKey();
+        calc.pressEqualsKey();
+        System.out.println(calc.readScreen());
+
+
+
+
+        String expected ="17";
+        String actual = calc.readScreen();
+
+        assertEquals(expected,actual);
+    }
+
 
     //TODO hier weitere Tests erstellen
 }
