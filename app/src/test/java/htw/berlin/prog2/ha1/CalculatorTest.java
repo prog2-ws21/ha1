@@ -82,4 +82,20 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
+
+    @Test
+    @DisplayName("should display decimal numbers on screen like 4.5 after pressing Equalskey")
+    void testPressDotkeyAndPressEqualskey() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(4);
+        calc.pressDotKey();
+        calc.pressDigitKey(5);
+        calc.pressEqualsKey();
+
+        String expected = "4.5";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
 }
