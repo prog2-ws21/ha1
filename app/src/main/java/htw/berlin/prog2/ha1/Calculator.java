@@ -80,11 +80,11 @@ public class Calculator {
 
         switch(operation) {
             case "√" -> result = Double.toString(Math.sqrt(Double.parseDouble(screen)));
-            case "%" -> result =Double.toString(Double.parseDouble(screen) / 100);
+            case "%" -> result = Double.toString(Double.parseDouble(screen) / 100);
             case "1/x" -> {
                 if(Double.parseDouble(screen)==0) {result = "Error";}
                 else{
-                    result=Double.toString(1/Double.parseDouble(screen));
+                    result = Double.toString(1/Double.parseDouble(screen));
                 }
             }
             default -> throw new IllegalArgumentException();
@@ -132,13 +132,13 @@ public class Calculator {
         String result="";
 
             switch (latestOperation) {
-                case "+" -> result=Double.toString(latestValue + Double.parseDouble(screen));
-                case "-" -> result =Double.toString(latestValue - Double.parseDouble(screen));
-                case "x" -> result=Double.toString(latestValue * Double.parseDouble(screen));
+                case "+" -> result = Double.toString(latestValue + Double.parseDouble(screen));
+                case "-" -> result = Double.toString(latestValue - Double.parseDouble(screen));
+                case "x" -> result = Double.toString(latestValue * Double.parseDouble(screen));
                 case "/" -> {
                     if(Double.parseDouble(screen)==0) result="Error";
                     else{
-                        result= Double.toString(latestValue/Double.parseDouble(screen));
+                        result = Double.toString(latestValue/Double.parseDouble(screen));
                     }
                 }
                 default -> throw new IllegalArgumentException();

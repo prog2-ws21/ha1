@@ -43,7 +43,6 @@ public class CalculatorTest {
 
     //TODO hier weitere Tests erstellen
 
-
     @Test
     @DisplayName("should display result after getting the percent  of 2")
     void testPercentRoot(){
@@ -61,7 +60,7 @@ public class CalculatorTest {
 
     @Test
     @DisplayName("should calculate the division of two numbers 2 and 0")
-    void testDivision(){
+    void testDivisionZero(){
         Calculator calc = new Calculator();
 
         calc.pressDigitKey(2);
@@ -75,9 +74,10 @@ public class CalculatorTest {
         assertEquals(expected,actual);
 
     }
+
     @Test
     @DisplayName("should test the reverse of 0")
-    void testInversionRoot(){
+    void testInversionZero(){
         Calculator calc = new Calculator();
 
         calc.pressDigitKey(0);
@@ -88,9 +88,5 @@ public class CalculatorTest {
 
         assertEquals(expected,actual);
     }
-
-
-
-
 
 }
