@@ -47,13 +47,48 @@ class CalculatorTest {
         Calculator calc = new Calculator();
 
         calc.pressDigitKey(4);
-        calc.pressUnaryOperationKey("-");
+        calc.pressBinaryOperationKey("-");
         calc.pressDigitKey(2);
 
         calc.pressClearKey();
         calc.pressEqualsKey();
 
         String expected = "0";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+    @Test
+    @DisplayName("Should not display the correct value")
+    void testNegativKey() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(8);
+        calc.pressBinaryOperationKey("-");
+        calc.pressNegativeKey();
+        calc.pressDigitKey(2);
+
+        calc.pressEqualsKey();
+
+        String expected = "10";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("'.' at the beginning should not be read as '0.'")
+    void testMultiDigit() {
+        Calculator calc = new Calculator();
+
+        calc.pressDotKey();
+        calc.pressDigitKey(5);
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(5);
+
+        calc.pressEqualsKey();
+
+        String expected = "5.5";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
