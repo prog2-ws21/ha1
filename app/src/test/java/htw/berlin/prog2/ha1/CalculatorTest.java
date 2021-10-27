@@ -46,6 +46,7 @@ class CalculatorTest {
      * basis Implementierungen schon korrekt sind.
      *
      * testPostiveDivision: Ist für die richtige postive Division zuständig.
+     * testPostiveProzent: Ist für die richtige postive Prozent berechnung zuständig.
      */
 
     @Test
@@ -62,6 +63,21 @@ class CalculatorTest {
         calc.pressEqualsKey();
 
         String expected = "13";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("should display result after calculating the percentage of a postive multi-digit number")
+    void testPostiveProzent() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(1);
+        calc.pressDigitKey(2);
+        calc.pressUnaryOperationKey("%");
+
+        String expected = "0.12";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
