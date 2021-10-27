@@ -116,12 +116,16 @@ public class Calculator {
      * Operation (ggf. inklusive letztem Operand) erneut auf den aktuellen Bildschirminhalt angewandt
      * und das Ergebnis direkt angezeigt.
      */
+    /**
+     * Es wird eine neue Operation hinzugefügt: "^" für die Potenzrechnung.
+     */
     public void pressEqualsKey() {
         var result = switch(latestOperation) {
             case "+" -> latestValue + Double.parseDouble(screen);
             case "-" -> latestValue - Double.parseDouble(screen);
             case "x" -> latestValue * Double.parseDouble(screen);
             case "/" -> latestValue / Double.parseDouble(screen);
+            case "^" -> Math.pow(latestValue, Double.parseDouble(screen)); // (double a, double b) a = latestValue, b = screen
             default -> throw new IllegalArgumentException();
         };
         screen = Double.toString(result);
