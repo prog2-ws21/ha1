@@ -82,5 +82,30 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
-}
 
+    /**
+     * Teilaufgabe 2-3:
+     * Es handelt sich hier um test welche nicht direkt funktionieren sollten, weil die
+     * basis Implementierungen diese funktionalität nicht enthält oder ein Bug vorliegt.
+     *
+     * Diese werden durch die Aufgabe korrigiert und Implementiert um einen Grünen Test zu erhalten.
+     *
+     * testDividingByZero: Ist für die richtige Division mit null zuständig.
+     */
+
+    @Test
+    @DisplayName("should display result Error after dividing a positive number with zero")
+    void testDividingByZero() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(7);
+        calc.pressBinaryOperationKey("/");
+        calc.pressDigitKey(0);
+        calc.pressEqualsKey();
+
+        String expected = "Error";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+}
