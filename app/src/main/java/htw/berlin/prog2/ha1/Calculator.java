@@ -33,6 +33,9 @@ public class Calculator {
 
         if(screen.equals("0") || latestValue == Double.parseDouble(screen)) screen = "";
 
+        if(latestOperation == "-" && latestValue == 0){
+            digit = digit * -1;
+        }
 
         screen = screen + digit;
     }
@@ -130,6 +133,7 @@ public class Calculator {
         screen = Double.toString(result);
         if(screen.endsWith(".0")) screen = screen.substring(0,screen.length()-2);
         if(screen.contains(".") && screen.length() > 11) screen = screen.substring(0, 10);
+        if(screen.contains("Infinity"))screen = ("Error");
 
 
     }
