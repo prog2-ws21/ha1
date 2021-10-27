@@ -75,7 +75,6 @@ class CalculatorTest {
 
 
 
-
         String expected ="17";
         String actual = calc.readScreen();
 
