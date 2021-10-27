@@ -51,7 +51,6 @@ class CalculatorTest {
         calc.pressDigitKey(2);
 
         calc.pressClearKey();
-        calc.pressEqualsKey();
 
         String expected = "0";
         String actual = calc.readScreen();
@@ -59,7 +58,7 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
     @Test
-    @DisplayName("Should not display the correct value")
+    @DisplayName("Should now display the correct value")
     void testNegativKey() {
         Calculator calc = new Calculator();
 
@@ -77,8 +76,8 @@ class CalculatorTest {
     }
 
     @Test
-    @DisplayName("'.' at the beginning should not be read as '0.'")
-    void testMultiDigit() {
+    @DisplayName("'.' at the beginning should now be read as '0.'")
+    void testDotBeginning() {
         Calculator calc = new Calculator();
 
         calc.pressDotKey();
