@@ -76,13 +76,23 @@ public class Calculator {
     public void pressUnaryOperationKey(String operation) {
         latestValue = Double.parseDouble(screen);
         latestOperation = operation;
-        var result = switch(operation) {
-            case "√" -> Math.sqrt(Double.parseDouble(screen));
-            case "%" -> Double.parseDouble(screen) / 100;
-            case "1/x" -> 1 / Double.parseDouble(screen);
+        String result="";
+
+        switch(operation) {
+            case "√" -> result = Double.toString(Math.sqrt(Double.parseDouble(screen)));
+            case "%" -> result =Double.toString(Double.parseDouble(screen) / 100);
+            case "1/x" -> {
+                if(Double.parseDouble(screen)==0) {result = "Error";}
+                else{
+                    result=Double.toString(1/Double.parseDouble(screen));
+                }
+            }
             default -> throw new IllegalArgumentException();
+
         };
-        screen = Double.toString(result);
+
+
+        screen = result;
         if(screen.contains(".") && screen.length() > 11) screen = screen.substring(0, 10);
 
     }
@@ -119,24 +129,21 @@ public class Calculator {
      * und das Ergebnis direkt angezeigt.
      */
     public void pressEqualsKey() {
-        String result=" ";
-        if (Double.parseDouble(screen)==0) {
-            result = switch (latestOperation) {
-                case "+" -> Double.toString(latestValue + Double.parseDouble(screen));
-                case "-" -> Double.toString(latestValue - Double.parseDouble(screen));
-                case "x" -> Double.toString(latestValue * Double.parseDouble(screen));
-                case "/" -> "Error";
+        String result="";
+
+            switch (latestOperation) {
+                case "+" -> result=Double.toString(latestValue + Double.parseDouble(screen));
+                case "-" -> result =Double.toString(latestValue - Double.parseDouble(screen));
+                case "x" -> result=Double.toString(latestValue * Double.parseDouble(screen));
+                case "/" -> {
+                    if(Double.parseDouble(screen)==0) result="Error";
+                    else{
+                        result= Double.toString(latestValue/Double.parseDouble(screen));
+                    }
+                }
                 default -> throw new IllegalArgumentException();
             };
-        } else {
-            result = switch (latestOperation) {
-                case "+" -> Double.toString(latestValue + Double.parseDouble(screen));
-                case "-" -> Double.toString(latestValue - Double.parseDouble(screen));
-                case "x" -> Double.toString(latestValue * Double.parseDouble(screen));
-                case "/" -> Double.toString(latestValue / Double.parseDouble(screen)) ;
-                default -> throw new IllegalArgumentException();
-            };
-        }
+
             screen = result;
             if (screen.endsWith(".0")) screen = screen.substring(0, screen.length() - 2);
             if (screen.contains(".") && screen.length() > 11) screen = screen.substring(0, 10);
