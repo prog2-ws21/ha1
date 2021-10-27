@@ -45,14 +45,14 @@ public class CalculatorTest {
 
 
     @Test
-    @DisplayName("should display result after getting the inverse of 2")
+    @DisplayName("should display result after getting the percent  of 2")
     void testInversionRoot(){
         Calculator calc = new Calculator();
 
         calc.pressDigitKey(2);
-        calc.pressUnaryOperationKey("1/x");
+        calc.pressUnaryOperationKey("%");
 
-        String expected ="0.5";
+        String expected ="0.02";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
@@ -75,5 +75,9 @@ public class CalculatorTest {
         assertEquals(expected,actual);
 
     }
+
+
+
+
 
 }
