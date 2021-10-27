@@ -40,6 +40,31 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
 
-    //TODO hier weitere Tests erstellen
+    /**
+     * Teilaufgabe 1:
+     * Es handelt sich hier um test welche direkt funktionieren sollten, weil die
+     * basis Implementierungen schon korrekt sind.
+     *
+     * testPostiveDivision: Ist für die richtige postive Division zuständig.
+     */
+
+    @Test
+    @DisplayName("should display result after dividing two positive multi-digit numbers")
+    void testPostiveDivision() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(1);
+        calc.pressDigitKey(5);
+        calc.pressDigitKey(6);
+        calc.pressBinaryOperationKey("/");
+        calc.pressDigitKey(1);
+        calc.pressDigitKey(2);
+        calc.pressEqualsKey();
+
+        String expected = "13";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
 }
 
