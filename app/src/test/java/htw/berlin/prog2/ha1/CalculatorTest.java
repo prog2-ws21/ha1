@@ -81,4 +81,21 @@ class CalculatorTest {
         assertEquals(expected, actual);
 
     }
+
+    @Test
+    @DisplayName("should display result after turning a negative number into a positive number")
+    void testTurnNegativePositive() {
+        Calculator calc = new Calculator();
+
+        calc.pressNegativeKey();
+        calc.pressDigitKey(6);
+        calc.pressDigitKey(0);
+        calc.pressUnaryOperationKey("+/-");
+
+        String expected = "60.0";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+
+    }
 }
