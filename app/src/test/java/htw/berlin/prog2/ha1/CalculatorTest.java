@@ -76,5 +76,22 @@ class CalculatorTest {
     }
 
 
+    @Test
+    @DisplayName("should display positive number after addition with negative number")
+    void calculatorCanDoMinusTwoPlusFive() {
+        Calculator calc = new Calculator();
+        calc.pressNegativeKey();
+        calc.pressDigitKey(1);
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(9);
+        calc.pressEqualsKey();
+
+        String expected = "8";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+
 }
 
