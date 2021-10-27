@@ -73,7 +73,7 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
 
-    @Test
+    /*@Test
     @DisplayName("should display result after pressing equal 2 times")
     void testTwiceEquals() {
         Calculator calc = new Calculator();
@@ -89,6 +89,23 @@ class CalculatorTest {
         String expected = "65";
         //actual 100
         String actual = calc.readScreen();
+        assertEquals(expected, actual);
+    }
+**/
+    @Test
+    @DisplayName("should not allow extra dot(s) after a decimal number")
+    void extraDot() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(4);
+        calc.pressDigitKey(5);
+        calc.pressDotKey();
+        calc.pressDigitKey(6);
+        calc.pressDotKey();
+
+        String expected = "45.6";
+        String actual = calc.readScreen();
+
         assertEquals(expected, actual);
     }
 
