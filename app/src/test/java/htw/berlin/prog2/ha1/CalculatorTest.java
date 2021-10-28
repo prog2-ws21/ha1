@@ -79,8 +79,8 @@ class CalculatorTest {
     void calculatorCanSwitchPositiveAndNegative() {
         Calculator calc = new Calculator();
         calc.pressDigitKey(5);
-        calc.pressUnaryOperationKey("+/-");
-        String expected = "-5.0";
+        calc.pressNegativeKey();
+        String expected = "-5";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
