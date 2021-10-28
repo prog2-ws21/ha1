@@ -133,7 +133,7 @@ class CalculatorTest {
     }
 
 
-    @Test
+   /* @Test
     @DisplayName("%")
     void testPercentage() {
         Calculator calc = new Calculator();
@@ -149,10 +149,10 @@ class CalculatorTest {
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
-    }
+    }*/
 
     @Test
-    @DisplayName("should display the square root ")
+    @DisplayName("should display square root ")
     void testSqrt() {
         Calculator calc = new Calculator();
 
