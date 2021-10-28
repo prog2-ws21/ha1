@@ -26,6 +26,7 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
 
+
     @Test
     @DisplayName("should display result after getting the square root of two")
     void testSquareRoot() {
@@ -40,6 +41,132 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
 
-    //TODO hier weitere Tests erstellen
+
+    @Test
+    @DisplayName("should display result after dividing two numbers")
+    void testDivide() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(2);
+        calc.pressDigitKey(0);
+        calc.pressBinaryOperationKey("/");
+        calc.pressDigitKey(5);
+        calc.pressEqualsKey();
+
+        String expected = "4";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+
+    //failed
+    @Test
+    @DisplayName("should display result after dividing a number with zero")
+    void testDivideWithZero() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(2);
+        calc.pressDigitKey(0);
+        calc.pressBinaryOperationKey("/");
+        calc.pressDigitKey(0);
+        calc.pressEqualsKey();
+
+        String expected = "Error";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+
+    @Test
+    @DisplayName("should display result after adding two comma numbers")
+    void testAddingTwoCommaNumbers() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(2);
+        calc.pressDotKey();
+        calc.pressDigitKey(5);
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(2);
+        calc.pressDotKey();
+        calc.pressDigitKey(5);
+        calc.pressEqualsKey();
+
+        String expected = "5";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+
+    //failed
+    /*@Test
+    @DisplayName("should display result after multiplying two negative numbers")
+    void testAddingTwoNegativeNumbers() {
+        Calculator calc = new Calculator();
+
+        calc.pressNegativeKey();
+        calc.pressDigitKey(5);
+        calc.pressBinaryOperationKey("x");
+        calc.pressNegativeKey();
+        calc.pressDigitKey(5);
+        calc.pressEqualsKey();
+
+        String expected = "25";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }*/
+
+    @Test
+    @DisplayName("should clear display after pressing clear")
+    void clearDisplay() {
+        Calculator calc = new Calculator();
+
+        calc.pressClearKey();
+
+        String expected = "0";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+
+   /* @Test
+    @DisplayName("%")
+    void testPercentage() {
+        Calculator calc = new Calculator();
+
+
+        calc.pressDigitKey(5);
+        calc.pressDigitKey(0);
+        calc.pressUnaryOperationKey("%");
+        calc.pressDigitKey(7);
+        calc.pressDigitKey(0);
+
+        String expected = "35";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }*/
+
+    @Test
+    @DisplayName("should display square root ")
+    void testSqrt() {
+        Calculator calc = new Calculator();
+
+
+        calc.pressDigitKey(8);
+        calc.pressUnaryOperationKey("√");
+
+        String expected = "2.82842712";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
 }
+
+
 
