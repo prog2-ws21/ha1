@@ -8,7 +8,7 @@ package htw.berlin.prog2.ha1;
  */
 public class Calculator {
 
-    private String screen = "0";
+    private String screen = "";
 
     private double latestValue;
 
@@ -31,9 +31,17 @@ public class Calculator {
     public void pressDigitKey(int digit) {
         if(digit > 9 || digit < 0) throw new IllegalArgumentException();
 
-        if(screen.equals("0") || latestValue == Double.parseDouble(screen)) screen = "";
+        if (latestOperation.isEmpty()) {
+            screen = screen + digit;
+            return;
+        }
 
+        if(screen.equals("0") || latestValue == Double.parseDouble(screen)) screen = "";
+        {
         screen = screen + digit;
+        }
+
+
     }
 
     /**
@@ -78,6 +86,7 @@ public class Calculator {
             case "√" -> Math.sqrt(Double.parseDouble(screen));
             case "%" -> Double.parseDouble(screen) / 100;
             case "1/x" -> 1 / Double.parseDouble(screen);
+            case "+/-" -> Double.parseDouble(screen) - (2*Double.parseDouble(screen));
             default -> throw new IllegalArgumentException();
         };
         screen = Double.toString(result);
