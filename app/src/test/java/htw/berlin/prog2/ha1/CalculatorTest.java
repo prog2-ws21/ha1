@@ -43,55 +43,48 @@ class CalculatorTest {
     //TODO hier weitere Tests erstellen
 
     @Test
-    @DisplayName("should display result after subtracting two positive multi-digit numbers")
-    void testPositiveSubtraction() {
+    @DisplayName("should display result after multiply two positive multi-digit numbers")
+    void testPositiveMultiply() {
         Calculator calc = new Calculator();
 
         calc.pressDigitKey(2);
-        calc.pressBinaryOperationKey("-");
+        calc.pressBinaryOperationKey("x");
         calc.pressDigitKey(2);
         calc.pressEqualsKey();
 
-        String expected = "0";
+        String expected = "4";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
     }
 
     @Test
-    @DisplayName("should display error when a number is divided with zero")
-    void testNumberDividedWithZero() {
+    @DisplayName("should give error when divide by zero")
+    void testDivideByZero() {
         Calculator calc = new Calculator();
-
-        calc.pressDigitKey(9);
+        calc.pressDigitKey(2);
         calc.pressBinaryOperationKey("/");
         calc.pressDigitKey(0);
         calc.pressEqualsKey();
-
 
         String expected = "Error";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
     }
-
-
     @Test
-    @DisplayName("should display positive number after addition with negative number")
-    void calculatorCanDoMinusTwoPlusFive() {
+    @DisplayName("should givs -6 when multiply -1 and 6")
+    void test3() {
         Calculator calc = new Calculator();
-        calc.pressNegativeKey();
-        calc.pressDigitKey(1);
-        calc.pressBinaryOperationKey("+");
-        calc.pressDigitKey(9);
+        calc.pressDigitKey(-1);
+        calc.pressBinaryOperationKey("x");
+        calc.pressDigitKey(6);
         calc.pressEqualsKey();
 
-        String expected = "8";
+        String expected = "-6";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
     }
-
-
 }
 
