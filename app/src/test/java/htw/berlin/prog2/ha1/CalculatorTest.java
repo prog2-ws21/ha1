@@ -43,8 +43,8 @@ class CalculatorTest {
     //TODO hier weitere Tests erstellen
 
     @Test
-    @DisplayName("should play result after getting substraction of two numbers")
-    void testSubstraction() {
+    @DisplayName("should play result after getting subtraction of two numbers")
+    void testSubtraction() {
         Calculator calc = new Calculator();
 
         calc.pressDigitKey(6);
@@ -122,6 +122,24 @@ class CalculatorTest {
 
 
         String expected = "2.0";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("should display result after pressing clear key")
+    void testClearKey() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(2);
+        calc.pressBinaryOperationKey("+");
+        calc.pressClearKey();
+        calc.pressDigitKey(2);
+
+
+
+        String expected = "4";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
