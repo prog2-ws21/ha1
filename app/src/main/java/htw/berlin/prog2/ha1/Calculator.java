@@ -19,8 +19,15 @@ public class Calculator {
      * @return den aktuellen Bildschirminhalt als String
      */
     public String readScreen() {
+
+        if(screen.equals("NaN")){
+            screen = "Error";
+        }
+
         return screen;
     }
+
+
 
     /**
      * Empfängt den Wert einer gedrückten Zifferntaste. Da man nur eine Taste auf einmal
@@ -80,10 +87,6 @@ public class Calculator {
      */
     public void pressUnaryOperationKey(String operation) {
 
-        if (Double.parseDouble(screen) < 0) {
-            throw new IllegalArgumentException("Error");
-        }
-
         latestValue = Double.parseDouble(screen);
         latestOperation = operation;
 
@@ -93,9 +96,9 @@ public class Calculator {
             case "1/x" -> 1 / Double.parseDouble(screen);
             default -> throw new IllegalArgumentException();
         };
+
         screen = Double.toString(result);
         if(screen.contains(".") && screen.length() > 11) screen = screen.substring(0, 10);
-
     }
 
     /**
@@ -117,7 +120,14 @@ public class Calculator {
      * entfernt und der Inhalt fortan als positiv interpretiert.
      */
     public void pressNegativeKey() {
-        screen = screen.startsWith("-") ? screen.substring(1) : "-" + screen;
+        //screen = screen.startsWith("-") ? screen.substring(1) : "-" + screen;
+
+        if(screen.startsWith("-")){
+            screen = screen.substring(1);
+
+        }   else{
+                screen = "-" + screen;
+        }
     }
 
     /**
@@ -130,10 +140,6 @@ public class Calculator {
      * und das Ergebnis direkt angezeigt.
      */
     public void pressEqualsKey() {
-
-        /*if(latestOperation == "/"){
-            screen = "Error";
-        }*/
 
         var result = switch(latestOperation) {
             case "+" -> latestValue + Double.parseDouble(screen);

@@ -84,10 +84,12 @@ class CalculatorTest {
 
         calc.pressDigitKey(2);
         calc.pressNegativeKey();
+        calc.pressUnaryOperationKey("√");
 
-        assertThrows(IllegalArgumentException.class, () -> {calc.pressUnaryOperationKey("√");} );
+        String expected = "Error";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
     }
-
-
 }
 
