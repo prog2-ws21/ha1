@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @DisplayName("Retro calculator")
 class CalculatorTest {
@@ -41,5 +42,54 @@ class CalculatorTest {
     }
 
     //TODO hier weitere Tests erstellen
+
+    @Test
+    @DisplayName("should display result after adding a dot")
+    void testDot(){
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(5);
+        calc.pressDotKey();
+        calc.pressDigitKey(1);
+
+        String expected = "5.1";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+
+    @Test
+    @DisplayName("should display result after adding three positive single-digit numbers")
+    void testAdditionThree(){
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(5);
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(1);
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(4);
+        calc.pressEqualsKey();
+
+        String expected = "10";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("should display text after getting the square root of minus two")
+    void testNegaitveSquareRoot(){
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(2);
+        calc.pressNegativeKey();
+        calc.pressUnaryOperationKey("√");
+
+        String expected = "Error";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
 }
 

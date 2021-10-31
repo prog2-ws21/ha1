@@ -14,12 +14,20 @@ public class Calculator {
 
     private String latestOperation = "";
 
+
     /**
      * @return den aktuellen Bildschirminhalt als String
      */
     public String readScreen() {
+
+        if(screen.equals("NaN")){
+            screen = "Error";
+        }
+
         return screen;
     }
+
+
 
     /**
      * Empfängt den Wert einer gedrückten Zifferntaste. Da man nur eine Taste auf einmal
@@ -34,6 +42,7 @@ public class Calculator {
         if(screen.equals("0") || latestValue == Double.parseDouble(screen)) screen = "";
 
         screen = screen + digit;
+
     }
 
     /**
@@ -60,6 +69,11 @@ public class Calculator {
      * @param operation "+" für Addition, "-" für Substraktion, "x" für Multiplikation, "/" für Division
      */
     public void pressBinaryOperationKey(String operation)  {
+
+        if (!(latestOperation.equals(""))) {
+            pressEqualsKey();
+        }
+
         latestValue = Double.parseDouble(screen);
         latestOperation = operation;
     }
@@ -72,17 +86,19 @@ public class Calculator {
      * @param operation "√" für Quadratwurzel, "%" für Prozent, "1/x" für Inversion
      */
     public void pressUnaryOperationKey(String operation) {
+
         latestValue = Double.parseDouble(screen);
         latestOperation = operation;
+
         var result = switch(operation) {
             case "√" -> Math.sqrt(Double.parseDouble(screen));
             case "%" -> Double.parseDouble(screen) / 100;
             case "1/x" -> 1 / Double.parseDouble(screen);
             default -> throw new IllegalArgumentException();
         };
+
         screen = Double.toString(result);
         if(screen.contains(".") && screen.length() > 11) screen = screen.substring(0, 10);
-
     }
 
     /**
@@ -104,7 +120,14 @@ public class Calculator {
      * entfernt und der Inhalt fortan als positiv interpretiert.
      */
     public void pressNegativeKey() {
-        screen = screen.startsWith("-") ? screen.substring(1) : "-" + screen;
+        //screen = screen.startsWith("-") ? screen.substring(1) : "-" + screen;
+
+        if(screen.startsWith("-")){
+            screen = screen.substring(1);
+
+        }   else{
+                screen = "-" + screen;
+        }
     }
 
     /**
@@ -117,6 +140,7 @@ public class Calculator {
      * und das Ergebnis direkt angezeigt.
      */
     public void pressEqualsKey() {
+
         var result = switch(latestOperation) {
             case "+" -> latestValue + Double.parseDouble(screen);
             case "-" -> latestValue - Double.parseDouble(screen);
@@ -128,4 +152,5 @@ public class Calculator {
         if(screen.endsWith(".0")) screen = screen.substring(0,screen.length()-2);
         if(screen.contains(".") && screen.length() > 11) screen = screen.substring(0, 10);
     }
+
 }
