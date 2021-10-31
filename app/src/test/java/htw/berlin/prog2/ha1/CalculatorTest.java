@@ -42,7 +42,7 @@ class CalculatorTest {
 
     //TODO hier weitere Tests erstellen
     @Test
-    @DisplayName("")
+    @DisplayName("Dezimaltrennzeichentaste")
     void testDezimaltrennzeichen(){
         Calculator calc = new Calculator();
 
