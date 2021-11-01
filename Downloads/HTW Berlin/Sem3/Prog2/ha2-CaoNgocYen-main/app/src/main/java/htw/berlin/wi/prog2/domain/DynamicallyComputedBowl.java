@@ -7,7 +7,7 @@ public class DynamicallyComputedBowl {
     private final List<Ingredient> ingredients;
 
     public DynamicallyComputedBowl(List<Ingredient> ingredients){
-        this.ingredients = Collections.unmodifiableList(ingredients);
+        //this.ingredients = Collections.unmodifiableList(ingredients);
     }
 
 }
