@@ -43,7 +43,7 @@ class CalculatorTest {
     //TODO hier weitere Tests erstellen
     @Test
     @DisplayName("Dezimaltrennzeichentaste")
-    void testDezimaltrennzeichen(){
+    void testDezimaltrennzeichen() {
         Calculator calc = new Calculator();
 
         calc.pressDigitKey(2);
@@ -55,5 +55,41 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
+
+    @Test
+    @DisplayName("")
+    void testVorzeichenumkehr() {
+        Calculator calc = new Calculator();
+        calc.pressUnaryOperationKey("-");
+
+        calc.pressDigitKey(2);
+        calc.pressNegativeKey();
+
+
+        String expected = "2";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+
+    //void testErgebnis(){
+    // Calculator calc = new Calculator();
+
+    //calc.pressDigitKey(2);
+    //calc.pressUnaryOperationKey("+");
+    //calc.pressDigitKey(5);
+    //calc.pressDotKey();
+    //calc.pressDigitKey(3);
+    //calc.pressEqualsKey();
+
+
+    //String expected = "7.3";
+    //String actual = calc.readScreen();
+
+    //assertEquals(expected, actual);
+    //}
+
+
 }
 
