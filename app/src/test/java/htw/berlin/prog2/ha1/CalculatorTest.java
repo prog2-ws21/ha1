@@ -60,14 +60,12 @@ class CalculatorTest {
     @DisplayName("")
     void testVorzeichenumkehr() {
         Calculator calc = new Calculator();
-        calc.pressUnaryOperationKey("-");
-
 
         calc.pressDigitKey(2);
         calc.pressNegativeKey();
 
 
-        String expected = "2";
+        String expected = "-2";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
