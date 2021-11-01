@@ -62,6 +62,7 @@ class CalculatorTest {
         Calculator calc = new Calculator();
         calc.pressUnaryOperationKey("-");
 
+
         calc.pressDigitKey(2);
         calc.pressNegativeKey();
 
