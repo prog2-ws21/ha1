@@ -70,24 +70,20 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
+    @Test
+    @DisplayName("")
+    void testDezimaltrennzeichen2() {
+        Calculator calc = new Calculator();
 
+        calc.pressDigitKey(2);
+        calc.pressDotKey();
+        calc.pressDigitKey(2);
 
-    //void testErgebnis(){
-    // Calculator calc = new Calculator();
+        String expected = "2.2";
+        String actual = calc.readScreen();
 
-    //calc.pressDigitKey(2);
-    //calc.pressUnaryOperationKey("+");
-    //calc.pressDigitKey(5);
-    //calc.pressDotKey();
-    //calc.pressDigitKey(3);
-    //calc.pressEqualsKey();
-
-
-    //String expected = "7.3";
-    //String actual = calc.readScreen();
-
-    //assertEquals(expected, actual);
-    //}
+        assertEquals(expected, actual);
+    }
 
 
 }
