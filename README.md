@@ -1,6 +1,6 @@
 # Hausaufgabe 1
 
-Deadline für Abgabe per Pull Request: 24.10.2021 23:59 Uhr bzw. 27.10.2021 23:59 Uhr je nach dem in welcher Übungsgruppe Sie eingeschrieben sind.
+Deadline für Abgabe per Pull Request: 21.04.2022 23:59 Uhr. Außerdem ist zusätzlich eine persönliche Abnahme in der von Ihnen belegten Übungsgruppe notwendig, um zu bestehen. Bei unentschuldigtem Fehlen in der auf die Deadline folgenden Übung, wird die Hausaufgabe als nicht bestanden bewertet. 
 
 ## Aufgabenstellung
 
