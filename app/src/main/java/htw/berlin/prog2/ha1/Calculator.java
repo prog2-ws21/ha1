@@ -14,6 +14,30 @@ public class Calculator {
 
     private String latestOperation = "";
 
+    public String getScreen() {
+        return screen;
+    }
+
+    public void setScreen(String screen) {
+        this.screen = screen;
+    }
+
+    public double getLatestValue() {
+        return latestValue;
+    }
+
+    public void setLatestValue(double latestValue) {
+        this.latestValue = latestValue;
+    }
+
+    public String getLatestOperation() {
+        return latestOperation;
+    }
+
+    public void setLatestOperation(String latestOperation) {
+        this.latestOperation = latestOperation;
+    }
+
     /**
      * @return den aktuellen Bildschirminhalt als String
      */
@@ -69,11 +93,16 @@ public class Calculator {
      * Quadratwurzel, Prozent, Inversion, welche nur einen Operanden benötigen.
      * Beim Drücken der Taste wird direkt die Operation auf den aktuellen Zahlenwert angewendet und
      * der Bildschirminhalt mit dem Ergebnis aktualisiert.
+     * Wird die Wurzel einer negativen Zahl angefordert, wird "ERROR" ausgegeben.
      * @param operation "√" für Quadratwurzel, "%" für Prozent, "1/x" für Inversion
      */
     public void pressUnaryOperationKey(String operation) {
         latestValue = Double.parseDouble(screen);
         latestOperation = operation;
+        if(latestValue < 0 && latestOperation.equals("√")){
+            screen = "ERROR";
+            return;
+        }
         var result = switch(operation) {
             case "√" -> Math.sqrt(Double.parseDouble(screen));
             case "%" -> Double.parseDouble(screen) / 100;
@@ -111,12 +140,18 @@ public class Calculator {
      * Empfängt den Befehl der gedrückten "="-Taste.
      * Wurde zuvor keine Operationstaste gedrückt, passiert nichts.
      * Wurde zuvor eine binäre Operationstaste gedrückt und zwei Operanden eingegeben, wird das
-     * Ergebnis der Operation angezeigt. Falls hierbei eine Division durch Null auftritt, wird "Error" angezeigt.
+     * Ergebnis der Operation angezeigt. Falls hierbei eine Division durch Null auftritt, wird "ERROR" angezeigt.
      * Wird die Taste weitere Male gedrückt (ohne andere Tasten dazwischen), so wird die letzte
      * Operation (ggf. inklusive letztem Operand) erneut auf den aktuellen Bildschirminhalt angewandt
      * und das Ergebnis direkt angezeigt.
      */
     public void pressEqualsKey() {
+
+        if(latestOperation.equals("/") && Double.parseDouble(screen) == 0.0) {
+            screen = "ERROR";
+            return;
+        }
+
         var result = switch(latestOperation) {
             case "+" -> latestValue + Double.parseDouble(screen);
             case "-" -> latestValue - Double.parseDouble(screen);
