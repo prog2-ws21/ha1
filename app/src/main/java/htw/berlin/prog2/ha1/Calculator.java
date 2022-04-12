@@ -1,4 +1,4 @@
-package htw.berlin.prog2.ha1;
+package htw.berlin.prog2.ha1; // 1. try
 
 /**
  * Eine Klasse, die das Verhalten des Online Taschenrechners imitiert, welcher auf
