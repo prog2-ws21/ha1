@@ -67,6 +67,36 @@ class CalculatorTest {
         assertEquals(exp, act);
 
     }
+    @Test
+    @DisplayName("Test whether divide by zero throws 'ERROR'")
+    public void testDivideZero(){
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(2);
+        calc.pressBinaryOperationKey("/");
+        calc.pressDigitKey(0);
+        calc.pressEqualsKey();
+
+        String expected = "ERROR";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("Test whether negative root throws 'ERROR'")
+    public void testNegativeRootIsError(){
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(2);
+        calc.pressNegativeKey();
+        calc.pressUnaryOperationKey("√");
+
+        String expected = "ERROR";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
 
 }
 
