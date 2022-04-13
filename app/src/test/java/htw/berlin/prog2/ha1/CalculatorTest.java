@@ -42,6 +42,31 @@ class CalculatorTest {
 
     //TODO hier weitere Tests erstellen
 
+    @Test
+    @DisplayName("Tests whether calculator is cleared. Screen should be 0, latest op empty string and latest value 0.0")
+    void testClear() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(2);
+        calc.pressBinaryOperationKey("+");
+        calc.pressClearKey();
+
+        String expected = "0";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+
+        expected = "";
+        actual = calc.getLatestOperation();
+
+        assertEquals(expected, actual);
+
+        double exp = 0.0;
+        double act = calc.getLatestValue();
+
+        assertEquals(exp, act);
+
+    }
 
 }
 
