@@ -52,4 +52,30 @@ class CalculatorTest {
         assertEquals("0.6", calc.readScreen());
     }
 
+    @Test
+    @DisplayName("should clear the current digit and reset whole calculator")
+    void testClearKey() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(8);
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(5);
+        calc.pressClearKey();
+
+        assertEquals("0", calc.readScreen());
+        calc.pressDigitKey(2);
+        calc.pressEqualsKey();
+
+        assertEquals("10", calc.readScreen());
+        calc.pressBinaryOperationKey("-");
+        calc.pressDigitKey(5);
+        calc.pressEqualsKey();
+        assertEquals("5", calc.readScreen());
+
+        calc.pressClearKey();
+
+        assertEquals(0.0, calc.getLatestValue());
+
+    }
+
 }
