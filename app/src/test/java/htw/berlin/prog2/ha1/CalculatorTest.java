@@ -40,6 +40,16 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
 
-    //TODO hier weitere Tests erstellen
-}
+    @Test
+    @DisplayName("should display result of percent of a positive multi-digit number")
+    void testPercent() {
+        Calculator calc = new Calculator();
 
+        calc.pressDigitKey(6);
+        calc.pressDigitKey(0);
+        calc.pressUnaryOperationKey("%");
+
+        assertEquals("0.6", calc.readScreen());
+    }
+
+}
