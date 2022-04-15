@@ -17,6 +17,8 @@ public class Calculator {
 
     private String latestOperation = "";
 
+    private int clearKeyState = 0;
+
     /**
      * @return den aktuellen Bildschirminhalt als String
      */
@@ -58,9 +60,15 @@ public class Calculator {
      * im Ursprungszustand ist.
      */
     public void pressClearKey() {
-        screen = "0";
-        latestOperation = "";
-        latestValue = 0.0;
+        if (clearKeyState == 0) {
+            screen = "0";
+            clearKeyState++;
+        } else {
+            screen = "0";
+            latestOperation = "";
+            latestValue = 0.0;
+            clearKeyState = 0;
+        }
     }
 
     /**
@@ -164,5 +172,13 @@ public class Calculator {
             screen = screen.substring(0, screen.length() - 2);
         if (screen.contains(".") && screen.length() > 11)
             screen = screen.substring(0, 10);
+    }
+
+    public String getLatestOperation() {
+        return latestOperation;
+    }
+
+    public double getLatestValue() {
+        return latestValue;
     }
 }

@@ -75,6 +75,7 @@ class CalculatorTest {
         calc.pressClearKey();
 
         assertEquals(0.0, calc.getLatestValue());
+        assertEquals("", calc.getLatestOperation());
 
     }
 
