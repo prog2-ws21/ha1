@@ -76,17 +76,12 @@ public class Calculator {
     public void pressUnaryOperationKey(String operation) {
         latestValue = Double.parseDouble(screen);
         latestOperation = operation;
-        String result="";
 
-        switch(operation) {
-            case "√" -> result = Double.toString(Math.sqrt(Double.parseDouble(screen)));
-            case "%" -> result = Double.toString(Double.parseDouble(screen) / 100);
-            case "1/x" -> {
-                if(Double.parseDouble(screen)==0) {result = "Error";}
-                else{
-                    result = Double.toString(1/Double.parseDouble(screen));
-                }
-            }
+
+        var result = switch(operation) {
+            case "√" -> Double.toString(Math.sqrt(Double.parseDouble(screen)));
+            case "%" -> Double.toString(Double.parseDouble(screen) / 100);
+            case "1/x" -> checkZero(Double.parseDouble(screen));
             default -> throw new IllegalArgumentException();
 
         };
@@ -95,6 +90,16 @@ public class Calculator {
         screen = result;
         if(screen.contains(".") && screen.length() > 11) screen = screen.substring(0, 10);
 
+    }
+
+    public String checkZero(Double value){
+        String helpResult ="";
+        if(value==0){
+            helpResult = "Error";
+        }else{
+            helpResult=Double.toString(1/value);
+        }
+        return helpResult;
     }
 
     /**
