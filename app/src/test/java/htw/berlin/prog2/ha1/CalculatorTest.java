@@ -44,49 +44,55 @@ public class CalculatorTest {
     //TODO hier weitere Tests erstellen
 
     @Test
-    @DisplayName("should display result after getting the percent  of 2")
-    void testPercentRoot(){
+    @DisplayName("should calculate the percentage of two number")
+    void testPercentage(){
         Calculator calc = new Calculator();
 
         calc.pressDigitKey(2);
-        calc.pressUnaryOperationKey("%");
+        calc.pressUnaryOperationKey("1/x");
 
-        String expected ="0.02";
+        String expected = "0.5";
         String actual = calc.readScreen();
 
-        assertEquals(expected, actual);
-
+        assertEquals(expected,actual);
     }
 
     @Test
-    @DisplayName("should calculate the division of two numbers 2 and 0")
+    @DisplayName("the division on zero")
+
     void testDivisionZero(){
         Calculator calc = new Calculator();
 
-        calc.pressDigitKey(2);
+        calc.pressDigitKey(1);
         calc.pressBinaryOperationKey("/");
         calc.pressDigitKey(0);
         calc.pressEqualsKey();
 
-        String expected ="Error";
-        String actual =calc.readScreen();
+        String expected = "Error";
+        String actual = calc.readScreen();
 
         assertEquals(expected,actual);
-
     }
 
     @Test
-    @DisplayName("should test the reverse of 0")
-    void testInversionZero(){
+    @DisplayName("two dot in the number")
+    void testNumberOfDot(){
         Calculator calc = new Calculator();
 
-        calc.pressDigitKey(0);
-        calc.pressUnaryOperationKey("1/x");
+        calc.pressDigitKey(2);
+        calc.pressDotKey();
+        calc.pressDigitKey(1);
+        calc.pressDotKey();
+        calc.pressDigitKey(3);
 
-        String expected="Error";
-        String actual=calc.readScreen();
+
+        String expected = "2.13";
+        String actual = calc.readScreen();
 
         assertEquals(expected,actual);
+
+
+
     }
 
 }
