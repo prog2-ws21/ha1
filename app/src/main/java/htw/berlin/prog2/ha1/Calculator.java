@@ -110,7 +110,13 @@ public class Calculator {
      * Beim zweimaligem Drücken, oder wenn bereits ein Trennzeichen angezeigt wird, passiert nichts.
      */
     public void pressDotKey() {
-        if(!screen.endsWith(".")) screen = screen + ".";
+
+        if(screen.contains(".")) {screen = screen ;}
+        else{
+            screen = screen + ".";
+        }
+        /*if(!screen.endsWith(".")) screen = screen + ".";*/
+
     }
 
     /**
@@ -134,22 +140,22 @@ public class Calculator {
      * und das Ergebnis direkt angezeigt.
      */
     public void pressEqualsKey() {
-        String result="";
 
-            switch (latestOperation) {
-                case "+" -> result = Double.toString(latestValue + Double.parseDouble(screen));
-                case "-" -> result = Double.toString(latestValue - Double.parseDouble(screen));
-                case "x" -> result = Double.toString(latestValue * Double.parseDouble(screen));
-                case "/" -> {
-                    if(Double.parseDouble(screen)==0) result="Error";
-                    else{
-                        result = Double.toString(latestValue/Double.parseDouble(screen));
-                    }
-                }
+
+            var result =switch (latestOperation) {
+                case "+" -> latestValue + Double.parseDouble(screen);
+                case "-" -> latestValue - Double.parseDouble(screen);
+                case "x" -> latestValue * Double.parseDouble(screen);
+                case "/" -> latestValue/Double.parseDouble(screen);
+
                 default -> throw new IllegalArgumentException();
             };
+            if(Double.parseDouble(screen)==0 && latestOperation=="/"){
+                screen = "Error";
+            }else{
+                screen = Double.toString(result);
+            }
 
-            screen = result;
             if (screen.endsWith(".0")) screen = screen.substring(0, screen.length() - 2);
             if (screen.contains(".") && screen.length() > 11) screen = screen.substring(0, 10);
         }
