@@ -1,4 +1,4 @@
-package htw.berlin.prog2.ha1;
+package htw.berlin.prog2.ha1; // 1. try
 
 /**
  * Eine Klasse, die das Verhalten des Online Taschenrechners imitiert, welcher auf
@@ -13,6 +13,8 @@ public class Calculator {
     private double latestValue;
 
     private String latestOperation = "";
+
+    private boolean clearEntry = true; //
 
     /**
      * @return den aktuellen Bildschirminhalt als String
@@ -34,6 +36,8 @@ public class Calculator {
         if(screen.equals("0") || latestValue == Double.parseDouble(screen)) screen = "";
 
         screen = screen + digit;
+
+        clearEntry = false;
     }
 
     /**
@@ -45,9 +49,14 @@ public class Calculator {
      * im Ursprungszustand ist.
      */
     public void pressClearKey() {
-        screen = "0";
-        latestOperation = "";
-        latestValue = 0.0;
+        if (clearEntry) {
+            screen = "0";
+            latestOperation = "";
+            latestValue = 0.0;
+        } else {
+            screen = "0";
+            clearEntry = true;
+        }
     }
 
     /**
@@ -93,7 +102,12 @@ public class Calculator {
      * Beim zweimaligem Drücken, oder wenn bereits ein Trennzeichen angezeigt wird, passiert nichts.
      */
     public void pressDotKey() {
-        if(!screen.endsWith(".")) screen = screen + ".";
+
+        if(!screen.endsWith(".")){
+            if (!screen.contains(".")){
+                screen = screen + "." ;
+            }
+        }
     }
 
     /**

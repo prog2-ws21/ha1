@@ -41,5 +41,58 @@ class CalculatorTest {
     }
 
     //TODO hier weitere Tests erstellen
+    @Test
+    @DisplayName("should display result after adding two decimal digits")
+    void testDotKey() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(1);
+        calc.pressDotKey();
+        calc.pressDigitKey(2);
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(2);
+        calc.pressDotKey();
+        calc.pressDigitKey(1);
+
+        calc.pressEqualsKey();
+
+        String expected = "3.3";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+    @Test
+    @DisplayName("should display decimal number without the second dot after pressing dotkey while the dot exist ")
+    void testDotKey2() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(1);
+        calc.pressDotKey();
+        calc.pressDigitKey(2);
+        calc.pressDotKey();
+
+        String expected = "1.2";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("should display the result without clear latest Value and Operant after press one time the Clear key")
+    void testClearKey() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(3);
+        calc.pressBinaryOperationKey("x");
+        calc.pressDigitKey(3);
+        calc.pressClearKey();
+        calc.pressDigitKey(2);
+        calc.pressEqualsKey();
+
+        String expected = "6";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
 }
 
