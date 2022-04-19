@@ -14,6 +14,8 @@ public class Calculator {
 
     private String latestOperation = "";
 
+    private boolean clearEntry = true; //
+
     /**
      * @return den aktuellen Bildschirminhalt als String
      */
@@ -34,6 +36,8 @@ public class Calculator {
         if(screen.equals("0") || latestValue == Double.parseDouble(screen)) screen = "";
 
         screen = screen + digit;
+
+        clearEntry = false;
     }
 
     /**
@@ -45,9 +49,14 @@ public class Calculator {
      * im Ursprungszustand ist.
      */
     public void pressClearKey() {
-        screen = "0";
-        latestOperation = "";
-        latestValue = 0.0;
+        if (clearEntry) {
+            screen = "0";
+            latestOperation = "";
+            latestValue = 0.0;
+        } else {
+            screen = "0";
+            clearEntry = true;
+        }
     }
 
     /**
