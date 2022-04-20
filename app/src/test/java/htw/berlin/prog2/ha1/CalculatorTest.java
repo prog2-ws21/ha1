@@ -67,9 +67,10 @@ class CalculatorTest {
     /**
      * Teilaufgabe 2
      * neuer roter test in testF1PositiveSubtraction()
-     * Fehlergrund Zahlen vertauscht in calc.pressDigitKey Methoden in Zeilen 78 und 80, statt 6-5, 5-6 wodurch das Ergebnis -1 wird
+     * Fehlergrund Zahlen vertauscht in calc.pressDigitKey Methoden in Zeilen 79 und 81, statt 6-5, 5-6 wodurch das Ergebnis -1 wird
      */
 
+    /**
     @Test
     @DisplayName("should display result after subtracting two positive digit numbers")
     void testF1PositiveSubtraction() {
@@ -85,8 +86,29 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
+    */
 
+    /**
+     *
+     * Fix zu diesem Test
+     * alter falscher Testcode wurde auskommentiert und neu gefixter Code wird darunter eingefügt
+     * Zeile 102 und 104(ursprünglich Zeile 79 und 81 beim auskommentierten code werden vertauscht
+     */
+    @Test
+    @DisplayName("should display result after subtracting two positive digit numbers")
+    void testF1PositiveSubtraction() {
+        Calculator calc = new Calculator();
 
+        calc.pressDigitKey(6);
+        calc.pressBinaryOperationKey("-");
+        calc.pressDigitKey(5);
+        calc.pressEqualsKey();
+
+        String expected = "1";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
 
 
 }
