@@ -119,25 +119,43 @@ class CalculatorTest {
  *
  */
 
+   // @Test
+   // @DisplayName("should display result after subtracting two positive digit numbers")
+    //void testF2PositiveSubtraction() {
+    //    Calculator calc = new Calculator();
+
+     //   colc.pressDigitKey(6);
+     //  calc.pressBinaryOperationKey("-");
+     //   calc.pressDigitKey(5);
+     //   calc.pressEqualsKey();
+
+     //   String expected = "1";
+     //   String actual = calc.readScreen();
+
+      //  assertEquals(expected, actual);
+   // }
+
+    /**Letzter Teil der Aufgabe : zweiter Bugfix
+     * vorherhiger Code wird zum Vergleich auskommentiert mit // statt JavaDoc Methode um zu prüfen ob kommentieren genauso klappt
+     * verbesserter code darunter eingefügt
+     * colc.pressDigitKey(6); in Zeile 149 wird das o in a geändert zu calc.pressDigitKey(6);
+     */
+
     @Test
     @DisplayName("should display result after subtracting two positive digit numbers")
     void testF2PositiveSubtraction() {
-        Calculator calc = new Calculator();
+    Calculator calc = new Calculator();
 
-        colc.pressDigitKey(6);
-        calc.pressBinaryOperationKey("-");
-        calc.pressDigitKey(5);
-        calc.pressEqualsKey();
+    calc.pressDigitKey(6);
+    calc.pressBinaryOperationKey("-");
+    calc.pressDigitKey(5);
+    calc.pressEqualsKey();
 
-        String expected = "1";
-        String actual = calc.readScreen();
+    String expected = "1";
+    String actual = calc.readScreen();
 
-        assertEquals(expected, actual);
+    assertEquals(expected, actual);
     }
-
-
-
-
 
 
 }
