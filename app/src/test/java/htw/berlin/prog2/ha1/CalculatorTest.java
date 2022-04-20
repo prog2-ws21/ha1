@@ -80,7 +80,7 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
     // second red test
-    // fix ?
+    // fixed :)
     @Test
     @DisplayName("should display number without floating point ")
     void testUnnamed() {
