@@ -43,17 +43,17 @@ class CalculatorTest {
     }
 
     @Test
-    @DisplayName("should display the difference of a subtraction with positiv result (minuend > subtrahend)")
+    @DisplayName("should display the difference of two positive single digits ")
 
     void testPositiveSubtraction() {
         Calculator calc = new Calculator();
 
-        calc.pressDigitKey(9);
+        calc.pressDigitKey(3);
         calc.pressBinaryOperationKey("-");
-        calc.pressDigitKey(2);
+        calc.pressDigitKey(8);
         calc.pressEqualsKey();
 
-        String expected = "7";
+        String expected = "-5";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
