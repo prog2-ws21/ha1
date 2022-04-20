@@ -79,4 +79,16 @@ class CalculatorTest {
 
     }
 
+    @Test
+    @DisplayName("should display 'Error' after dividing through 0")
+    void testDividingZero() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(9);
+        calc.pressBinaryOperationKey("/");
+        calc.pressDigitKey(0);
+        calc.pressEqualsKey();
+
+        assertEquals("Error", calc.readScreen());
+    }
 }
