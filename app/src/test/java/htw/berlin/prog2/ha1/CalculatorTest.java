@@ -111,4 +111,33 @@ class CalculatorTest {
     }
 
 
+
+/**
+ * 2.roter test in testF2PositiveSubtraction() Methode falsch schreiben wodurch die Methode nicht funktioiert
+ * anstatt calc.pressDigitKey(6);  in Zeile 127 zu schreiben schreibe ich
+ * colc.pressDigitKey(6);
+ *
+ */
+
+    @Test
+    @DisplayName("should display result after subtracting two positive digit numbers")
+    void testF2PositiveSubtraction() {
+        Calculator calc = new Calculator();
+
+        colc.pressDigitKey(6);
+        calc.pressBinaryOperationKey("-");
+        calc.pressDigitKey(5);
+        calc.pressEqualsKey();
+
+        String expected = "1";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+
+
+
+
+
 }
