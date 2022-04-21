@@ -76,20 +76,20 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
 
-    //second red test
+    //second red test-v2
     @Test
     @DisplayName("should display a negative number when multiplying a positive number with a negative number")
     void testNegativeMultiplication(){
         Calculator calc = new Calculator();
 
-        calc.pressDigitKey(-8);
+        calc.pressBinaryOperationKey("-");
+        calc.pressDigitKey(8);
         calc.pressBinaryOperationKey("x");
         calc.pressDigitKey(4);
         calc.pressEqualsKey();
 
         String expected = "-32";
         String actual = calc.readScreen();
-        System.out.println("answer: "+ actual);
         assertEquals(expected, actual);
     }
 
