@@ -77,5 +77,20 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
 
+    // Teilaufgabe 2 zweiten Fehler
+    @Test
+    @DisplayName("Square rooting a negative number returns an error")
+    void testSqrt() {
+        Calculator calc = new Calculator();
+        calc.pressDigitKey(2);
+        calc.pressNegativeKey();
+        calc.pressUnaryOperationKey("√");
+
+        String expected = "Error";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
 }
 
