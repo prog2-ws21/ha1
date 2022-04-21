@@ -40,6 +40,58 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
 
-    //TODO hier weitere Tests erstellen
+    //first green test
+    @Test
+    @DisplayName("should display result after dividing 2 positive multi-digit numbers")
+    void testDivision() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(2);
+        calc.pressDigitKey(5);
+        calc.pressBinaryOperationKey("/");
+        calc.pressDigitKey(5);
+        calc.pressEqualsKey();
+
+        String expected = "5";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+    //first red test
+    @Test
+    @DisplayName("should display error after dividing a number by 0")
+    void testDivisionZero() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(2);
+        calc.pressDigitKey(5);
+        calc.pressBinaryOperationKey("/");
+        calc.pressDigitKey(0);
+        calc.pressEqualsKey();
+
+        String expected = "Error";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+    //second red test-v2
+    @Test
+    @DisplayName("should display a negative number when multiplying a positive number with a negative number")
+    void testNegativeMultiplication(){
+        Calculator calc = new Calculator();
+
+        calc.pressBinaryOperationKey("-");
+        calc.pressDigitKey(8);
+        calc.pressBinaryOperationKey("x");
+        calc.pressDigitKey(4);
+        calc.pressEqualsKey();
+
+        String expected = "-32";
+        String actual = calc.readScreen();
+        assertEquals(expected, actual);
+    }
+
 }
 
