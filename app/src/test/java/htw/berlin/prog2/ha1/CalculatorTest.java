@@ -40,6 +40,56 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
 
-    //TODO hier weitere Tests erstellen
-}
+    @Test
+    @DisplayName("should display result of percent of a positive multi-digit number")
+    void testPercent() {
+        Calculator calc = new Calculator();
 
+        calc.pressDigitKey(6);
+        calc.pressDigitKey(0);
+        calc.pressUnaryOperationKey("%");
+
+        assertEquals("0.6", calc.readScreen());
+    }
+
+    @Test
+    @DisplayName("should clear the current digit and reset whole calculator")
+    void testClearKey() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(8);
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(5);
+        calc.pressClearKey();
+
+        assertEquals("0", calc.readScreen());
+        calc.pressDigitKey(2);
+        calc.pressEqualsKey();
+
+        assertEquals("10", calc.readScreen());
+        calc.pressBinaryOperationKey("-");
+        calc.pressDigitKey(5);
+        calc.pressEqualsKey();
+        assertEquals("5", calc.readScreen());
+
+        calc.pressClearKey();
+        calc.pressClearKey();
+
+        assertEquals(0.0, calc.getLatestValue());
+        assertEquals("", calc.getLatestOperation());
+
+    }
+
+    @Test
+    @DisplayName("should display 'Error' after dividing through 0")
+    void testDividingZero() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(9);
+        calc.pressBinaryOperationKey("/");
+        calc.pressDigitKey(0);
+        calc.pressEqualsKey();
+
+        assertEquals("Error", calc.readScreen());
+    }
+}
