@@ -6,6 +6,14 @@ package htw.berlin.prog2.ha1;
  * und dessen Bildschirm bis zu zehn Ziffern plus einem Dezimaltrennzeichen darstellen kann.
  * Enthält mit Absicht noch diverse Bugs oder unvollständige Funktionen.
  */
+
+
+/*
+some notes during class
+this comment is a change to the document
+lets see what add . does and commit -m "messageHere"
+
+ */
 public class Calculator {
 
     private String screen = "0";
@@ -80,7 +88,11 @@ public class Calculator {
             case "1/x" -> 1 / Double.parseDouble(screen);
             default -> throw new IllegalArgumentException();
         };
+
         screen = Double.toString(result);
+
+        if(screen.contains(".0")) screen = screen.substring(0, screen.length() - 2);
+
         if(screen.contains(".") && screen.length() > 11) screen = screen.substring(0, 10);
 
     }
@@ -127,5 +139,7 @@ public class Calculator {
         screen = Double.toString(result);
         if(screen.endsWith(".0")) screen = screen.substring(0,screen.length()-2);
         if(screen.contains(".") && screen.length() > 11) screen = screen.substring(0, 10);
+        if(screen.equals("Infinity")) screen = "Error";
+
     }
 }
