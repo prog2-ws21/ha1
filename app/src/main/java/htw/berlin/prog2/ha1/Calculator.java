@@ -116,6 +116,7 @@ public class Calculator {
      * Operation (ggf. inklusive letztem Operand) erneut auf den aktuellen Bildschirminhalt angewandt
      * und das Ergebnis direkt angezeigt.
      */
+
     public void pressEqualsKey() {
         String result = switch(latestOperation) {
             case "+" -> Double.toString(latestValue + Double.parseDouble(screen));
