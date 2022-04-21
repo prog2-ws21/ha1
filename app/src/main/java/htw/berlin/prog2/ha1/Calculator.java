@@ -65,6 +65,7 @@ public class Calculator {
         }
         latestValue = Double.parseDouble(screen);
         latestOperation = operation;
+        screen = "0";
     }
 
     /**
