@@ -45,6 +45,7 @@ public class Calculator {
             screen = "";
 
         screen = screen + digit;
+        clearKeyState = 0;
     }
 
     /**
@@ -90,6 +91,7 @@ public class Calculator {
     public void pressBinaryOperationKey(String operation) {
         latestValue = Double.parseDouble(screen);
         latestOperation = operation;
+        clearKeyState = 0;
     }
 
     /**
@@ -115,6 +117,8 @@ public class Calculator {
         if (screen.contains(".") && screen.length() > 11)
             screen = screen.substring(0, 10);
 
+        clearKeyState = 0;
+
     }
 
     /**
@@ -131,6 +135,7 @@ public class Calculator {
     public void pressDotKey() {
         if (!screen.endsWith("."))
             screen = screen + ".";
+        clearKeyState = 0;
     }
 
     /**
@@ -144,6 +149,7 @@ public class Calculator {
      */
     public void pressNegativeKey() {
         screen = screen.startsWith("-") ? screen.substring(1) : "-" + screen;
+        clearKeyState = 0;
     }
 
     /**
@@ -177,6 +183,8 @@ public class Calculator {
             screen = screen.substring(0, screen.length() - 2);
         if (screen.contains(".") && screen.length() > 11)
             screen = screen.substring(0, 10);
+
+        clearKeyState = 0;
     }
 
     public String getLatestOperation() {

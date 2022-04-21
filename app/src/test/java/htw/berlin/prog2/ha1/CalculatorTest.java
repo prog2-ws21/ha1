@@ -73,6 +73,7 @@ class CalculatorTest {
         assertEquals("5", calc.readScreen());
 
         calc.pressClearKey();
+        calc.pressClearKey();
 
         assertEquals(0.0, calc.getLatestValue());
         assertEquals("", calc.getLatestOperation());
