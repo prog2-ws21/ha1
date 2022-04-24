@@ -8,26 +8,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @DisplayName("Retro calculator")
 class CalculatorTest {
 
-    //test neu
-
-    @Test
-    @DisplayName("should display result after adding two positive multi-digit numbers")
-    void testPositiveAddition() {
-        Calculator calc = new Calculator();
-
-        calc.pressDigitKey(2);
-        calc.pressDigitKey(0);
-        calc.pressBinaryOperationKey("+");
-        calc.pressDigitKey(2);
-        calc.pressDigitKey(0);
-        calc.pressEqualsKey();
-
-        String expected = "40";
-        String actual = calc.readScreen();
-
-        assertEquals(expected, actual);
-    }
-
     @Test
     @DisplayName("should display result after getting the square root of two")
     void testSquareRoot() {
@@ -82,12 +62,33 @@ class CalculatorTest {
         calc.pressDigitKey(2);
         calc.pressBinaryOperationKey("/");
         calc.pressDigitKey(0);
-        calc.pressEqualsKey();
+       // calc.pressEqualsKey();
 
         String expected = "Error";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("should display the result of a multiple addition of three positive single digit numbers")
+
+    void testMultipleAddition() {
+
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(2);
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(3);
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(5);
+       // calc.pressEqualsKey(); //wir brauchen pressEqualskey() in pressDigit() - falls (latest value != "") pressEqualsKey
+
+        String expected = "10";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+
     }
 
     //TODO hier weitere Tests erstellen
