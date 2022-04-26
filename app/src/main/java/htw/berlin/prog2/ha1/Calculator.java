@@ -9,11 +9,9 @@ package htw.berlin.prog2.ha1;
 public class Calculator {
 
     private String screen = "0";
-
     private double latestValue;
-
     private String latestOperation = "";
-
+    private double result;
     /**
      * @return den aktuellen Bildschirminhalt als String
      */
@@ -31,9 +29,17 @@ public class Calculator {
     public void pressDigitKey(int digit) {
         if(digit > 9 || digit < 0) throw new IllegalArgumentException();
 
-        if(screen.equals("0") || latestValue == Double.parseDouble(screen)) screen = "";
+        if(screen.equals("0") || latestValue == Double.parseDouble(screen)) {screen = "";}
 
         screen = screen + digit;
+
+        if(!latestOperation.equals("")) calcResult();
+        latestOperation ="";
+
+
+
+       // if (latestValue != 0){ pressEqualsKey();}
+
     }
 
     /**
@@ -60,7 +66,7 @@ public class Calculator {
      * @param operation "+" für Addition, "-" für Substraktion, "x" für Multiplikation, "/" für Division
      */
     public void pressBinaryOperationKey(String operation)  {
-        latestValue = Double.parseDouble(screen);
+        latestValue = Double.parseDouble(readScreen());
         latestOperation = operation;
     }
 
@@ -116,16 +122,23 @@ public class Calculator {
      * Operation (ggf. inklusive letztem Operand) erneut auf den aktuellen Bildschirminhalt angewandt
      * und das Ergebnis direkt angezeigt.
      */
-    public void pressEqualsKey() {
-        var result = switch(latestOperation) {
-            case "+" -> latestValue + Double.parseDouble(screen);
-            case "-" -> latestValue - Double.parseDouble(screen);
-            case "x" -> latestValue * Double.parseDouble(screen);
-            case "/" -> latestValue / Double.parseDouble(screen);
-            default -> throw new IllegalArgumentException();
-        };
-        screen = Double.toString(result);
+    public void calcResult() {
+
+        switch (latestOperation) {
+            case "+": result = latestValue + Double.parseDouble(screen); break;
+            case "-": result = latestValue - Double.parseDouble(screen);break;
+            case "x": result = latestValue * Double.parseDouble(screen);break;
+            case "/":
+                if (readScreen().equals("0")) screen = "Error";
+                else result = latestValue / Double.parseDouble(screen); break;
+
+                default: throw new IllegalArgumentException();
+        }
+        if (!screen.equals("Error")) {screen = Double.toString(result);}
         if(screen.endsWith(".0")) screen = screen.substring(0,screen.length()-2);
         if(screen.contains(".") && screen.length() > 11) screen = screen.substring(0, 10);
+
     }
+
+    public double pressEqualsKey(){return result;}
 }
